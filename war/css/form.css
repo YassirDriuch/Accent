@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.form_label {
+	float: left;
+	clear: left;
+	margin-bottom: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+}
+
+.form_input {
+	width: 200px;
+	float: left;
+	clear: left;
+	outline: none;
+	padding: 13px 12px;
+	margin-bottom: 12px;
+	border: 1px solid #CCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #444;
+}
+
+.form_submit {
+	float: left;
+	clear: left;
+	border: none;
+	padding: 13px 18px;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+.form_input:focus { border-color: #97C8D8; }
+
