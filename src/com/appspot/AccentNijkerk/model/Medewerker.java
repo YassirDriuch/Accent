@@ -1,9 +1,13 @@
 package com.appspot.AccentNijkerk.model;
 
-public class Medewerker extends Gebruiker {
+import java.io.Serializable;
+
+public class Medewerker extends Gebruiker implements Serializable {
+	private static final long serialVersionUID = -8164090105300746871L;
 	private String naam, adres, email;
 	
-	public Medewerker(String nm, String ad, String em) {
+	public Medewerker(String gn, String ww, String nm, String ad, String em) {
+		super(gn, ww);
 		naam = nm;
 		adres = ad;
 		email = em;

@@ -1,3 +1,13 @@
+<%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%
+Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
+
+//if(gebruikerObject != null){
+//	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+//	rd.forward(request, response);
+//	return;
+//} 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,9 +20,10 @@
 </head>
 
 <body>
-<img src="images/bg.jpg" id="bg" alt="">
+<img src="images/bg.jpg" id="bg" alt="" />
 <div id="frontpage-container" class="rounded shadow">
     <img src="images/logo.jpg" alt="" class="frontpage-logo" />
+    <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
     <form method="post" action="login">
     	<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
         <input class="form_input white-gradient rounded-small" type="text" name="gebruikersnaam" />

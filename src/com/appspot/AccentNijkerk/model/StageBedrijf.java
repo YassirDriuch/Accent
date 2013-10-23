@@ -1,12 +1,15 @@
 package com.appspot.AccentNijkerk.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StageBedrijf extends Gebruiker {
+public class StageBedrijf extends Gebruiker implements Serializable {
+	private static final long serialVersionUID = 3861773411669893514L;
 	private String naam, adres, email, telnr;
 	public ArrayList<Leerling> stagiares;
 	
-	public StageBedrijf(String nm, String ad, String em, String tn) {
+	public StageBedrijf(String gn, String ww, String nm, String ad, String em, String tn) {
+		super(gn, ww);
 		naam = nm;
 		adres = ad;
 		email = em;
