@@ -1,3 +1,14 @@
+<%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%
+Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
+Leerling l = (Leerling) gebruikerObject;
+
+if(gebruikerObject == null){
+	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+	rd.forward(request, response);
+	return;
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,16 +21,22 @@
 </head>
 
 <body>
-<img src="images/bg.jpg" id="bg" alt="">
+<img src="images/bg.jpg" id="bg" alt="" />
 <div id="panel-container" class="rounded shadow">
     <img src="images/logo.jpg" alt="" class="frontpage-logo" />
     <div id="menu">
     	<div id="menu-user" class="white-gradient rounded-small">
-        	Ingelogd als <b>Jason Koolman</b><a href="#" class="menu-logout">Uitloggen</a>
+        	Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><%=l.getEmail()%><a href="/logout" class="menu-logout">Uitloggen</a>
         </div>
-        <a href="#" class="menu-button white-gradient rounded-small">Button</a>
-        <a href="#" class="menu-button white-gradient rounded-small">Button</a>
+<% //if(gebruikerObject instanceof Leerling) { %>
+<a href="" class="menu-button white-gradient rounded-small">Leerling</a>
+<% //} //else if(gebruikerObject instanceof StageBedrijf) { %>
+<a href="" class="menu-button white-gradient rounded-small">StageBedrijf</a>
+<% //} //else if(gebruikerObject instanceof Medewerker) { %>
+<a href="" class="menu-button white-gradient rounded-small">Medewerker</a>
+<% //} %>
     </div>
+    <%=gebruikerObject%>
 </div>
 </body>
 </html>
