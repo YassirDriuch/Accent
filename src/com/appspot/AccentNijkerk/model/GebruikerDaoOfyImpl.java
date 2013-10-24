@@ -23,7 +23,8 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		}
 	}
 	
-	public ArrayList<Gebruiker> alleGebruikers(){
+	public ArrayList<Gebruiker> alleGebruikers() {
+		//Returnt momenteel nog null, functie moet herschreven worden dmv objectify query
 		return gebruikers;
 	}
 	
