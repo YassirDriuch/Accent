@@ -12,6 +12,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>

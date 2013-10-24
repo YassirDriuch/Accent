@@ -6,6 +6,39 @@ body {
 }
 
 /* General styles */
+.succes {
+	width: auto;
+	height: auto;
+	clear: both;
+	padding: 10px 13px;
+	margin-bottom: 7px;
+	border: 1px solid #ABE098;
+	background-color: #E0F4D9;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font-family: Arial;
+	font-size: 12px;
+	color: #269700;
+}
+
+
+.nosucces {
+	width: auto;
+	height: auto;
+	clear: both;
+	padding: 10px 13px;
+	margin-bottom: 7px;
+	border: 1px solid #FAA3A3;
+	background-color: #F9D9D9;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	font-family: Arial;
+	font-size: 12px;
+	color: #D90000;
+}
+
 .rounded {
 	-webkit-border-radius: 6px; 
 	-moz-border-radius: 6px; 

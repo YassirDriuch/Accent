@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.appspot.AccentNijkerk.controller.LoginServlet;
 import com.appspot.AccentNijkerk.model.Gebruiker;
 import com.appspot.AccentNijkerk.model.Leerling;
 import com.appspot.AccentNijkerk.model.Medewerker;
@@ -13,31 +12,19 @@ import com.appspot.AccentNijkerk.model.School;
 import com.appspot.AccentNijkerk.model.StageBedrijf;
 
 public class ContextListener implements ServletContextListener {
-	private static final Logger log = Logger.getLogger(LoginServlet.class.getName());
+	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
 	
 	public void contextInitialized(ServletContextEvent sce) {
 		School school = new School("Accent Nijkerk", "Ds. Kuypersstraat 1", "033-2458819");
+		log.info("School aangemaakt");
 		
-		//Testgebruiker aanmaken
-		Leerling l = new Leerling("TestLeerling", "jason.koolman@hotmail.com", "06-18999840");
-		l.setGebruikersnaam("leerling");
-		l.setWachtwoord("test");
-		school.voegGebruikerToe(l);
-		log.info("Testgebruiker aangemaakt");
-		
-		//Testbedrijf aanmaken
-		StageBedrijf s = new StageBedrijf("TestBedrijf", "TestStraat 10", "test@bedrijf.nl", "030-5590122");
-		s.setGebruikersnaam("bedrijf");
-		s.setWachtwoord("test");
-		school.voegGebruikerToe(s);
-		log.info("Testbedrijf aangemaakt");
-		
-		//Testmedewerker aanmaken
-		Medewerker m = new Medewerker("TestMedewerker", "TestStraat 10", "test@medewerker.nl");
-		m.setGebruikersnaam("medewerker");
-		m.setWachtwoord("test");
-		school.voegGebruikerToe(m);
-		log.info("Testmedewerker aangemaakt");
+		//Testgebruikers aanmaken
+		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
+		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
+		Gebruiker g3 = (Gebruiker) new Medewerker("TestMedewerker", "test", "Medewerer", "Slingstraat 24", "info@medewerker.com");
+		school.voegGebruikerToe(g1);
+		school.voegGebruikerToe(g2);
+		school.voegGebruikerToe(g3);
 		
 		//Objecten wegschrijven
 		sce.getServletContext().setAttribute("SchoolObject", school);
