@@ -9,7 +9,6 @@ public class Klas {
 	public Klas(String nm) {
 		naam = nm;
 		leerlingen = new ArrayList<Leerling>();
-		
 	}
 	
 	//Getters

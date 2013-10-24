@@ -14,8 +14,13 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	}
 	
 	@Override
-	public void voegGebruikerToe(Gebruiker g){
-		ofy.put(g);
+	public boolean voegGebruikerToe(Gebruiker g) {		
+		if(getGebruiker(g.getGebruikersnaam()) == null) {
+			ofy.put(g);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public ArrayList<Gebruiker> alleGebruikers(){

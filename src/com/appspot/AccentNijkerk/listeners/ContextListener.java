@@ -19,16 +19,11 @@ public class ContextListener implements ServletContextListener {
 	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
 	
 	public void contextInitialized(ServletContextEvent sce) {
-		ObjectifyService.register(StageBedrijf.class);
-		ObjectifyService.register(Medewerker.class);
-		ObjectifyService.register(Leerling.class);
-		ObjectifyService.register(Gebruiker.class);
-		
 		//Objectify initialization
+		initObjectifyClasses();
 		Objectify ofy = ObjectifyService.begin();
-		
-
-		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+	
+		//School aanmaken
 		School school = new School("Accent Nijkerk", "Ds. Kuypersstraat 1", "033-2458819");
 		log.info("School aangemaakt");
 		
@@ -37,6 +32,7 @@ public class ContextListener implements ServletContextListener {
 		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
 		Gebruiker g3 = (Gebruiker) new Medewerker("TestMedewerker", "test", "Medewerer", "Slingstraat 24", "info@medewerker.com");
 		
+		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
@@ -46,6 +42,13 @@ public class ContextListener implements ServletContextListener {
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
-		//
+		//ContextDestroyed
+	}
+	
+	private void initObjectifyClasses() {
+		ObjectifyService.register(StageBedrijf.class);
+		ObjectifyService.register(Medewerker.class);
+		ObjectifyService.register(Leerling.class);
+		ObjectifyService.register(Gebruiker.class);
 	}
 }
