@@ -2,8 +2,11 @@ package com.appspot.AccentNijkerk.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Gebruiker implements Serializable {
 	private static final long serialVersionUID = -5849640961435645982L;
+	@Id Long id;
 	private String gebruikersnaam, wachtwoord;
 	
 	public Gebruiker(String gn, String ww) {

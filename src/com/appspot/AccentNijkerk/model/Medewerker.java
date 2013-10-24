@@ -13,6 +13,10 @@ public class Medewerker extends Gebruiker implements Serializable {
 		email = em;
 	}
 	
+	public Medewerker() {
+		//Default constructor
+	}
+	
 	//Getters
 	public String getNaam() {
 		return naam;

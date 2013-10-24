@@ -13,6 +13,10 @@ public class Leerling extends Gebruiker implements Serializable {
 		leerlingnr = ln;
 	}
 	
+	public Leerling() {
+		//Default constructor
+	}
+	
 	//Getters
 	public String getNaam() {
 		return naam;

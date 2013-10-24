@@ -17,6 +17,10 @@ public class StageBedrijf extends Gebruiker implements Serializable {
 		stagiares = new ArrayList<Leerling>();
 	}
 	
+	public StageBedrijf() {
+		//Default constructor
+	}
+	
 	//Getters
 	public String getNaam() {
 		return naam;
