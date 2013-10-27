@@ -6,11 +6,11 @@ public class Leerling extends Gebruiker implements Serializable {
 	private static final long serialVersionUID = -3586223028920551117L;
 	private String naam, email, leerlingnr;
 	
-	public Leerling(String gn, String ww, String nm, String em, String ln) {
-		super(gn, ww);
-		naam = nm;
-		email = em;
-		leerlingnr = ln;
+	public Leerling(String gebruikersnaam, String wachtwoord, String naam, String email, String leerlingnr) {
+		super(gebruikersnaam, wachtwoord);
+		this.naam = naam;
+		this.email = email;
+		this.leerlingnr = leerlingnr;
 	}
 	
 	public Leerling() {
@@ -31,15 +31,15 @@ public class Leerling extends Gebruiker implements Serializable {
 	}
 	
 	//Setters
-	public void setNaam(String nm) {
-		naam = nm;
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
 	
-	public void setEmail(String em) {
-		email = em;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
-	public void setLeerlingnr(String ln) {
-		leerlingnr = ln;
+	public void setLeerlingnr(String leerlingnr) {
+		this.leerlingnr = leerlingnr;
 	}
 }

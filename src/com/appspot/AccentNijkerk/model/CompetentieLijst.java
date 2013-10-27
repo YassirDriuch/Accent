@@ -10,10 +10,10 @@ public class CompetentieLijst {
 	private Calendar aanmaakDatum;
 	private boolean ingevuld;
 	
-	public CompetentieLijst(Gebruiker l, Calendar ad, boolean ig) {
-		leerling = l;
-		aanmaakDatum = ad;
-		ingevuld = ig;
+	public CompetentieLijst(Gebruiker leerling, Calendar aanmaakDatum, boolean ingevuld) {
+		this.leerling = leerling;
+		this.aanmaakDatum = aanmaakDatum;
+		this.ingevuld = ingevuld;
 	}
 	
 	//Getters
@@ -30,15 +30,15 @@ public class CompetentieLijst {
 	}
 	
 	//Setters
-	public void setLeerling(Gebruiker l) {
-		leerling = l;
+	public void setLeerling(Gebruiker leerling) {
+		this.leerling = leerling;
 	}
 	
-	public void setAanmaakDataum(Calendar ad) {
-		aanmaakDatum = ad;
+	public void setAanmaakDataum(Calendar aanmaakDatum) {
+		this.aanmaakDatum = aanmaakDatum;
 	}
 	
-	public void setIngevuld(boolean ig) {
-		ingevuld = ig;
+	public void setIngevuld(boolean ingevuld) {
+		this.ingevuld = ingevuld;
 	}
 }

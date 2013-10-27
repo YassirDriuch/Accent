@@ -9,9 +9,9 @@ public class Gebruiker implements Serializable {
 	@Id Long id;
 	private String gebruikersnaam, wachtwoord;
 	
-	public Gebruiker(String gn, String ww) {
-		gebruikersnaam = gn;
-		wachtwoord = ww;
+	public Gebruiker(String gebruikersnaam, String wachtwoord) {
+		this.gebruikersnaam = gebruikersnaam;
+		this.wachtwoord = wachtwoord;
 	}
 	
 	public Gebruiker() { 
@@ -28,11 +28,11 @@ public class Gebruiker implements Serializable {
 	}
 	
 	//Setters
-	public void setGebruikersnaam(String gn) {
-		gebruikersnaam = gn;
+	public void setGebruikersnaam(String gebruikersnaam) {
+		this.gebruikersnaam = gebruikersnaam;
 	}
 	
-	public void setWachtwoord(String ww) {
-		wachtwoord = ww;
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
 	}
 }
