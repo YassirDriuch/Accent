@@ -42,4 +42,9 @@ public class Leerling extends Gebruiker implements Serializable {
 	public void setLeerlingnr(String leerlingnr) {
 		this.leerlingnr = leerlingnr;
 	}
+	
+	public String toString() {
+		String s = "Naam: " + naam + "<br />Email: " + email + "<br />Leerlingnr: " + leerlingnr;
+		return s;
+	}
 }

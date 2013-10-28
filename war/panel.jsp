@@ -9,22 +9,6 @@ if(gebruikerObject == null) {
 }
 %>
 
-<%!
-public boolean isGebruiker(String soort, Gebruiker g) {
-	if(soort == 'Leerling' && g instanceof Leerling) { 
-		return true;
-	} 
-	else if(soort == 'StageBedrijf' && g instanceof StageBedrijf) { 
-		return true;
-	} 
-	else if(soort == 'Medewerker' && g instanceof Medewerker) { 
-		return true;
-	}
-	
-	return false;
-}
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -45,19 +29,26 @@ public boolean isGebruiker(String soort, Gebruiker g) {
         
         <!-- Menu !-->
         <div id="menu">
-            <div id="menu-user" class="white-gradient rounded-small">
+       		<div id="menu-user" class="white-gradient rounded-small">
                 Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
             </div>
-<% if (isGebruiker('Leerling', gebruikerObject) == true) { %>
-<a href="" class="menu-button white-gradient rounded-small">Leerling</a>
-<% } %>
+                        
+            <% if (gebruikerObject instanceof Leerling) { %>
+                <a href="" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+            <% } else if (gebruikerObject instanceof StageBedrijf) { %>
+                <a href="" class="menu-button white-gradient rounded-small">Stagiares</a>
+                <a href="" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+            <% } else if (gebruikerObject instanceof Medewerker) { %>
+                <a href="" class="menu-button white-gradient rounded-small">Leerlingen</a>
+                <a href="" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
+            <% } %>
         </div>
     </div>
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Competentielijsten</h1>
-        <span>Er zijn momenteel geen competentielijsten</span>
+    	<h1>Accountgegevens</h1>
+        <span><%=gebruikerObject.toString()%></span>
     </div>
 </div>
 </body>

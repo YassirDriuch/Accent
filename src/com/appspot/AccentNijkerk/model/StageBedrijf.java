@@ -59,18 +59,8 @@ public class StageBedrijf extends Gebruiker implements Serializable {
 		telnr = tn;
 	}
 	
-	//Methods
-	public void voegStagiarToe(Leerling stagiar) {
-		if(!stagiares.contains(stagiar)) {
-			stagiares.add(stagiar);
-			System.out.println("#Stagiar is toegevoegd");
-		}
-	}
-		
-	public void verwijderStagiar(Leerling stagiar){
-		if(stagiares.contains(stagiar)){
-			stagiares.remove(stagiar);
-			System.out.println("#Stagiar is verwijderd");
-		}
+	public String toString() {
+		String s = "Naam: " + naam + "<br />Adres: " + adres + "<br />Email: " + email + "<br />Telefoon nr: " + telnr;
+		return s;
 	}
 }

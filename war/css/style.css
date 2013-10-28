@@ -175,10 +175,11 @@ a.menu-button:hover { border-color: #97C8D8; }
 	width: 750px;
 	height: auto;
 	padding: 25px;
-	color: #666;
+	color: #555;
 }
 
 #content span {
 	float: left;
-	clear:left;
+	clear: left;
+	line-height: 140%;
 }

@@ -43,4 +43,8 @@ public class Medewerker extends Gebruiker implements Serializable {
 		this.email = email;
 	}
 	
+	public String toString() {
+		String s = "Naam: " + naam + "<br />Adres: " + adres + "<br />Email: " + email;
+		return s;
+	}
 }
