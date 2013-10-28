@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 
 public class GebruikerDaoOfyImpl implements GebruikerDao {
 	Objectify ofy = ObjectifyService.begin();
-	ArrayList<Gebruiker> gebruikers;
 	
 	public GebruikerDaoOfyImpl() {
-		gebruikers = new ArrayList<Gebruiker>();
+		//Default constructor
 	}
 	
 	@Override
@@ -23,9 +23,15 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		}
 	}
 	
-	public ArrayList<Gebruiker> alleGebruikers() {
-		//Returnt momenteel nog null, functie moet herschreven worden dmv objectify query
-		return gebruikers;
+	public ArrayList<Gebruiker> getAlleGebruikers() {
+		Query<Gebruiker> query = ofy.query(Gebruiker.class);
+		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+		
+		for(Gebruiker g : query) {
+			alleGebruikers.add(g);
+		}
+		
+		return alleGebruikers;
 	}
 	
 	@Override

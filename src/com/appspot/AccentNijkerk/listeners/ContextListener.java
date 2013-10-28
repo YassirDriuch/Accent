@@ -21,7 +21,6 @@ public class ContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		//Objectify initialization
 		initObjectifyClasses();
-		Objectify ofy = ObjectifyService.begin();
 	
 		//School aanmaken
 		School school = new School("Accent Nijkerk", "Ds. Kuypersstraat 1", "033-2458819");
@@ -36,6 +35,8 @@ public class ContextListener implements ServletContextListener {
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
+		
+		log.info("TESTTTTTTT: " + gebruikerDao.getAlleGebruikers());
 		
 		//Objecten wegschrijven
 		sce.getServletContext().setAttribute("SchoolObject", school);
