@@ -8,13 +8,17 @@ public class StageBedrijf extends Gebruiker implements Serializable {
 	private String naam, adres, email, telnr;
 	public ArrayList<Leerling> stagiares;
 	
-	public StageBedrijf(String gn, String ww, String nm, String ad, String em, String tn) {
-		super(gn, ww);
-		naam = nm;
-		adres = ad;
-		email = em;
-		telnr = tn;
+	public StageBedrijf(String gebruikersnaam, String wachtwoord, String naam, String adres, String email, String telnr) {
+		super(gebruikersnaam, wachtwoord);
+		this.naam = naam;
+		this.adres = adres;
+		this.email = email;
+		this.telnr = telnr;
 		stagiares = new ArrayList<Leerling>();
+	}
+	
+	public StageBedrijf() {
+		//Default constructor
 	}
 	
 	//Getters

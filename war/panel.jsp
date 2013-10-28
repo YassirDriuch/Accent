@@ -21,13 +21,17 @@ if(gebruikerObject == null){
 </head>
 
 <body>
-<img src="images/bg.jpg" id="bg" alt="" />
+<img src="images/bg.jpg" id="bg" alt="">
 <div id="panel-container" class="rounded shadow">
-    <img src="images/logo.jpg" alt="" class="frontpage-logo" />
-    <div id="menu">
-    	<div id="menu-user" class="white-gradient rounded-small">
-        	Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
-        </div>
+	<!-- Header !-->
+	<div id="header">
+        <img src="images/logo.jpg" alt="" class="frontpage-logo" />
+        
+        <!-- Menu !-->
+        <div id="menu">
+            <div id="menu-user" class="white-gradient rounded-small">
+                Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
+            </div>
 <% if(gebruikerObject instanceof Leerling) { %>
 <a href="" class="menu-button white-gradient rounded-small">Leerling</a>
 <% } else if(gebruikerObject instanceof StageBedrijf) { %>
@@ -35,6 +39,13 @@ if(gebruikerObject == null){
 <% } else if(gebruikerObject instanceof Medewerker) { %>
 <a href="" class="menu-button white-gradient rounded-small">Medewerker</a>
 <% } %>
+        </div>
+    </div>
+    
+    <!-- Content !-->
+    <div id="content">
+    	<h1>Competentielijsten</h1>
+        <span>Er zijn momenteel geen competentielijsten</span>
     </div>
 </div>
 </body>

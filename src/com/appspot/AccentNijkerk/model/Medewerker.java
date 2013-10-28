@@ -6,11 +6,15 @@ public class Medewerker extends Gebruiker implements Serializable {
 	private static final long serialVersionUID = -8164090105300746871L;
 	private String naam, adres, email;
 	
-	public Medewerker(String gn, String ww, String nm, String ad, String em) {
-		super(gn, ww);
-		naam = nm;
-		adres = ad;
-		email = em;
+	public Medewerker(String gebruikersnaam, String wachtwoord, String naam, String adres, String email) {
+		super(gebruikersnaam, wachtwoord);
+		this.naam = naam;
+		this.adres = adres;
+		this.email = email;
+	}
+	
+	public Medewerker() {
+		//Default constructor
 	}
 	
 	//Getters
@@ -27,16 +31,16 @@ public class Medewerker extends Gebruiker implements Serializable {
 	}
 	
 	//Setters
-	public void setNaam(String nm) {
-		naam = nm;
+	public void setNaam(String naam) {
+		this.naam = naam;
 	}
 	
-	public void setAdres(String ad) {
-		adres = ad;
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 	
-	public void setEmail(String em) {
-		email = em;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

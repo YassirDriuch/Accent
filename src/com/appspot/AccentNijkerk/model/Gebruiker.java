@@ -2,13 +2,16 @@ package com.appspot.AccentNijkerk.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Id;
+
 public class Gebruiker implements Serializable {
 	private static final long serialVersionUID = -5849640961435645982L;
+	@Id Long id;
 	private String gebruikersnaam, wachtwoord;
 	
-	public Gebruiker(String gn, String ww) {
-		gebruikersnaam = gn;
-		wachtwoord = ww;
+	public Gebruiker(String gebruikersnaam, String wachtwoord) {
+		this.gebruikersnaam = gebruikersnaam;
+		this.wachtwoord = wachtwoord;
 	}
 	
 	public Gebruiker() { 
@@ -25,11 +28,11 @@ public class Gebruiker implements Serializable {
 	}
 	
 	//Setters
-	public void setGebruikersnaam(String gn) {
-		gebruikersnaam = gn;
+	public void setGebruikersnaam(String gebruikersnaam) {
+		this.gebruikersnaam = gebruikersnaam;
 	}
 	
-	public void setWachtwoord(String ww) {
-		wachtwoord = ww;
+	public void setWachtwoord(String wachtwoord) {
+		this.wachtwoord = wachtwoord;
 	}
 }
