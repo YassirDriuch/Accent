@@ -8,9 +8,10 @@ import com.googlecode.objectify.Query;
 
 public class GebruikerDaoOfyImpl implements GebruikerDao {
 	Objectify ofy = ObjectifyService.begin();
+	public ArrayList<Gebruiker> gebruikers;
 	
 	public GebruikerDaoOfyImpl() {
-		//Default constructor
+		gebruikers = new ArrayList<Gebruiker>();
 	}
 	
 	@Override
@@ -26,13 +27,12 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	@Override
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		Query<Gebruiker> query = ofy.query(Gebruiker.class);
-		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 		
 		for(Gebruiker g : query) {
-			alleGebruikers.add(g);
+			gebruikers.add(g);
 		}
 		
-		return alleGebruikers;
+		return gebruikers;
 	}
 	
 	@Override
