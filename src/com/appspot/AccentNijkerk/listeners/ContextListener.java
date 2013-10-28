@@ -5,14 +5,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.appspot.AccentNijkerk.model.Gebruiker;
-import com.appspot.AccentNijkerk.model.GebruikerDao;
-import com.appspot.AccentNijkerk.model.GebruikerDaoOfyImpl;
-import com.appspot.AccentNijkerk.model.Leerling;
-import com.appspot.AccentNijkerk.model.Medewerker;
-import com.appspot.AccentNijkerk.model.School;
-import com.appspot.AccentNijkerk.model.StageBedrijf;
-import com.googlecode.objectify.Objectify;
+import com.appspot.AccentNijkerk.model.*;
 import com.googlecode.objectify.ObjectifyService;
 
 public class ContextListener implements ServletContextListener {
@@ -51,5 +44,8 @@ public class ContextListener implements ServletContextListener {
 		ObjectifyService.register(Medewerker.class);
 		ObjectifyService.register(Leerling.class);
 		ObjectifyService.register(Gebruiker.class);
+		ObjectifyService.register(Competentie.class);
+		ObjectifyService.register(CompetentieLijst.class);
+		ObjectifyService.register(Vraag.class);
 	}
 }
