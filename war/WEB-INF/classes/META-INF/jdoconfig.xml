@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <jdoconfig xmlns="http://java.sun.com/xml/ns/jdo/jdoconfig"
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 5d93fb29218ba37848d8d169b2690e81a1405cfb
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:noNamespaceSchemaLocation="http://java.sun.com/xml/ns/jdo/jdoconfig">
-
-   <persistence-manager-factory name="transactions-optional">
-       <property name="javax.jdo.PersistenceManagerFactoryClass"
-           value="org.datanucleus.api.jdo.JDOPersistenceManagerFactory"/>
-       <property name="javax.jdo.option.ConnectionURL" value="appengine"/>
-       <property name="javax.jdo.option.NontransactionalRead" value="true"/>
-       <property name="javax.jdo.option.NontransactionalWrite" value="true"/>
-       <property name="javax.jdo.option.RetainValues" value="true"/>
-       <property name="datanucleus.appengine.autoCreateDatastoreTxns" value="true"/>
-       <property name="datanucleus.appengine.singletonPMFForName" value="true"/>
-   </persistence-manager-factory>
-</jdoconfig>
-<<<<<<< HEAD
-=======
-=======
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://java.sun.com/xml/ns/jdo/jdoconfig">
 
@@ -34,5 +13,3 @@
         <property name="datanucleus.appengine.autoCreateDatastoreTxns" value="true"/>
     </persistence-manager-factory>
 </jdoconfig>
->>>>>>> 671966b2088707a37cb083b3b9b35fee0211f99c
->>>>>>> 5d93fb29218ba37848d8d169b2690e81a1405cfb
