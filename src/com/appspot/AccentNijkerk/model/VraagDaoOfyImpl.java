@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 
 public class VraagDaoOfyImpl implements VraagDao{
 	Objectify ofy = ObjectifyService.begin();
@@ -20,18 +21,22 @@ public class VraagDaoOfyImpl implements VraagDao{
 
 	@Override
 	public ArrayList<Vraag> alleVragen() {
-		/* Returnt momenteel nog null, functie moet herschreven worden dmv
-		objectify query */
-		return null;
+		Query<Vraag> query = ofy.query(Vraag.class);
+		
+		for(Vraag v : query) {
+			vragen.add(v);
+		}
+		
+		return vragen;
 	}
 
 	@Override
 	public Vraag getVraag(String vraag) {
 		Vraag result = null;
-		Vraag gezochte = null;
-		if (gezochte != null)
+		Vraag gezochte = (Vraag) ofy.query(Vraag.class).filter("vraag", vraag).get();		
+		if(gezochte != null)
 			result = gezochte;
-
+		
 		return result;
 	}
 
