@@ -1,12 +1,10 @@
 $(window).load(function() {    
-
 	var theWindow        = $(window),
 	    $bg              = $("#bg"),
 	    aspectRatio      = $bg.width() / $bg.height();
 	    			    		
 	function resizeBg() {
-		
-		if ( (theWindow.width() / theWindow.height()) < aspectRatio ) {
+		if ((theWindow.width() / theWindow.height()) < aspectRatio) {
 		    $bg
 		    	.removeClass()
 		    	.addClass('bgheight');
@@ -14,10 +12,8 @@ $(window).load(function() {
 		    $bg
 		    	.removeClass()
 		    	.addClass('bgwidth');
-		}
-					
+		}			
 	}
 	                   			
 	theWindow.resize(resizeBg).trigger("resize");
-
 });

@@ -12,13 +12,8 @@ public class ContextListener implements ServletContextListener {
 	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
 	
 	public void contextInitialized(ServletContextEvent sce) {
-		//Objectify initialization
 		initObjectifyClasses();
 	
-		//School aanmaken
-		School school = new School("Accent Nijkerk", "Ds. Kuypersstraat 1", "033-2458819");
-		log.info("School aangemaakt");
-		
 		//Testgebruikers aanmaken
 		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
 		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
@@ -28,11 +23,6 @@ public class ContextListener implements ServletContextListener {
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
-		
-		log.info("TESTTTTTTT: " + gebruikerDao.getAlleGebruikers());
-		
-		//Objecten wegschrijven
-		sce.getServletContext().setAttribute("SchoolObject", school);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
@@ -40,6 +30,7 @@ public class ContextListener implements ServletContextListener {
 	}
 	
 	private void initObjectifyClasses() {
+		//Objectify classes initialiseren
 		ObjectifyService.register(StageBedrijf.class);
 		ObjectifyService.register(Medewerker.class);
 		ObjectifyService.register(Leerling.class);

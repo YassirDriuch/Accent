@@ -24,19 +24,4 @@ public class Klas {
 	public void setNaam(String nm) {
 		naam = nm;
 	}
-	
-	//Methods
-	public void voegLeerlingToe(Leerling leerling) {
-		if(!leerlingen.contains(leerling)) {
-			leerlingen.add(leerling);
-			System.out.println("#Stagiar is toegevoegd");
-		}
-	}
-			
-	public void verwijderLeerling(Leerling leerling){
-		if(leerlingen.contains(leerling)){
-			leerlingen.remove(leerling);
-			System.out.println("#Stagiar is verwijderd");
-		}
-	}
 }

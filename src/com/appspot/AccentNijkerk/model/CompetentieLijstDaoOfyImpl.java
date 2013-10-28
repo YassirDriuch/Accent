@@ -20,8 +20,7 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 
 	@Override
 	public ArrayList<CompetentieLijst> alleCompetentieLijsten() {
-		/* Returnt momenteel nog null, functie moet herschreven worden dmv
-		objectify query */
+		/* Herschrijven dmv Objectify query */
 		return null;
 	}
 

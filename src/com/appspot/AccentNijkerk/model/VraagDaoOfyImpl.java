@@ -16,7 +16,7 @@ public class VraagDaoOfyImpl implements VraagDao{
 
 	@Override
 	public void voegVraagToe(Vraag v) {
-			ofy.put(v);
+		ofy.put(v);
 	}
 
 	@Override
@@ -33,7 +33,8 @@ public class VraagDaoOfyImpl implements VraagDao{
 	@Override
 	public Vraag getVraag(String vraag) {
 		Vraag result = null;
-		Vraag gezochte = (Vraag) ofy.query(Vraag.class).filter("vraag", vraag).get();		
+		Vraag gezochte = (Vraag) ofy.query(Vraag.class).filter("vraag", vraag).get();	
+		
 		if(gezochte != null)
 			result = gezochte;
 		

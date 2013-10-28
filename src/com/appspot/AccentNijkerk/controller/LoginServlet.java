@@ -23,17 +23,18 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-		
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		Gebruiker gebruiker = doLogin(gebruikersnaam, wachtwoord);
 		
-		if(gebruiker == null) { 
+		if(gebruiker == null) {
+			//Inloggen mislukt
 			req.setAttribute("msg", "<div class='nosucces'>Gebruikersnaam en wachtwoord combinatie incorrect.</div>");
 			rd = req.getRequestDispatcher("index.jsp");
 			log.info("Inloggen mislukt");
 		} 
 		else {
+			//Inloggen geslaagd
 			req.getSession().setAttribute("gebruikerObject", gebruiker);
 			rd = req.getRequestDispatcher("panel.jsp");
 			log.info(gebruiker.getGebruikersnaam() + " is ingelogd");
@@ -46,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 	private Gebruiker doLogin(String gebr, String ww) {
 		Objectify ofy = ObjectifyService.begin();
 		
+		//Leerlingen doorlopen
 		Query<Leerling> leerlingQ = ofy.query(Leerling.class);
 		for(Leerling l : leerlingQ) {
 			if (l.getGebruikersnaam().equals(gebr) && l.getWachtwoord().equals(ww)) {
@@ -53,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 		
+		//Stagebedrijven doorlopen
 		Query<StageBedrijf> stagebedrijfQ = ofy.query(StageBedrijf.class);
 		for(StageBedrijf g : stagebedrijfQ) {
 			if (g.getGebruikersnaam().equals(gebr) && g.getWachtwoord().equals(ww)) {
@@ -60,6 +63,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 		
+		//Medewerkers doorlopen
 		Query<Medewerker> medewerkerQ = ofy.query(Medewerker.class);
 		for(Medewerker m : medewerkerQ) {
 			if (m.getGebruikersnaam().equals(gebr) && m.getWachtwoord().equals(ww)) {

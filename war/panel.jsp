@@ -21,7 +21,7 @@ if(gebruikerObject == null) {
 </head>
 
 <body>
-<img src="images/bg.jpg" id="bg" alt="">
+<img src="images/bg.jpg" id="bg" alt="" />
 <div id="panel-container" class="rounded shadow">
 	<!-- Header !-->
 	<div id="header">
@@ -32,15 +32,15 @@ if(gebruikerObject == null) {
        		<div id="menu-user" class="white-gradient rounded-small">
                 Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
             </div>
-                        
+     
             <% if (gebruikerObject instanceof Leerling) { %>
-                <a href="" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+                <a href="#" class="menu-button white-gradient rounded-small">Competentielijsten</a>
             <% } else if (gebruikerObject instanceof StageBedrijf) { %>
-                <a href="" class="menu-button white-gradient rounded-small">Stagiares</a>
-                <a href="" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+                <a href="#" class="menu-button white-gradient rounded-small">Stagiares</a>
+                <a href="#" class="menu-button white-gradient rounded-small">Competentielijsten</a>
             <% } else if (gebruikerObject instanceof Medewerker) { %>
-                <a href="" class="menu-button white-gradient rounded-small">Leerlingen</a>
-                <a href="" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
+                <a href="#" class="menu-button white-gradient rounded-small">Leerlingen</a>
+                <a href="#" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
             <% } %>
         </div>
     </div>

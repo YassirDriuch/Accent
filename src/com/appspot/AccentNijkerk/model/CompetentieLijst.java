@@ -6,7 +6,7 @@ import java.util.Calendar;
 import javax.persistence.Id;
 
 public class CompetentieLijst {
-	@Id static Long id;
+	@Id Long id;
 	private Gebruiker leerling;
 	private Calendar aanmaakDatum;
 	private boolean ingevuld;
@@ -17,6 +17,10 @@ public class CompetentieLijst {
 		this.aanmaakDatum = aanmaakDatum;
 		this.ingevuld = ingevuld;
 		competenties = new ArrayList<Competentie>();
+	}
+	
+	public CompetentieLijst() {
+		//Default constructor
 	}
 	
 	public void voegCompetentieToe(Competentie competentie) {

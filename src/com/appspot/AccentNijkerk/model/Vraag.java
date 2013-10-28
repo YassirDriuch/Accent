@@ -1,6 +1,9 @@
 package com.appspot.AccentNijkerk.model;
 
+import javax.persistence.Id;
+
 public class Vraag {
+	@Id Long id;
 	private String vraag;
 	private Competentie competentie;
 	private int antwoord;
@@ -8,6 +11,10 @@ public class Vraag {
 	public Vraag(String vraag, int antwoord) {
 		this.vraag = vraag;
 		this.antwoord = antwoord;
+	}
+	
+	public Vraag() {
+		//Default constructor
 	}
 	
 	//Getters
