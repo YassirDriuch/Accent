@@ -23,6 +23,7 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		}
 	}
 	
+	@Override
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		Query<Gebruiker> query = ofy.query(Gebruiker.class);
 		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();

@@ -18,6 +18,7 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 			ofy.put(cL);
 	}
 
+	@Override
 	public ArrayList<CompetentieLijst> alleCompetentieLijsten() {
 		/* Returnt momenteel nog null, functie moet herschreven worden dmv
 		objectify query */

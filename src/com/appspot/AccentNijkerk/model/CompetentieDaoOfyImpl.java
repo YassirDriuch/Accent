@@ -24,6 +24,7 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 		}
 	}
 
+	@Override
 	public ArrayList<Competentie> alleCompetenties() {
 		// Returnt momenteel nog null, functie moet herschreven worden dmv
 		// objectify query
