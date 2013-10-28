@@ -1,19 +1,26 @@
 package com.appspot.AccentNijkerk.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.persistence.Id;
 
 public class CompetentieLijst {
-	@Id Long id;
+	@Id static Long id;
 	private Gebruiker leerling;
 	private Calendar aanmaakDatum;
 	private boolean ingevuld;
+	private ArrayList<Competentie> competenties;
 	
 	public CompetentieLijst(Gebruiker leerling, Calendar aanmaakDatum, boolean ingevuld) {
 		this.leerling = leerling;
 		this.aanmaakDatum = aanmaakDatum;
 		this.ingevuld = ingevuld;
+		competenties = new ArrayList<Competentie>();
+	}
+	
+	public void voegCompetentieToe(Competentie competentie) {
+		competenties.add(competentie);
 	}
 	
 	//Getters
@@ -27,6 +34,10 @@ public class CompetentieLijst {
 	
 	public boolean isIngevuld() {
 		return ingevuld;
+	}
+	
+	public ArrayList<Competentie> getAlleCompetenties(){
+		return competenties;
 	}
 	
 	//Setters
