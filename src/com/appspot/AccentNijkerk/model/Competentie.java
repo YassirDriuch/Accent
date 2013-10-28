@@ -6,8 +6,8 @@ public class Competentie {
 	private String competentie;
 	public ArrayList<Vraag> vragen;
 	
-	public Competentie(String cp) {
-		competentie = cp;
+	public Competentie(String competentie) {
+		this.competentie = competentie;
 		vragen = new ArrayList<Vraag>();
 	}
 	
@@ -21,7 +21,7 @@ public class Competentie {
 	}
 	
 	//Setters
-	public void setCompetentie(String cp) {
-		competentie = cp;
+	public void setCompetentie(String competentie) {
+		this.competentie = competentie;
 	}
 }

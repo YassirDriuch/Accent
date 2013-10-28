@@ -10,7 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appspot.AccentNijkerk.model.Gebruiker;
-import com.appspot.AccentNijkerk.model.School;
+import com.appspot.AccentNijkerk.model.Leerling;
+import com.appspot.AccentNijkerk.model.Medewerker;
+import com.appspot.AccentNijkerk.model.StageBedrijf;
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
@@ -18,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+		
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		Gebruiker gebruiker = doLogin(gebruikersnaam, wachtwoord);
@@ -38,12 +44,29 @@ public class LoginServlet extends HttpServlet {
 	
 	//Login method
 	private Gebruiker doLogin(String gebr, String ww) {
-		School school = (School) getServletContext().getAttribute("SchoolObject");
-		for(Gebruiker g : school.getAlleGebruikers()) {
-			if (g.getGebruikersnaam().equals(gebr) && g.getWachtwoord().equals(ww)) {
-				return g;
+		Objectify ofy = ObjectifyService.begin();
+		
+		Query<Leerling> leerlingQ = ofy.query(Leerling.class);
+		for(Leerling l : leerlingQ) {
+			if (l.getGebruikersnaam().equals(gebr) && l.getWachtwoord().equals(ww)) {
+				return (Gebruiker) l;
 			}
 		}
+		
+		Query<StageBedrijf> stagebedrijfQ = ofy.query(StageBedrijf.class);
+		for(StageBedrijf g : stagebedrijfQ) {
+			if (g.getGebruikersnaam().equals(gebr) && g.getWachtwoord().equals(ww)) {
+				return (Gebruiker) g;
+			}
+		}
+		
+		Query<Medewerker> medewerkerQ = ofy.query(Medewerker.class);
+		for(Medewerker m : medewerkerQ) {
+			if (m.getGebruikersnaam().equals(gebr) && m.getWachtwoord().equals(ww)) {
+				return (Gebruiker) m;
+			}
+		}
+		
 		return null;
 	}
 }

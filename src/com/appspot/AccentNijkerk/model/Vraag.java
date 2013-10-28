@@ -4,9 +4,9 @@ public class Vraag {
 	private String vraag;
 	private int antwoord;
 	
-	public Vraag(String v, int aw) {
-		vraag = v;
-		antwoord = aw;
+	public Vraag(String vraag, int antwoord) {
+		this.vraag = vraag;
+		this.antwoord = antwoord;
 	}
 	
 	//Getters
@@ -19,12 +19,12 @@ public class Vraag {
 	}
 	
 	//Setters
-	public void setVraag(String vg) {
-		vraag = vg;
+	public void setVraag(String vraag) {
+		this.vraag = vraag;
 	}
 	
-	public void setAntwoord(int aw) {
-		antwoord = aw;
+	public void setAntwoord(int antwoord) {
+		this.antwoord = antwoord;
 	}
 	
 	//Methoden
