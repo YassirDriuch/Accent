@@ -33,7 +33,7 @@ if(gebruikerObject == null) {
                 Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
             </div>
      
-     		<a href="panel.jsp" class="menu-button white-gradient rounded-small">Home</a>
+            <a href="panel.jsp" class="menu-button white-gradient rounded-small">Home</a>
             <% if (gebruikerObject instanceof Leerling) { %>
                 <a href="competentielijsten.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
             <% } else if (gebruikerObject instanceof StageBedrijf) { %>
@@ -48,8 +48,13 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Accountgegevens</h1>
-        <span><%=gebruikerObject.toString()%></span>
+    	<h1>Stagebedrijven</h1>
+        <div id="submenu">
+        	<a href="" class="button rounded-small white-gradient">Overzicht</a>
+            <a href="" class="button rounded-small white-gradient">Toevoegen</a>
+            <a href="" class="button rounded-small white-gradient">Zoeken</a>
+        </div>
+        <span>Er zijn momenteel nog geen stagebedrijven</span>
     </div>
 </div>
 </body>

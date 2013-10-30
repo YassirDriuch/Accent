@@ -48,8 +48,27 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Accountgegevens</h1>
-        <span><%=gebruikerObject.toString()%></span>
+    	<h1>Competentielijsten</h1>
+        <div id="submenu">
+        	<a href="" class="button rounded-small white-gradient">Overzicht</a>
+        	<% if (!(gebruikerObject instanceof Leerling) && !(gebruikerObject instanceof StageBedrijf)) { %>
+            	<a href="" class="button rounded-small white-gradient">Toevoegen</a>
+            <% } %>
+            <a href="" class="button rounded-small white-gradient">Zoeken</a>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+            <div class="description">Competentielijst 1 <font color="#999">op 31 Oktober 2013</font></div>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+            <div class="description">Competentielijst 2 <font color="#999">op 26 Oktober 2013</font></div>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+            <div class="description">Competentielijst 3 <font color="#999">op 22 Oktober 2013</font></div>
+        </div>
+    </div>
     </div>
 </div>
 </body>

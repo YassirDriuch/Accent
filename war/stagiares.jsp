@@ -33,7 +33,7 @@ if(gebruikerObject == null) {
                 Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
             </div>
      
-     		<a href="panel.jsp" class="menu-button white-gradient rounded-small">Home</a>
+            <a href="panel.jsp" class="menu-button white-gradient rounded-small">Home</a>
             <% if (gebruikerObject instanceof Leerling) { %>
                 <a href="competentielijsten.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
             <% } else if (gebruikerObject instanceof StageBedrijf) { %>
@@ -48,8 +48,26 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Accountgegevens</h1>
-        <span><%=gebruikerObject.toString()%></span>
+    	<h1>Stagiares</h1>
+        <div id="submenu">
+        	<a href="" class="button rounded-small white-gradient">Overzicht</a>
+        	<% if (!(gebruikerObject instanceof StageBedrijf)) { %>
+            	<a href="" class="button rounded-small white-gradient">Toevoegen</a>
+            <% } %>
+            <a href="" class="button rounded-small white-gradient">Zoeken</a>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
+            <div class="description">Leerling 1 <font color="#999">op 31 Oktober 2013</font></div>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
+            <div class="description">Leerling 2 <font color="#999">op 26 Oktober 2013</font></div>
+        </div>
+        <div class="row">
+        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
+            <div class="description">Leerling 3 <font color="#999">op 22 Oktober 2013</font></div>
+        </div>
     </div>
 </div>
 </body>
