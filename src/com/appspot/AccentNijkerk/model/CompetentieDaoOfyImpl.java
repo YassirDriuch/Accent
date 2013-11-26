@@ -26,8 +26,7 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 
 	@Override
 	public ArrayList<Competentie> alleCompetenties() {
-		// Returnt momenteel nog null, functie moet herschreven worden dmv
-		// objectify query
+		/* Herschrijven dmv Objectify query */
 		return null;
 	}
 
@@ -35,7 +34,7 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	public Competentie getCompetentie(String competentie) {
 		Competentie result = null;
 		Competentie gezochte = (Competentie) ofy.query(Competentie.class)
-				.filter("competentie", competentie).get();
+			.filter("competentie", competentie).get();
 
 		if (gezochte != null)
 			result = gezochte;

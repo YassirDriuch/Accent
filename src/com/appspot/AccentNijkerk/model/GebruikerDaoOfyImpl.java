@@ -42,6 +42,7 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		Gebruiker medewerker = (Gebruiker) ofy.query(Medewerker.class).filter("gebruikersnaam", gebruikersnaam).get();
 		Gebruiker stagebedrijf = (Gebruiker) ofy.query(StageBedrijf.class).filter("gebruikersnaam", gebruikersnaam).get();
 		
+		//Type gebruiker checken en returnen
 		if(leerling != null)
 			result = leerling;
 		if(medewerker != null)

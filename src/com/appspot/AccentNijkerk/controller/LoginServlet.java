@@ -25,6 +25,8 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
+		
+		//Opgegeven gebruiker inloggen
 		Gebruiker gebruiker = doLogin(gebruikersnaam, wachtwoord);
 		
 		if(gebruiker == null) {

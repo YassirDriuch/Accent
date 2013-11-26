@@ -15,7 +15,7 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 
 	@Override
 	public void voegCompetentieLijstToe(CompetentieLijst cL) {
-			ofy.put(cL);
+		ofy.put(cL);
 	}
 
 	@Override
@@ -26,12 +26,8 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 
 	@Override
 	public CompetentieLijst getCompetentieLijst(String iets) {
-		CompetentieLijst result = null;
-		CompetentieLijst gezochte = null;
-		if (gezochte != null)
-			result = gezochte;
-
-		return result;
+		/* Herschrijven dmv Objectify query */
+		return null;
 	}
 
 	@Override
