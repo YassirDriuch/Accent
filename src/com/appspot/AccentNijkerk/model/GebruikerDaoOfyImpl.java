@@ -35,15 +35,17 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	
 	@Override
 	public boolean isBezet(String gebruikersnaam) {
-		boolean result = false;
+		boolean isBezet = false;
 		
-		/*for(Gebruiker g : getAlleGebruikers()) {
+		//Alle gebruikers doorlopen
+		for(Gebruiker g : getAlleGebruikers()) {
+			//Gebruikersnaam vergelijken
 			if(g.getGebruikersnaam().equals(gebruikersnaam)) {
-				result = true;
+				isBezet = true;
 			}
-		}*/
+		}
 		
-		return result;
+		return isBezet;
 	}
 	
 	@Override
@@ -52,7 +54,7 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		Gebruiker leerling = ofy.get(Leerling.class, id);
 		Gebruiker medewerker = ofy.get(Medewerker.class, id);
 		Gebruiker stagebedrijf = ofy.get(StageBedrijf.class, id);
-		
+
 		//Gebruiker instantie returnen
 		if(leerling != null) {
 			result = leerling;
@@ -68,11 +70,19 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	@Override
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
-		Query<Gebruiker> query = ofy.query(Gebruiker.class);
+		Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
+		Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
+		Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 		
-		//Gebruikers doorlopen
-		for(Gebruiker g : query) {
-			//Toevoegen aan arrayList
+		for(Gebruiker g : alleLeerlingen) {
+			alleGebruikers.add(g);
+		}
+		
+		for(Gebruiker g : alleMedewerkers) {
+			alleGebruikers.add(g);
+		}
+		
+		for(Gebruiker g : alleStageBedrijven) {
 			alleGebruikers.add(g);
 		}
 

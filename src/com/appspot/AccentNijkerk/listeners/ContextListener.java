@@ -25,15 +25,16 @@ public class ContextListener implements ServletContextListener {
 		initObjectifyClasses();
 	
 		//Testgebruikers aanmaken
-		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
-		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
-		Gebruiker g3 = (Gebruiker) new Medewerker("TestMedewerker", "test", "Medewerer", "Slingstraat 24", "info@medewerker.com");
+		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling3", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
+		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf2", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
+		Gebruiker g3 = (Gebruiker) new Medewerker("TestMedewerker", "test", "Medewerker", "Slingstraat 24", "info@medewerker.com");
 		
 		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
-		System.out.print(gebruikerDao.getAlleGebruikers());
+		System.out.println(gebruikerDao.getAlleGebruikers());
+		System.out.println("alle");
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
