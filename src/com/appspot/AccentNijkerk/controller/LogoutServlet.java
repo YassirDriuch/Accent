@@ -13,7 +13,8 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-		req.getSession().invalidate(); //Session verwijderen
+		//Session verwijderen
+		req.getSession().invalidate();
 		rd.forward(req, resp);
 	}
 }

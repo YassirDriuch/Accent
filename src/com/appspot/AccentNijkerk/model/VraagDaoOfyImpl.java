@@ -23,8 +23,9 @@ public class VraagDaoOfyImpl implements VraagDao{
 	public ArrayList<Vraag> alleVragen() {
 		Query<Vraag> query = ofy.query(Vraag.class);
 		
-		//Vragen toevoegen in een ArrayList
+		//Alle vragen doorlopen
 		for(Vraag v : query) {
+			//Toevoegen aan arrayList
 			vragen.add(v);
 		}
 		
@@ -36,7 +37,9 @@ public class VraagDaoOfyImpl implements VraagDao{
 		Vraag result = null;
 		Vraag gezochte = (Vraag) ofy.query(Vraag.class).filter("vraag", vraag).get();	
 		
-		if(gezochte != null) result = gezochte;
+		//Vraag obj zoeken op basis van de vraag
+		if(gezochte != null)
+			result = gezochte;
 		
 		return result;
 	}

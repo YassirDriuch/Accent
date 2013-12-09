@@ -18,9 +18,9 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	public boolean voegGebruikerToe(Gebruiker g) {		
 		if(getGebruiker(g.getGebruikersnaam()) == null) {
 			ofy.put(g);
-			return true;
+			return true; //Toegevoegd
 		} else {
-			return false;
+			return false; //Niet toegevoegd
 		}
 	}
 	
@@ -28,7 +28,9 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		Query<Gebruiker> query = ofy.query(Gebruiker.class);
 		
+		//Gebruikers doorlopen
 		for(Gebruiker g : query) {
+			//Toevoegen aan arrayList
 			gebruikers.add(g);
 		}
 		
@@ -42,7 +44,7 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		Gebruiker medewerker = (Gebruiker) ofy.query(Medewerker.class).filter("gebruikersnaam", gebruikersnaam).get();
 		Gebruiker stagebedrijf = (Gebruiker) ofy.query(StageBedrijf.class).filter("gebruikersnaam", gebruikersnaam).get();
 		
-		//Type gebruiker checken en returnen
+		//Check van welke instantie een gebruiker is
 		if(leerling != null)
 			result = leerling;
 		if(medewerker != null)

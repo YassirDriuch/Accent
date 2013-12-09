@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 
 public class CompetentieDaoOfyImpl implements CompetentieDao {
 
@@ -18,23 +19,31 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	public boolean voegCompetentieToe(Competentie c) {
 		if (getCompetentie(c.getCompetentie()) == null) {
 			ofy.put(c);
-			return true;
+			return true; //Toegevoegd
 		} else {
-			return false;
+			return false; //Niet toegevoegd
 		}
 	}
 
 	@Override
 	public ArrayList<Competentie> alleCompetenties() {
-		/* Herschrijven dmv Objectify query */
-		return null;
+		Query<Competentie> query = ofy.query(Competentie.class);
+		
+		//Alle competenties doorlopen
+		for(Competentie g : query) {
+			//Toevoegen in arraylist
+			competenties.add(g);
+		}
+		
+		return competenties;
 	}
+	
 
 	@Override
 	public Competentie getCompetentie(String competentie) {
 		Competentie result = null;
-		Competentie gezochte = (Competentie) ofy.query(Competentie.class)
-			.filter("competentie", competentie).get();
+		//Zoeken naar competentie op naam
+		Competentie gezochte = (Competentie) ofy.query(Competentie.class).filter("competentie", competentie).get();
 
 		if (gezochte != null)
 			result = gezochte;
@@ -51,5 +60,4 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	public void verwijderCompetentie(Competentie c) {
 		ofy.delete(c);
 	}
-
 }

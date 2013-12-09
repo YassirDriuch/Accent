@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		
-		//Opgegeven gebruiker inloggen
+		//doLogin
 		Gebruiker gebruiker = doLogin(gebruikersnaam, wachtwoord);
 		
 		if(gebruiker == null) {
