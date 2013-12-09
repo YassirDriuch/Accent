@@ -19,6 +19,10 @@ public class Gebruiker implements Serializable {
 	} 
 
 	//Getters
+	public Long getId() {
+		return id;
+	}
+	
 	public String getGebruikersnaam() {
 		return gebruikersnaam;
 	}

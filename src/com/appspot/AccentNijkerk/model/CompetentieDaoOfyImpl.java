@@ -7,48 +7,15 @@ import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 
 public class CompetentieDaoOfyImpl implements CompetentieDao {
-
 	Objectify ofy = ObjectifyService.begin();
-	ArrayList<Competentie> competenties;
-
-	public CompetentieDaoOfyImpl() {
-		competenties = new ArrayList<Competentie>();
-	}
-
-	@Override
-	public boolean voegCompetentieToe(Competentie c) {
-		if (getCompetentie(c.getCompetentie()) == null) {
-			ofy.put(c);
-			return true; //Toegevoegd
-		} else {
-			return false; //Niet toegevoegd
-		}
-	}
-
-	@Override
-	public ArrayList<Competentie> alleCompetenties() {
-		Query<Competentie> query = ofy.query(Competentie.class);
-		
-		//Alle competenties doorlopen
-		for(Competentie g : query) {
-			//Toevoegen in arraylist
-			competenties.add(g);
-		}
-		
-		return competenties;
-	}
 	
+	public CompetentieDaoOfyImpl() {
+		//Default constructor
+	}
 
 	@Override
-	public Competentie getCompetentie(String competentie) {
-		Competentie result = null;
-		//Zoeken naar competentie op naam
-		Competentie gezochte = (Competentie) ofy.query(Competentie.class).filter("competentie", competentie).get();
-
-		if (gezochte != null)
-			result = gezochte;
-
-		return result;
+	public void voegCompetentieToe(Competentie c) {
+		ofy.put(c);
 	}
 
 	@Override
@@ -59,5 +26,25 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	@Override
 	public void verwijderCompetentie(Competentie c) {
 		ofy.delete(c);
+	}
+	
+	@Override
+	public Competentie getCompetentie(Long id) {
+		Competentie result = ofy.get(Competentie.class, id);
+		return result;
+	}
+	
+	@Override
+	public ArrayList<Competentie> getAlleCompetenties() {
+		ArrayList<Competentie> alleCompetenties = new ArrayList<Competentie>();
+		Query<Competentie> query = ofy.query(Competentie.class);
+		
+		//Alle competenties doorlopen en toevoegen
+		for(Competentie g : query) {
+			//Toevoegen in arrayList
+			alleCompetenties.add(g);
+		}
+		
+		return alleCompetenties;
 	}
 }

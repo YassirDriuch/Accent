@@ -19,6 +19,10 @@ public class Competentie {
 	}
 	
 	//Getters
+	public Long getId() {
+		return id;
+	}
+	
 	public String getCompetentie() {
 		return competentie;
 	}

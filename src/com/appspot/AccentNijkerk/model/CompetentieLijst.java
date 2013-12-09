@@ -28,6 +28,10 @@ public class CompetentieLijst {
 	}
 	
 	//Getters
+	public Long getId() {
+		return id;
+	}
+	
 	public Gebruiker getLeerling() {
 		return leerling;
 	}

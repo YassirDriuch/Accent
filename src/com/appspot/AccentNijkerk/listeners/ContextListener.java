@@ -5,11 +5,21 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.appspot.AccentNijkerk.model.*;
+import com.appspot.AccentNijkerk.model.Competentie;
+import com.appspot.AccentNijkerk.model.CompetentieLijst;
+import com.appspot.AccentNijkerk.model.Gebruiker;
+import com.appspot.AccentNijkerk.model.GebruikerDao;
+import com.appspot.AccentNijkerk.model.GebruikerDaoOfyImpl;
+import com.appspot.AccentNijkerk.model.Leerling;
+import com.appspot.AccentNijkerk.model.Medewerker;
+import com.appspot.AccentNijkerk.model.StageBedrijf;
+import com.appspot.AccentNijkerk.model.Vraag;
+import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
 public class ContextListener implements ServletContextListener {
 	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
+	Objectify ofy = ObjectifyService.begin();
 	
 	public void contextInitialized(ServletContextEvent sce) {
 		initObjectifyClasses();
@@ -23,6 +33,7 @@ public class ContextListener implements ServletContextListener {
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
+		System.out.print(gebruikerDao.getAlleGebruikers());
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

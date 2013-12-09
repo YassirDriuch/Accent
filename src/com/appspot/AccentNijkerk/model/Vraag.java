@@ -18,6 +18,10 @@ public class Vraag {
 	}
 	
 	//Getters
+	public Long getId() {
+		return id;
+	}
+	
 	public String getVraag() {
 		return vraag;
 	}
