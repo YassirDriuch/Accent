@@ -27,8 +27,13 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Accountgegevens</h1>
-        <span><%=gebruikerObject.toString()%></span>
+    	<form method="post" action="">
+	    	<label class="form_label" for="leerling">Leerling</label>
+	        <input class="form_input rounded-small" type="text" name="leerling" />
+	        <label class="form_label" for="competenties">Competenties</label>
+	        <input class="form_input rounded-small" type="text" name="competenties" />
+	        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+		</form>
     </div>
 </div>
 </body>
