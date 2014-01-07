@@ -1,4 +1,7 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%@ page import="com.googlecode.objectify.Objectify" %>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+<%@ page import="com.googlecode.objectify.Query" %>
 <%
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
 
@@ -7,6 +10,10 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+
+Objectify ofy = ObjectifyService.begin();
+Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
+Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 %>
 
 <!DOCTYPE html>
@@ -29,9 +36,15 @@ if(gebruikerObject == null) {
     <div id="content">
     	<form method="post" action="">
 	    	<label class="form_label" for="leerling">Leerling</label>
-	        <input class="form_input rounded-small" type="text" name="leerling" />
+            <select class="form_input rounded-small" name="leerling">
+                <% for(Gebruiker g : alleLeerlingen) { %>
+                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
+				<% } %>
+            </select>
 	        <label class="form_label" for="competenties">Competenties</label>
-	        <input class="form_input rounded-small" type="text" name="competenties" />
+            <% for(Competentie c : alleCompetenties) { %>
+                <input class="form_checkbox" type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%> 
+			<% } %>
 	        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
 		</form>
     </div>

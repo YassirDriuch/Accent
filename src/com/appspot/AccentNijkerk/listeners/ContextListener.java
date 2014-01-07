@@ -6,6 +6,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import com.appspot.AccentNijkerk.model.Competentie;
+import com.appspot.AccentNijkerk.model.CompetentieDao;
+import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.CompetentieLijst;
 import com.appspot.AccentNijkerk.model.Gebruiker;
 import com.appspot.AccentNijkerk.model.GebruikerDao;
@@ -25,16 +27,24 @@ public class ContextListener implements ServletContextListener {
 		initObjectifyClasses();
 	
 		//Testgebruikers aanmaken
-		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling3", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
-		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf2", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
+		Gebruiker g1 = (Gebruiker) new Leerling("TestLeerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
+		Gebruiker g2 = (Gebruiker) new StageBedrijf("TestBedrijf", "test", "Bedrijfsnaam", "Industrielaan 32", "info@bedrijf.com", "030-8890566");
 		Gebruiker g3 = (Gebruiker) new Medewerker("TestMedewerker", "test", "Medewerker", "Slingstraat 24", "info@medewerker.com");
 		
 		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
-		System.out.println(gebruikerDao.getAlleGebruikers());
-		System.out.println("alle");
+		
+		//Testcompetenties aanmaken
+		Competentie c1 = new Competentie("Sociale vaardigheden");
+		Competentie c2 = new Competentie("Communicatie");
+		Competentie c3 = new Competentie("Motivatie");
+		
+		CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
+		competentieDao.voegCompetentieToe(c1);
+		competentieDao.voegCompetentieToe(c2);
+		competentieDao.voegCompetentieToe(c3);
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

@@ -88,4 +88,40 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 
 		return alleGebruikers;
 	}
+	
+	@Override
+	public ArrayList<Gebruiker> getAlleLeerlingen() {
+		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+		Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
+		
+		for(Gebruiker g : alleLeerlingen) {
+			alleGebruikers.add(g);
+		}
+
+		return alleGebruikers;
+	}
+	
+	@Override
+	public ArrayList<Gebruiker> getAlleMedewerkers() {
+		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+		Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
+		
+		for(Gebruiker g : alleMedewerkers) {
+			alleGebruikers.add(g);
+		}
+
+		return alleGebruikers;
+	}
+	
+	@Override
+	public ArrayList<Gebruiker> getAlleStageBedrijven() {
+		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+		Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
+		
+		for(Gebruiker g : alleStageBedrijven) {
+			alleGebruikers.add(g);
+		}
+
+		return alleGebruikers;
+	}
 }

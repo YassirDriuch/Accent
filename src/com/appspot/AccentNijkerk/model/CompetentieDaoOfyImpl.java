@@ -14,8 +14,13 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	}
 
 	@Override
-	public void voegCompetentieToe(Competentie c) {
-		ofy.put(c);
+	public boolean voegCompetentieToe(Competentie c) {
+		if(isBezet(c.getCompetentie()) == true) {
+			return false; //Niet toegevoegd
+		} else {
+			ofy.put(c);
+			return true; //Toegevoegd
+		}
 	}
 
 	@Override
@@ -26,6 +31,21 @@ public class CompetentieDaoOfyImpl implements CompetentieDao {
 	@Override
 	public void verwijderCompetentie(Competentie c) {
 		ofy.delete(c);
+	}
+	
+	@Override
+	public boolean isBezet(String competentie) {
+		boolean isBezet = false;
+		
+		//Alle gebruikers doorlopen
+		for(Competentie c : getAlleCompetenties()) {
+			//Gebruikersnaam vergelijken
+			if(c.getCompetentie().equals(competentie)) {
+				isBezet = true;
+			}
+		}
+		
+		return isBezet;
 	}
 	
 	@Override

@@ -36,5 +36,10 @@
 	color: #FFF;
 }
 
+.form_checkbox {
+	float: left;
+	clear: left;
+}
+
 .form_input:focus { border-color: #97C8D8; }
 

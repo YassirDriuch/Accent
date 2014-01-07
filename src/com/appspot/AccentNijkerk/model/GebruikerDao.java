@@ -9,4 +9,7 @@ public interface GebruikerDao {
 	public boolean isBezet(String gebruikersnaam);
 	public Gebruiker getGebruiker(Long id);
 	public ArrayList<Gebruiker> getAlleGebruikers();
+	public ArrayList<Gebruiker> getAlleLeerlingen();
+	public ArrayList<Gebruiker> getAlleMedewerkers();
+	public ArrayList<Gebruiker> getAlleStageBedrijven();
 }

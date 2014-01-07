@@ -28,7 +28,7 @@ if(gebruikerObject == null) {
     <!-- Content !-->
     <div id="content">
     	<h1>Leerling Toevoegen</h1><br /><br />
-    	<form method="post" action="LeerlingToevoegen.do">
+    	<form method="post" action="toevoegen">
     	<div style="float: left;"> 
     		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
     		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
