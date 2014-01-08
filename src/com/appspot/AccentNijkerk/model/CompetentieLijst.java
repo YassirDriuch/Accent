@@ -1,19 +1,18 @@
 package com.appspot.AccentNijkerk.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import javax.persistence.Id;
 
 public class CompetentieLijst {
 	@Id Long id;
-	private Gebruiker leerling;
-	private Calendar aanmaakDatum;
+	private long leerlingId;
+	private String aanmaakDatum;
 	private boolean ingevuld;
 	private ArrayList<Competentie> competenties;
 	
-	public CompetentieLijst(Gebruiker leerling, Calendar aanmaakDatum, boolean ingevuld) {
-		this.leerling = leerling;
+	public CompetentieLijst(Long leerlingId, String aanmaakDatum, boolean ingevuld) {
+		this.leerlingId = leerlingId;
 		this.aanmaakDatum = aanmaakDatum;
 		this.ingevuld = ingevuld;
 		competenties = new ArrayList<Competentie>();
@@ -32,11 +31,11 @@ public class CompetentieLijst {
 		return id;
 	}
 	
-	public Gebruiker getLeerling() {
-		return leerling;
+	public Long getLeerlingId() {
+		return leerlingId;
 	}
 	
-	public Calendar getAanmaakDatum() {
+	public String getAanmaakDatum() {
 		return aanmaakDatum;
 	}
 	
@@ -49,11 +48,11 @@ public class CompetentieLijst {
 	}
 	
 	//Setters
-	public void setLeerling(Gebruiker leerling) {
-		this.leerling = leerling;
+	public void setLeerlingId(Long leerlingId) {
+		this.leerlingId = leerlingId;
 	}
 	
-	public void setAanmaakDataum(Calendar aanmaakDatum) {
+	public void setAanmaakDataum(String aanmaakDatum) {
 		this.aanmaakDatum = aanmaakDatum;
 	}
 	

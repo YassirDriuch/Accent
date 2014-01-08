@@ -2,6 +2,7 @@ package com.appspot.AccentNijkerk.model;
 
 import java.util.ArrayList;
 
+import com.google.appengine.api.datastore.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
@@ -51,9 +52,9 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	@Override
 	public Gebruiker getGebruiker(Long id) {
 		Gebruiker result = null;
-		Gebruiker leerling = ofy.get(Leerling.class, id);
-		Gebruiker medewerker = ofy.get(Medewerker.class, id);
-		Gebruiker stagebedrijf = ofy.get(StageBedrijf.class, id);
+		Gebruiker leerling = (Gebruiker) ofy.find(Leerling.class, id);
+		Gebruiker medewerker = (Gebruiker) ofy.find(Medewerker.class, id);
+		Gebruiker stagebedrijf = (Gebruiker)ofy.find(StageBedrijf.class, id);
 
 		//Gebruiker instantie returnen
 		if(leerling != null) {

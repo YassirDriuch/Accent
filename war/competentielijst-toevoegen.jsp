@@ -34,7 +34,8 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
     
     <!-- Content !-->
     <div id="content">
-    	<form method="post" action="">
+    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
+    	<form method="post" action="/competentielijst-toevoegen">
 	    	<label class="form_label" for="leerling">Leerling</label>
             <select class="form_input rounded-small" name="leerling">
                 <% for(Gebruiker g : alleLeerlingen) { %>
@@ -43,7 +44,7 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
             </select>
 	        <label class="form_label" for="competenties">Competenties</label>
             <% for(Competentie c : alleCompetenties) { %>
-                <input class="form_checkbox" type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%> 
+                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>
 			<% } %>
 	        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
 		</form>

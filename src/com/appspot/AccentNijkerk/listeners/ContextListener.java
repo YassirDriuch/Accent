@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.mortbay.log.Log;
+
 import com.appspot.AccentNijkerk.model.Competentie;
 import com.appspot.AccentNijkerk.model.CompetentieDao;
 import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
@@ -16,6 +18,8 @@ import com.appspot.AccentNijkerk.model.Leerling;
 import com.appspot.AccentNijkerk.model.Medewerker;
 import com.appspot.AccentNijkerk.model.StageBedrijf;
 import com.appspot.AccentNijkerk.model.Vraag;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 

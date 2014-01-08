@@ -18,7 +18,6 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 		ofy.put(cL);
 	}
 
-
 	@Override
 	public void updateCompetentieLijst(CompetentieLijst cL) {
 		ofy.put(cL);
@@ -46,7 +45,7 @@ public class CompetentieLijstDaoOfyImpl implements CompetentieLijstDao {
 
 	@Override
 	public CompetentieLijst getCompetentieLijst(Long id) {
-		CompetentieLijst result = ofy.get(CompetentieLijst.class, id);
+		CompetentieLijst result = ofy.find(CompetentieLijst.class, id);
 		return result;
 	}
 }

@@ -36,9 +36,26 @@
 	color: #FFF;
 }
 
-.form_checkbox {
+.form_checkbox_label {
 	float: left;
 	clear: left;
+	display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+    font-size: 13px;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+.form_checkbox_label input {
+	width: 13px;
+    height: 13px;
+    padding: 0px;
+    margin: 0px 7px 0px 0px;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
 }
 
 .form_input:focus { border-color: #97C8D8; }
