@@ -1,5 +1,6 @@
 package com.appspot.AccentNijkerk.listeners;
 
+import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContextEvent;
@@ -16,6 +17,7 @@ import com.appspot.AccentNijkerk.model.GebruikerDao;
 import com.appspot.AccentNijkerk.model.GebruikerDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.Leerling;
 import com.appspot.AccentNijkerk.model.Medewerker;
+import com.appspot.AccentNijkerk.model.Stage;
 import com.appspot.AccentNijkerk.model.StageBedrijf;
 import com.appspot.AccentNijkerk.model.Vraag;
 import com.google.appengine.api.datastore.Key;
@@ -49,6 +51,8 @@ public class ContextListener implements ServletContextListener {
 		competentieDao.voegCompetentieToe(c1);
 		competentieDao.voegCompetentieToe(c2);
 		competentieDao.voegCompetentieToe(c3);
+		
+		Stage s1 = new Stage();
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
@@ -64,5 +68,6 @@ public class ContextListener implements ServletContextListener {
 		ObjectifyService.register(Competentie.class);
 		ObjectifyService.register(CompetentieLijst.class);
 		ObjectifyService.register(Vraag.class);
+		ObjectifyService.register(Stage.class);
 	}
 }

@@ -52,6 +52,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<url-pattern>/stagebedrijf-toevoegen</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>StageToevoegenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.StageToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StageToevoegenServlet</servlet-name>
+		<url-pattern>/stage-toevoegen</url-pattern>
+	</servlet-mapping>
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>
