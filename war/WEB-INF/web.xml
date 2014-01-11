@@ -34,23 +34,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LeerlingToevoegenServlet</servlet-name>
-		<url-pattern>/leerlingToevoegen</url-pattern>
+		<url-pattern>/leerling-toevoegen</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>MedewerkerToevoegenServlet</servlet-name>
-		<servlet-class>com.appspot.AccentNijkerk.controller.MedewerkerToevoegenServlet</servlet-class></servlet><servlet-mapping>
-	<servlet-name>MedewerkerToevoegenServlet</servlet-name>
-	<url-pattern>/docentToevoegen</url-pattern>
-</servlet-mapping><servlet>
-		<servlet-name>BedrijfToevoegenServlet</servlet-name><servlet-class>com.appspot.AccentNijkerk.controller.BedrijfToevoegenServlet</servlet-class>
-		</servlet><servlet-mapping>
-		<servlet-name>BedrijfToevoegenServlet</servlet-name>
-		<url-pattern>bedrijfToevoegen</url-pattern></servlet-mapping><listener> 
+		<servlet-class>com.appspot.AccentNijkerk.controller.MedewerkerToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MedewerkerToevoegenServlet</servlet-name>
+		<url-pattern>/medewerker-toevoegen</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.StageBedrijfToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
+		<url-pattern>/stagebedrijf-toevoegen</url-pattern>
+	</servlet-mapping>
+	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
-	
 </web-app>

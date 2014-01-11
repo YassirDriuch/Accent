@@ -27,9 +27,18 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Stagebedrijf Toevoegen</h1><br /><br />
+    	<h1>Stagebedrijven &raquo; Toevoegen</h1>
+    	
+    	<!-- Submenu -->
+        <div id="submenu">
+        	<a href="stagebedrijf-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
+            <a href="stagebedrijf-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            <a href="stagebedrijf-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+        </div>
+        
+        <!-- Toevoegen -->
     	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-    	<form method="post" action="bedrijfToevoegen">
+    	<form method="post" action="/stagebedrijf-toevoegen">
     	<div style="float: left;"> 
     		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
     		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
@@ -42,7 +51,7 @@ if(gebruikerObject == null) {
     		<label class="form_label" for="email">E-Mailadres</label>
     		<input class="form_input rounded-small" type="email" name="email" />
     		<label class="form_label" for="telnr">Telefoonnummer</label>
-    		<input class="form_input rounded-small" type="tel" name="telnr"  />
+    		<input class="form_input rounded-small" type="text" name="telnr" />
     		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
 		</div>
 		</form>

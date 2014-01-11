@@ -10,7 +10,7 @@ if(gebruikerObject == null) {
 %>
 
 <div id="header">
-	<img src="images/logo.jpg" alt="" class="frontpage-logo" />
+	<a href="index.jsp"><img src="images/logo.jpg" alt="" class="frontpage-logo" /></a>
         
 	<!-- Menu !-->
 	<div id="menu">
@@ -18,16 +18,15 @@ if(gebruikerObject == null) {
 			Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
 		</div>
      
-		<a href="panel.jsp" class="menu-button white-gradient rounded-small">Home</a>
 		<% if (gebruikerObject instanceof Leerling) { %>
-			<a href="competentielijsten.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
 		<% } else if (gebruikerObject instanceof StageBedrijf) { %>
-			<a href="stagiares.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
-			<a href="competentielijsten.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
+			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
 		<% } else if (gebruikerObject instanceof Medewerker) { %>
-			<a href="stagiares.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
-			<a href="stagebedrijven.jsp" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
-			<a href="competentielijst-aanmaken.jsp" class="menu-button white-gradient rounded-small">Competentielijst aanmaken</a>
+			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
+			<a href="stagebedrijf-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
+			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
 		<% } %>
 	</div>
 </div>

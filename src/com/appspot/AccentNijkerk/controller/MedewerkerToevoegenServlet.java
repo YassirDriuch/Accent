@@ -17,7 +17,7 @@ public class MedewerkerToevoegenServlet extends HttpServlet {
 	GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("docentaanmaken.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("medewerker-toevoegen.jsp");
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		String naam = req.getParameter("naam");

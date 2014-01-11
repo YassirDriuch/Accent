@@ -48,11 +48,12 @@ public class LoginServlet extends HttpServlet {
 	//Login method
 	private Gebruiker doLogin(String gebr, String ww) {
 		Objectify ofy = ObjectifyService.begin();
+		gebr = gebr.toLowerCase();
 		
 		//Leerlingen doorlopen
 		Query<Leerling> leerlingQ = ofy.query(Leerling.class);
 		for(Leerling l : leerlingQ) {
-			if (l.getGebruikersnaam().equals(gebr) && l.getWachtwoord().equals(ww)) {
+			if (l.getGebruikersnaam().toLowerCase().equals(gebr) && l.getWachtwoord().equals(ww)) {
 				return (Gebruiker) l;
 			}
 		}
@@ -60,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 		//Stagebedrijven doorlopen
 		Query<StageBedrijf> stagebedrijfQ = ofy.query(StageBedrijf.class);
 		for(StageBedrijf g : stagebedrijfQ) {
-			if (g.getGebruikersnaam().equals(gebr) && g.getWachtwoord().equals(ww)) {
+			if (g.getGebruikersnaam().toLowerCase().equals(gebr) && g.getWachtwoord().equals(ww)) {
 				return (Gebruiker) g;
 			}
 		}
@@ -68,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 		//Medewerkers doorlopen
 		Query<Medewerker> medewerkerQ = ofy.query(Medewerker.class);
 		for(Medewerker m : medewerkerQ) {
-			if (m.getGebruikersnaam().equals(gebr) && m.getWachtwoord().equals(ww)) {
+			if (m.getGebruikersnaam().toLowerCase().equals(gebr) && m.getWachtwoord().equals(ww)) {
 				return (Gebruiker) m;
 			}
 		}

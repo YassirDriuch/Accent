@@ -105,6 +105,8 @@ h1 {
 .frontpage-logo {
 	float: left;
 	margin-bottom: 20px;
+	border: none;
+	display: block;
 }
 
 /* Panel */
@@ -185,7 +187,7 @@ a.menu-button:hover {
 	width: 750px;
 	height: auto;
 	padding: 25px;
-	color: #555;
+	color: #333;
 }
 
 #content span {
@@ -200,6 +202,10 @@ a.menu-button:hover {
 	float: left;
 	clear: left;
 	border-top: 1px solid #DDD;
+}
+
+#content .row-active {
+	font-weight: bold;
 }
 
 #content .row:hover {
@@ -217,6 +223,14 @@ a.menu-button:hover {
 	height: 50px;
 	line-height: 50px;
 	margin-left: 10px;
+}
+
+#content .row .date {
+	float: right;
+	height: 50px;
+	line-height: 50px;
+	margin: 0px 10px;
+	color: #777;
 }
 
 /* Submenu */
