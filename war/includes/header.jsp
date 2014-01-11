@@ -27,6 +27,7 @@ if(gebruikerObject == null) {
 			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
 			<a href="stagebedrijf-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
 			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
+			
 		<% } %>
 	</div>
 </div>
