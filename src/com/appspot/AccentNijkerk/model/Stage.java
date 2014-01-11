@@ -7,13 +7,17 @@ import javax.persistence.Id;
 
 public class Stage {
 	@Id Long id;
+	private long leerlingId;
+	private long bedrijfId;
 	public ArrayList<Leerling> stagiaires;
 	public ArrayList<StageBedrijf> bedrijven;
 	private Date datumvan;
 	private Date datumtot;
 	
 	
-	public Stage(Date datumvan, Date datumtot) {
+	public Stage(long leerlingId,Date datumvan, Date datumtot,long bedrijfId) {
+		this.leerlingId = leerlingId;
+		this.bedrijfId = bedrijfId;
 		this.datumvan = datumvan;
 		this.datumtot = datumtot;
 		stagiaires = new ArrayList<Leerling>();
@@ -27,6 +31,14 @@ public class Stage {
 	//Getters
 	public Long getId() {
 		return id;
+	}
+	
+	public Long getLeerlingId() {
+		return leerlingId;
+	}
+	
+	public Long getBedrijfId() {
+		return bedrijfId;
 	}
 	
 	public Date getDatumVan() {
@@ -50,6 +62,13 @@ public class Stage {
 	}
 	public void setDatumTot(Date datumtot) {
 		this.datumtot = datumtot;
+	}
+	public void setLeerlingId(Long leerlingId) {
+		this.leerlingId = leerlingId;
+	}
+	
+	public void setBedrijfId(Long bedrijfId) {
+		this.bedrijfId = bedrijfId;
 	}
 	
 		public void voegStagiarToe(Leerling stagiar) {
