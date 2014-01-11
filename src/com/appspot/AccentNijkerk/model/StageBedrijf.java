@@ -23,6 +23,10 @@ public class StageBedrijf extends Gebruiker implements Serializable {
 		//Default constructor
 	}
 	
+	public void voegStagiarToe(Leerling stagiar) {
+		stagiares.add(stagiar);
+	}
+	
 	//Getters
 	public String getNaam() {
 		return naam;
