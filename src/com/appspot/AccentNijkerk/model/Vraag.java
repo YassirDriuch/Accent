@@ -5,12 +5,11 @@ import javax.persistence.Id;
 public class Vraag {
 	@Id Long id;
 	private String vraag;
-	private Competentie competentie;
-	private int antwoord;
+	private Long competentieId;
 	
-	public Vraag(String vraag, int antwoord) {
+	public Vraag(String vraag, Long competentieId) {
 		this.vraag = vraag;
-		this.antwoord = antwoord;
+		this.competentieId = competentieId;
 	}
 	
 	public Vraag() {
@@ -26,12 +25,8 @@ public class Vraag {
 		return vraag;
 	}
 	
-	public int getAntwoord() {
-		return antwoord;
-	}
-	
-	public Competentie getCompetentie(){
-		return competentie;
+	public Long getCompetentieId() {
+		return competentieId;
 	}
 	
 	//Setters
@@ -39,20 +34,7 @@ public class Vraag {
 		this.vraag = vraag;
 	}
 	
-	public void setAntwoord(int antwoord) {
-		this.antwoord = antwoord;
-	}
-	
-	public void setCompetentie(Competentie competentie){
-		this.competentie = competentie;
-	}
-	
-	//Methoden
-	public boolean isGeantwoord() {
-		if(antwoord != 0) {
-			return true;
-		} else {
-			return false;
-		}
+	public void setCompetentieId(Long id) {
+		this.competentieId = id;
 	}
 }

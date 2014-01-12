@@ -43,8 +43,8 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
             <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
-		<!-- Overzicht -->
-        Search...
+		<!-- Zoeken -->
+        <div class="block">Zoeken...</div>
     </div>
 </div>
 </body>

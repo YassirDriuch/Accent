@@ -6,44 +6,23 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;
 
-public class VraagDaoOfyImpl implements VraagDao{
+public class VraagDaoOfyImpl implements VraagDao {
 	Objectify ofy = ObjectifyService.begin();
-	ArrayList<Vraag> vragen;
 
 	public VraagDaoOfyImpl() {
-		vragen = new ArrayList<Vraag>();
+		//Default constructor
 	}
 
 	@Override
-	public void voegVraagToe(Vraag v) {
-		ofy.put(v);
-	}
-
-	@Override
-	public ArrayList<Vraag> alleVragen() {
-		Query<Vraag> query = ofy.query(Vraag.class);
-		
-		//Alle vragen doorlopen
-		for(Vraag v : query) {
-			//Toevoegen aan arrayList
-			vragen.add(v);
+	public boolean voegVraagToe(Vraag v) {
+		if(isBezet(v.getVraag()) == true) {
+			return false; //Niet toegevoegd
+		} else {
+			ofy.put(v);
+			return true; //Toegevoegd
 		}
-		
-		return vragen;
 	}
-
-	@Override
-	public Vraag getVraag(String vraag) {
-		Vraag result = null;
-		Vraag gezochte = (Vraag) ofy.query(Vraag.class).filter("vraag", vraag).get();	
-		
-		//Vraag obj zoeken op basis van de vraag
-		if(gezochte != null)
-			result = gezochte;
-		
-		return result;
-	}
-
+	
 	@Override
 	public void updateVraag(Vraag v) {
 		ofy.put(v);
@@ -52,5 +31,40 @@ public class VraagDaoOfyImpl implements VraagDao{
 	@Override
 	public void verwijderVraag(Vraag v) {
 		ofy.delete(v);
+	}
+
+	@Override
+	public ArrayList<Vraag> getAlleVragen() {
+		ArrayList<Vraag> alleVragen = new ArrayList<Vraag>();
+		Query<Vraag> query = ofy.query(Vraag.class);
+		
+		//Alle vragen doorlopen
+		for(Vraag v : query) {
+			//Toevoegen aan arrayList
+			alleVragen.add(v);
+		}
+		
+		return alleVragen;
+	}
+
+	@Override
+	public Vraag getVraag(Long id) {
+		Vraag result = ofy.get(Vraag.class, id);
+		return result;
+	}
+	
+	@Override
+	public boolean isBezet(String vraag) {
+		boolean isBezet = false;
+		
+		//Alle gebruikers doorlopen
+		for(Vraag v : getAlleVragen()) {
+			//Gebruikersnaam vergelijken
+			if(v.getVraag().equals(vraag)) {
+				isBezet = true;
+			}
+		}
+		
+		return isBezet;
 	}
 }

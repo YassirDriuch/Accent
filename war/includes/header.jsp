@@ -15,7 +15,7 @@ if(gebruikerObject == null) {
 	<!-- Menu !-->
 	<div id="menu">
 		<div id="menu-user" class="white-gradient rounded-small">
-			Ingelogd als <b><%=gebruikerObject.getGebruikersnaam()%></b><a href="/logout" class="menu-logout">Uitloggen</a>
+			<%=gebruikerObject.getGebruikersnaam()%><a href="/logout" class="menu-logout">Uitloggen</a>
 		</div>
      
 		<% if (gebruikerObject instanceof Leerling) { %>

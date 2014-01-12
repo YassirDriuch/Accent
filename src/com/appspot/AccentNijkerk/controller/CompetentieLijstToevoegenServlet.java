@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appspot.AccentNijkerk.model.Competentie;
+import com.appspot.AccentNijkerk.model.CompetentieDao;
+import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.CompetentieLijst;
 import com.appspot.AccentNijkerk.model.CompetentieLijstDao;
 import com.appspot.AccentNijkerk.model.CompetentieLijstDaoOfyImpl;
@@ -37,14 +39,18 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 				
 			//Nieuwe competentielijst aanmaken
 			CompetentieLijst cL = new CompetentieLijst(leerlingId, today, false);
-			CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
-			competentieLijstDao.voegCompetentieLijstToe(cL);
+			CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
+			
 				
 			//Competenties toevoegen aan lijst
 			for(String s : competenties) {
-				Competentie c = new Competentie(s);
+				Competentie c = competentieDao.getCompetentie(Long.parseLong(s));
 				cL.voegCompetentieToe(c);
 			}
+			
+			//CompetentieLijst toevoegen
+			CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
+			competentieLijstDao.voegCompetentieLijstToe(cL);
 				
 			log.info("CompetentieLijst voor " + leerlingId + " succesvol aangemaakt");
 		}

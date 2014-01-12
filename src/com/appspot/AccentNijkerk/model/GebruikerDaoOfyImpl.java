@@ -2,7 +2,6 @@ package com.appspot.AccentNijkerk.model;
 
 import java.util.ArrayList;
 
-import com.google.appengine.api.datastore.Key;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Query;

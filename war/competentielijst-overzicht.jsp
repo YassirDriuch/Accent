@@ -39,19 +39,23 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="competentielijst-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-        	<% if (gebruikerObject instanceof Medewerker) { %>
-            	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            <% } %>
             <a href="competentielijst-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+            <% if (gebruikerObject instanceof Medewerker) { %>
+            	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            	<a href="competentie-overzicht.jsp" class="button rounded-small white-gradient">Compenties</a>
+            <% } %>
         </div>
         
         <!-- Overzicht -->
         <% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
-        	<div class="row <% if(!cL.isIngevuld()) out.print("row-active"); %>">
-	        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
-	            <div class="description"><i>voor</i> <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></div>
-	            <div class="date"><%=cL.getAanmaakDatum()%></div>
-	        </div>
+        	<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
+	        	<div class="row">
+		        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+		            <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
+		            <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
+		            <div class="date"><%=cL.getAanmaakDatum()%></div>
+		        </div>
+	        </a>
 		<% } %>
     </div>
 </div>

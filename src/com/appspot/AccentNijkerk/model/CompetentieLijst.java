@@ -1,21 +1,23 @@
 package com.appspot.AccentNijkerk.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.Embedded;
 import javax.persistence.Id;
 
-public class CompetentieLijst {
+public class CompetentieLijst implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id Long id;
 	private long leerlingId;
 	private String aanmaakDatum;
-	private boolean ingevuld;
-	private ArrayList<Competentie> competenties;
+	private boolean verstuurd;
+	@Embedded private ArrayList<Competentie> competenties = new ArrayList<Competentie>();
 	
 	public CompetentieLijst(Long leerlingId, String aanmaakDatum, boolean ingevuld) {
 		this.leerlingId = leerlingId;
 		this.aanmaakDatum = aanmaakDatum;
-		this.ingevuld = ingevuld;
-		competenties = new ArrayList<Competentie>();
+		this.verstuurd = verstuurd;
 	}
 	
 	public CompetentieLijst() {
@@ -39,8 +41,8 @@ public class CompetentieLijst {
 		return aanmaakDatum;
 	}
 	
-	public boolean isIngevuld() {
-		return ingevuld;
+	public boolean isVerstuurd() {
+		return verstuurd;
 	}
 	
 	public ArrayList<Competentie> getAlleCompetenties(){
@@ -56,7 +58,7 @@ public class CompetentieLijst {
 		this.aanmaakDatum = aanmaakDatum;
 	}
 	
-	public void setIngevuld(boolean ingevuld) {
-		this.ingevuld = ingevuld;
+	public void setVerstuurd(boolean verstuurd) {
+		this.verstuurd = verstuurd;
 	}
 }

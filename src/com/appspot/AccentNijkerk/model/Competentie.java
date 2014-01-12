@@ -1,17 +1,16 @@
 package com.appspot.AccentNijkerk.model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 import javax.persistence.Id;
 
-public class Competentie {
+public class Competentie implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id Long id;
 	private String competentie;
-	public ArrayList<Vraag> vragen;
 	
 	public Competentie(String competentie) {
 		this.competentie = competentie;
-		vragen = new ArrayList<Vraag>();
 	}
 	
 	public Competentie() {
@@ -26,11 +25,7 @@ public class Competentie {
 	public String getCompetentie() {
 		return competentie;
 	}
-	
-	public ArrayList<Vraag> getVragen() {
-		return vragen;
-	}
-	
+
 	//Setters
 	public void setCompetentie(String competentie) {
 		this.competentie = competentie;

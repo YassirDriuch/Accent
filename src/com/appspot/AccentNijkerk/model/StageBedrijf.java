@@ -3,10 +3,8 @@ package com.appspot.AccentNijkerk.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.persistence.Id;
-
 public class StageBedrijf extends Gebruiker implements Serializable {
-	private static final long serialVersionUID = 3861773411669893514L;
+	private static final long serialVersionUID = 3218266775787783782L;
 	private String naam, adres, email, telnr;
 	public ArrayList<Leerling> stagiares;
 	

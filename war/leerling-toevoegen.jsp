@@ -36,22 +36,24 @@ if(gebruikerObject == null) {
             <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
-    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-    	<form method="post" action="/leerling-toevoegen">
-    	<div style="float: left;"> 
-    		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
-    		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
-    		<label class="form_label" for="wachtwoord">Wachtwoord</label>
-    		<input class="form_input rounded-small" type="password" name="wachtwoord" />
-    		<label class="form_label" for="naam">Naam</label>
-    		<input class="form_input rounded-small" type="text" name="naam" />
-    		<label class="form_label" for="email">E-Mailadres</label>
-    		<input class="form_input rounded-small" type="email" name="email" />
-    		<label class="form_label" for="leerlingnr">Leerlingnummer</label>
-    		<input class="form_input rounded-small" type="number" name="leerlingnr" />
-    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+    	<div class="block">
+	    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
+	    	<form method="post" action="/leerling-toevoegen">
+	    	<div style="float: left;"> 
+	    		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
+	    		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
+	    		<label class="form_label" for="wachtwoord">Wachtwoord</label>
+	    		<input class="form_input rounded-small" type="password" name="wachtwoord" />
+	    		<label class="form_label" for="naam">Naam</label>
+	    		<input class="form_input rounded-small" type="text" name="naam" />
+	    		<label class="form_label" for="email">E-Mailadres</label>
+	    		<input class="form_input rounded-small" type="email" name="email" />
+	    		<label class="form_label" for="leerlingnr">Leerlingnummer</label>
+	    		<input class="form_input rounded-small" type="number" name="leerlingnr" />
+	    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+			</div>
+			</form>
 		</div>
-		</form>
 	</div>
 </div>
 </body>

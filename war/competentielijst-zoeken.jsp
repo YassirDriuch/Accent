@@ -39,14 +39,15 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="competentielijst-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-        	<% if (gebruikerObject instanceof Medewerker) { %>
-            	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            <% } %>
             <a href="competentielijst-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+            <% if (gebruikerObject instanceof Medewerker) { %>
+            	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            	<a href="competentie-overzicht.jsp" class="button rounded-small white-gradient">Compenties</a>
+            <% } %>
         </div>
         
         <!-- Zoeken -->
-        Search...
+        <div class="block">Zoeken...</div>
     </div>
 </div>
 </body>

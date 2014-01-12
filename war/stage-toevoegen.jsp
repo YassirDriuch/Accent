@@ -46,26 +46,28 @@ Query<StageBedrijf> alleBedrijven = ofy.query(StageBedrijf.class);
         </div>
         
         <!-- Toevoegen -->
-    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-    	<form method="post" action="/stage-toevoegen">
-    	<label class="form_label" for="Bedrijf">Bedrijf</label>
-            <select class="form_input rounded-small" name="bedrijf">
-                <% for(Gebruiker g : alleBedrijven) { %>
-                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
-				<% } %>
-            </select>
-	    	<label class="form_label" for="leerling">Leerling</label>
-            <select class="form_input rounded-small" name="leerling">
-                <% for(Gebruiker g : alleLeerlingen) { %>
-                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
-				<% } %>
-            </select>
-            <label class="form_label" for="naam">Van</label>
-    		<input class="form_input rounded-small" type="date" name="datumv" /><br></br>
-    		<label class="form_label" for="naam">Tot</label>
-    		<input class="form_input rounded-small" type="date" name="datumt" />
-    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Toevoegen" />
-		</form>
+        <div class="block">
+	    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
+	    	<form method="post" action="/stage-toevoegen">
+	    	<label class="form_label" for="Bedrijf">Bedrijf</label>
+	            <select class="form_input rounded-small" name="bedrijf">
+	                <% for(Gebruiker g : alleBedrijven) { %>
+	                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
+					<% } %>
+	            </select>
+		    	<label class="form_label" for="leerling">Leerling</label>
+	            <select class="form_input rounded-small" name="leerling">
+	                <% for(Gebruiker g : alleLeerlingen) { %>
+	                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
+					<% } %>
+	            </select>
+	            <label class="form_label" for="naam">Van</label>
+	    		<input class="form_input rounded-small" type="date" name="datumv" /><br></br>
+	    		<label class="form_label" for="naam">Tot</label>
+	    		<input class="form_input rounded-small" type="date" name="datumt" />
+	    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Toevoegen" />
+			</form>
+		</div>
     </div>
 </div>
 </body>

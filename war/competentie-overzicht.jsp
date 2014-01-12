@@ -12,8 +12,8 @@ if(gebruikerObject == null) {
 }
 
 Objectify ofy = ObjectifyService.begin();
-Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
 Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
+GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 %>
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Competentielijsten &raquo; Toevoegen</h1>
+    	<h1>Competentielijsten &raquo; Competenties</h1>
     	
     	<!-- Submenu -->
         <div id="submenu">
@@ -46,23 +46,14 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
             <% } %>
         </div>
         
-        <!-- Toevoegen -->
-        <div class="block">
-    		<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-	    	<form method="post" action="/competentielijst-toevoegen">
-		    	<label class="form_label" for="leerling">Leerling</label>
-	            <select class="form_input rounded-small" name="leerling">
-	                <% for(Gebruiker g : alleLeerlingen) { %>
-	                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
-					<% } %>
-	            </select>
-		        <label class="form_label" for="competenties">Competenties</label>
-	            <% for(Competentie c : alleCompetenties) { %>
-	                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>
-				<% } %>
-		        <input class="form_submit dark-gradient rounded-small" style="margin-top: 10px;" type="submit" name="submit" value="Aanmaken" />
-			</form>
-		</div>
+        <!-- Overzicht -->
+        <% for(Competentie c : alleCompetenties) { %>
+        	<a href="" style="display: block;">
+	        	<div class="row">
+		            <div class="description"><%=c.getCompetentie()%></div>
+		        </div>
+	        </a>
+		<% } %>
     </div>
 </div>
 </body>

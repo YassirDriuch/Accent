@@ -43,13 +43,8 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
             <a href="stagebedrijf-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
-        <!-- Overzicht -->
-        <% for(StageBedrijf sB : alleStageBedrijven) { %>
-        	<div class="row">
-	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><%=sB.getGebruikersnaam()%></div>
-	        </div>
-		<% } %>
+        <!-- Zoeken -->
+	    <div class="block">Zoeken...</div>
     </div>
 </div>
 </body>

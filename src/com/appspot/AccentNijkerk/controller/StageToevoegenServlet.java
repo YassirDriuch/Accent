@@ -3,7 +3,6 @@ package com.appspot.AccentNijkerk.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -13,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.appspot.AccentNijkerk.model.Competentie;
-import com.appspot.AccentNijkerk.model.CompetentieLijst;
-import com.appspot.AccentNijkerk.model.CompetentieLijstDao;
-import com.appspot.AccentNijkerk.model.CompetentieLijstDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.Stage;
 import com.appspot.AccentNijkerk.model.StageDao;
 import com.appspot.AccentNijkerk.model.StageDaoOfyImpl;

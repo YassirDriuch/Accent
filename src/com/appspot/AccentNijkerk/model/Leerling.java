@@ -3,7 +3,7 @@ package com.appspot.AccentNijkerk.model;
 import java.io.Serializable;
 
 public class Leerling extends Gebruiker implements Serializable {
-	private static final long serialVersionUID = -3586223028920551117L;
+	private static final long serialVersionUID = -5474164869131591965L;
 	private String naam, email, leerlingnr;
 	
 	public Leerling(String gebruikersnaam, String wachtwoord, String naam, String email, String leerlingnr) {
