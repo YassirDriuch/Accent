@@ -1,6 +1,5 @@
 package com.appspot.AccentNijkerk.listeners;
 
-import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContextEvent;
@@ -50,24 +49,18 @@ public class ContextListener implements ServletContextListener {
 		competentieDao.voegCompetentieToe(c2);
 		competentieDao.voegCompetentieToe(c3);
 		
-<<<<<<< HEAD
 		//Testvragen aanmaken
-		Long competentieId = Long.parseLong("5768755258851328");
-		Long competentieId2 = Long.parseLong("6046115656892416");
-		Vraag v1 = new Vraag("Wat is dit voor een vraag?", competentieId);
-		Vraag v2 = new Vraag("Is dit een goed antwoord?", competentieId);
-		Vraag v3 = new Vraag("Dat gaat wel goed?", competentieId);
-		Vraag v4 = new Vraag("Dis is nog een vraag?", competentieId2);
-		Vraag v5 = new Vraag("Gaat maar door dit?", competentieId2);
+		Vraag v1 = new Vraag("Wat is dit voor een vraag?", c1.getId());
+		Vraag v2 = new Vraag("Is dit een goed antwoord?", c1.getId());
+		Vraag v3 = new Vraag("Dat gaat wel goed?", c2.getId());
+		Vraag v4 = new Vraag("Dit is nog een vraag?", c2.getId());
+		Vraag v5 = new Vraag("Gaat het maar door dit?", c3.getId());
 		VraagDao vraagDao = new VraagDaoOfyImpl();
 		vraagDao.voegVraagToe(v1);
 		vraagDao.voegVraagToe(v2);
 		vraagDao.voegVraagToe(v3);
 		vraagDao.voegVraagToe(v4);
 		vraagDao.voegVraagToe(v5);
-=======
-		Stage s1 = new Stage();
->>>>>>> d80b0fef6c7a1d450821a0fa815262ede2cc798a
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {

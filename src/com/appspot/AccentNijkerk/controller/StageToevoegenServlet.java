@@ -32,33 +32,26 @@ public class StageToevoegenServlet extends HttpServlet {
 		String dsv = req.getParameter("datumv");
 		String dst = req.getParameter("datumt");
 		
-		if(dsv != null && dsv!=null){
-		try {
-			datumvan = sdf.parse(dsv);
-			datumtot = sdf.parse(dst);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(dsv != null && dsv != null){
+			try {
+				datumvan = sdf.parse(dsv);
+				datumtot = sdf.parse(dst);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		}
-		log.info(dsv + "" + dst);
-		
-		
 
 		if(leerlingId == null || bedrijfId == null || datumvan ==null || datumtot == null) {
 			//Aanmaken mislukt
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 			rd = req.getRequestDispatcher("stage-toevoegen.jsp");
-		} else {
-				
+		} else {	
 			//Nieuwe Stage aanmaken
 			Stage s = new Stage(bedrijfId, datumvan, datumtot, bedrijfId);
 			StageDao StageDao = new StageDaoOfyImpl();
 			StageDao.voegStageToe(s);
-				
-			//evt. dingen
-
-				
+			
 			log.info("Stage voor " + leerlingId + " succesvol aangemaakt");
 		}
 
