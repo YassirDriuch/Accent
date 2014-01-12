@@ -18,7 +18,7 @@ import com.appspot.AccentNijkerk.model.StageDaoOfyImpl;
 
 public class StageToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
-	private static final Logger log = Logger.getLogger(CompetentieLijstToevoegenServlet.class.getName());
+	private static final Logger log = Logger.getLogger(StageToevoegenServlet.class.getName());
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		
