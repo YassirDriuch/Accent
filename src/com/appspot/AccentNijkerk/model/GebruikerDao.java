@@ -10,6 +10,6 @@ public interface GebruikerDao {
 	public Gebruiker getGebruiker(Long id);
 	public ArrayList<Gebruiker> getAlleGebruikers();
 	public ArrayList<Gebruiker> getAlleLeerlingen();
-	public ArrayList<Gebruiker> getAlleMedewerkers();
+	public ArrayList<Gebruiker> getAlleDocenten();
 	public ArrayList<Gebruiker> getAlleStageBedrijven();
 }

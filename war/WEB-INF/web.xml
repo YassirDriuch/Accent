@@ -37,12 +37,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/leerling-toevoegen</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>MedewerkerToevoegenServlet</servlet-name>
-		<servlet-class>com.appspot.AccentNijkerk.controller.MedewerkerToevoegenServlet</servlet-class>
+		<servlet-name>DocentToevoegenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.DocentToevoegenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>MedewerkerToevoegenServlet</servlet-name>
-		<url-pattern>/medewerker-toevoegen</url-pattern>
+		<servlet-name>DocentToevoegenServlet</servlet-name>
+		<url-pattern>/docent-toevoegen</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>

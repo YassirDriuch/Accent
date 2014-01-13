@@ -9,11 +9,11 @@ import com.appspot.AccentNijkerk.model.Competentie;
 import com.appspot.AccentNijkerk.model.CompetentieDao;
 import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.CompetentieLijst;
+import com.appspot.AccentNijkerk.model.Docent;
 import com.appspot.AccentNijkerk.model.Gebruiker;
 import com.appspot.AccentNijkerk.model.GebruikerDao;
 import com.appspot.AccentNijkerk.model.GebruikerDaoOfyImpl;
 import com.appspot.AccentNijkerk.model.Leerling;
-import com.appspot.AccentNijkerk.model.Medewerker;
 import com.appspot.AccentNijkerk.model.Stage;
 import com.appspot.AccentNijkerk.model.StageBedrijf;
 import com.appspot.AccentNijkerk.model.Vraag;
@@ -32,7 +32,7 @@ public class ContextListener implements ServletContextListener {
 		//Testgebruikers aanmaken
 		Gebruiker g1 = (Gebruiker) new Leerling("Leerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
 		Gebruiker g2 = (Gebruiker) new StageBedrijf("StageBedrijf", "test", "Company BV", "Industrielaan 32", "info@company.com", "030-88905663");
-		Gebruiker g3 = (Gebruiker) new Medewerker("StageBegeleider", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
+		Gebruiker g3 = (Gebruiker) new Docent("StageBegeleider", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
 		
 		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		gebruikerDao.voegGebruikerToe(g1);
@@ -70,7 +70,7 @@ public class ContextListener implements ServletContextListener {
 	private void initObjectifyClasses() {
 		//Objectify classes initialiseren
 		ObjectifyService.register(StageBedrijf.class);
-		ObjectifyService.register(Medewerker.class);
+		ObjectifyService.register(Docent.class);
 		ObjectifyService.register(Leerling.class);
 		ObjectifyService.register(Gebruiker.class);
 		ObjectifyService.register(Competentie.class);

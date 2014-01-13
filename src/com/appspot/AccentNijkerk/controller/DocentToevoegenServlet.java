@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MedewerkerToevoegenServlet extends HttpServlet {
+public class DocentToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
 	private static final Logger log = Logger.getLogger(LeerlingToevoegenServlet.class.getName());
 	GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
@@ -27,7 +27,7 @@ public class MedewerkerToevoegenServlet extends HttpServlet {
 		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || adres.equals("")) {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} else {
-			Gebruiker g = (Gebruiker) new Medewerker(gebruikersnaam, wachtwoord, naam, adres, email);
+			Gebruiker g = (Gebruiker) new Docent(gebruikersnaam, wachtwoord, naam, adres, email);
 			if(gebruikerDao.voegGebruikerToe(g)){
 			req.setAttribute("msg", "<div class='succes'>Docent:<br />" + g + "<br />is toegevoegd</div>");
 			log.info( g + " is Toegevoegd");
