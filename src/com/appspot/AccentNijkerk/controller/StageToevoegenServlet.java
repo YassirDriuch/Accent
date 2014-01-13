@@ -48,7 +48,7 @@ public class StageToevoegenServlet extends HttpServlet {
 			rd = req.getRequestDispatcher("stage-toevoegen.jsp");
 		} else {	
 			//Nieuwe Stage aanmaken
-			Stage s = new Stage(bedrijfId, datumvan, datumtot, bedrijfId);
+			Stage s = new Stage(leerlingId, datumvan, datumtot, bedrijfId);
 			StageDao StageDao = new StageDaoOfyImpl();
 			StageDao.voegStageToe(s);
 			

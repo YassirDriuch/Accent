@@ -52,12 +52,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<url-pattern>/stagebedrijf-toevoegen</url-pattern>
 	</servlet-mapping>
-<<<<<<< HEAD
-	<servlet>
-=======
+
+
+
 	
 		<servlet>
->>>>>>> d80b0fef6c7a1d450821a0fa815262ede2cc798a
+
 		<servlet-name>StageToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageToevoegenServlet</servlet-class>
 	</servlet>

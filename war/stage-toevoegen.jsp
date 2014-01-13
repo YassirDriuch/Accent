@@ -24,8 +24,22 @@ Query<StageBedrijf> alleBedrijven = ofy.query(StageBedrijf.class);
 <title>Accent Nijkerk</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.resizebg.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+$(function() {
+	$( "#datepicker1" ).datepicker({
+		dateFormat: 'dd-mm-yy'
+	})
+});
+$(function() {
+	$( "#datepicker2" ).datepicker({
+		dateFormat: 'dd-mm-yy'
+	})
+});
+	</script>
 </head>
-
 <body>
 <img src="images/bg.jpg" id="bg" alt="" />
 <div id="panel-container" class="rounded shadow">
@@ -62,9 +76,9 @@ Query<StageBedrijf> alleBedrijven = ofy.query(StageBedrijf.class);
 					<% } %>
 	            </select>
 	            <label class="form_label" for="naam">Van</label>
-	    		<input class="form_input rounded-small" type="date" name="datumv" /><br></br>
+	    		<input class="form_input rounded-small" type="text" name="datumv" id ="datepicker1"/><br></br>
 	    		<label class="form_label" for="naam">Tot</label>
-	    		<input class="form_input rounded-small" type="date" name="datumt" />
+	    		<input class="form_input rounded-small" type="text" name="datumt" id ="datepicker2"/>
 	    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Toevoegen" />
 			</form>
 		</div>
