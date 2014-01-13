@@ -29,6 +29,7 @@ if(gebruikerObject == null) {
     <div id="content">
     	<h1>Accountgegevens</h1>
         <div class="block" style="line-height: 140%;"><%=gebruikerObject.toString()%></div>
+       
     </div>
 </div>
 </body>
