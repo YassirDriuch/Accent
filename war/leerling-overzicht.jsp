@@ -39,16 +39,26 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
     	<!-- Subemenu -->
         <div id="submenu">
         	<a href="leerling-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            <% if(gebruikerObject instanceof Docent){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
             <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
 		<!-- Overzicht -->
+        <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
         <% for(Leerling l : alleLeerlingen) { %>
+        <% if(gebruikerObject instanceof Docent) {%>
         	<div class="row">
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
 	            <div class="description"><%=l.getGebruikersnaam()%></div>
+                <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=l.getId()%>" onclick="return confirm('Weet u zeker dat u leerling &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"> 
+                <img src="images/delete.png" width="24" height="24" /></a></div>
 	        </div>
+        <% }else { %>
+        <div class="row">
+        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
+	        <div class="description"><%=l.getGebruikersnaam()%></div>
+        </div>
+		<% } %>
 		<% } %>
     </div>
 </div>

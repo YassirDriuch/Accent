@@ -11,6 +11,11 @@ if(gebruikerObject == null) {
 	return;
 }
 
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 Objectify ofy = ObjectifyService.begin();
 Query<Docent> alleDocenten = ofy.query(Docent.class);
 %>
@@ -47,7 +52,9 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
         <% for(Docent d : alleDocenten) { %>
         	<div class="row">
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><%=m.getGebruikersnaam()%></div>
+	            <div class="description"><%=d.getGebruikersnaam()%></div>
+                <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=d.getId()%>" onclick="return confirm('Weet u zeker dat u docent &quot;<%= d.getNaam() %>&quot; wilt verwijderen?')"> 
+                <img src="images/delete.png" width="24" height="24" /></a></div>
 	        </div>
 		<% } %>
     </div>

@@ -27,6 +27,7 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
+    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
     	<h1>Accountgegevens</h1>
         <div class="block" style="line-height: 140%;"><%=gebruikerObject.toString()%></div>
        

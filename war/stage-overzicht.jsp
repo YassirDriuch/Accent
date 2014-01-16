@@ -12,6 +12,11 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
 Objectify ofy = ObjectifyService.begin();
@@ -42,12 +47,8 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
-            <% if (gebruikerObject instanceof Medewerker) { %>
-            	<a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            	
-            <% } %>
-        </div>
+            <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
+            <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>        </div>
         
         <!-- Overzicht -->
         <% for(Stage s : alleStages) { %>

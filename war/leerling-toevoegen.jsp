@@ -7,7 +7,14 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 %>
+
 
 <!DOCTYPE html>
 <head>
@@ -32,7 +39,7 @@ if(gebruikerObject == null) {
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="leerling-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            <% if(gebruikerObject instanceof Docent){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
             <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         

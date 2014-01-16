@@ -39,7 +39,7 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
     	<!-- Subemenu -->
         <div id="submenu">
         	<a href="leerling-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+			<% if(gebruikerObject instanceof Docent){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
             <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         

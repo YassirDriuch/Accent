@@ -7,6 +7,12 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 %>
 
 <!DOCTYPE html>
