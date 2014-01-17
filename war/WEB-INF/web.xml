@@ -36,6 +36,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LeerlingToevoegenServlet</servlet-name>
 		<url-pattern>/leerling-toevoegen</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>LeerlingWijzigenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.LeerlingWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LeerlingWijzigenServlet</servlet-name>
+		<url-pattern>/leerling-wijzigen</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>DocentToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.DocentToevoegenServlet</servlet-class>
@@ -68,6 +76,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>GebruikerVerwijderenServlet</servlet-name>
 		<url-pattern>/deleteUser</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+   		<servlet-name>LeerlingBezichtigenJSP</servlet-name>
+    	<jsp-file>/leerling-bezichtigen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>LeerlingBezichtigenJSP</servlet-name>
+   		<url-pattern>/leerling-bezichtigen</url-pattern>
+	</servlet-mapping>
+	<servlet>
+   		<servlet-name>LeerlingAanpassenJSP</servlet-name>
+    	<jsp-file>/leerling-aanpassen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>LeerlingAanpassenJSP</servlet-name>
+   		<url-pattern>/leerling-aanpassen</url-pattern>
+	</servlet-mapping>
+
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>

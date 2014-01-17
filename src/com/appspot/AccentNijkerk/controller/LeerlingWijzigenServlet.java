@@ -11,30 +11,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LeerlingToevoegenServlet extends HttpServlet {
+public class LeerlingWijzigenServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
-	private static final Logger log = Logger.getLogger(LeerlingToevoegenServlet.class.getName());
+	private static final Logger log = Logger.getLogger(LeerlingWijzigenServlet.class.getName());
 	GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("leerling-toevoegen.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("leerling-overzicht.jsp");
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
-		String wachtwoord = req.getParameter("wachtwoord");
 		String naam = req.getParameter("naam");
 		String email = req.getParameter("email");		
 		String leerlingnr = req.getParameter("leerlingnr");
+		String stringId = req.getParameter("id");
+		Long id = Long.parseLong(stringId);
+		Gebruiker g = gebruikerDao.getGebruiker(id);
 		
-		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || leerlingnr.equals("")) {
+		if(g == null){
+			req.getRequestDispatcher("panel.jsp");
+			rd.forward(req, resp);
+			return;
+		}
+		
+		if(gebruikersnaam.equals("") || naam.equals("") || email.equals("") || leerlingnr.equals("")) {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} else {
-			Gebruiker g = (Gebruiker) new Leerling(gebruikersnaam, wachtwoord, naam, email, leerlingnr);
-			if(gebruikerDao.voegGebruikerToe(g)){
-			req.setAttribute("msg", "<div class='succes'>Leerling:<br />" + g + "<br />is toegevoegd</div>");
-			log.info( g + " is Toegevoegd");
-			}
-			else{
-				req.setAttribute("msg", "<div class='nosucces'>Leerling bestaat al</div>");
-			}
+			g.setGebruikersnaam(gebruikersnaam);
+			((Leerling) g).setNaam(naam);
+			((Leerling) g).setEmail(email);
+			((Leerling) g).setLeerlingnr(leerlingnr);
+			gebruikerDao.updateGebruiker(g);
+			req.setAttribute("msg", "<div class='succes'>Gebruiker is geüpdatet");
 		}
 	rd.forward(req, resp);
 	}

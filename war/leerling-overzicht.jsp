@@ -49,7 +49,7 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
         <% if(gebruikerObject instanceof Docent) {%>
         	<div class="row">
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><%=l.getGebruikersnaam()%></div>
+	            <div class="description"><a href="/leerling-bezichtigen?id=<%=l.getId()%>"><%=l.getNaam()%></a></div>
                 <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=l.getId()%>" onclick="return confirm('Weet u zeker dat u leerling &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"> 
                 <img src="images/delete.png" width="24" height="24" /></a></div>
 	        </div>
