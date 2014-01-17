@@ -14,7 +14,7 @@ public class CompetentieLijst implements Serializable {
 	private boolean verstuurd;
 	@Embedded private ArrayList<Competentie> competenties = new ArrayList<Competentie>();
 	
-	public CompetentieLijst(Long leerlingId, String aanmaakDatum, boolean ingevuld) {
+	public CompetentieLijst(Long leerlingId, String aanmaakDatum, boolean verstuurd) {
 		this.leerlingId = leerlingId;
 		this.aanmaakDatum = aanmaakDatum;
 		this.verstuurd = verstuurd;

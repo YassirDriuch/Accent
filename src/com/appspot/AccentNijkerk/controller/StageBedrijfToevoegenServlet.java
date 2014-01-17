@@ -25,34 +25,19 @@ public class StageBedrijfToevoegenServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		String tel = req.getParameter("tel");
 		
-		if(checkInteger(tel)) {
-			if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || adres.equals("") || tel.equals("")) {
-				req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
-			} else {
-				Gebruiker g = (Gebruiker) new StageBedrijf(gebruikersnaam, wachtwoord, naam, adres, email, tel);
-				
-				if(gebruikerDao.voegGebruikerToe(g)){
-					req.setAttribute("msg", "<div class='succes'>Bedrijf met account:<br />" + g + "<br />is toegevoegd</div>");
-					log.info( g + " is Toegevoegd");
-				} else{
-					req.setAttribute("msg", "<div class='nosucces'>Bedrijf bestaat al</div>");
-				}
-			}
+
+		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || adres.equals("") || tel.equals("")) {
+			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} else {
-			req.setAttribute("msg", "<div class='nosucces'>Vul een geldige telefoonnummer in</div>");
+			Gebruiker g = (Gebruiker) new StageBedrijf(gebruikersnaam, wachtwoord, naam, adres, email, tel);		
+			if(gebruikerDao.voegGebruikerToe(g)){
+				req.setAttribute("msg", "<div class='succes'>Bedrijf met account:<br />" + g + "<br />is toegevoegd</div>");
+				log.info( g + " is Toegevoegd");
+			} else{
+				req.setAttribute("msg", "<div class='nosucces'>Bedrijf bestaat al</div>");
+			}
 		}
-		
 		rd.forward(req, resp);
-	}
+	} 
 	
-	private boolean checkInteger(String integer) {
-		boolean result = true;
-		try {
-			Integer.parseInt(integer);
-		}
-		catch(NumberFormatException e){
-			result = false;
-		}
-		return result;
-	}
 }

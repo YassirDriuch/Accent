@@ -53,6 +53,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/docent-toevoegen</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>DocentWijzigenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.DocentWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DocentWijzigenServlet</servlet-name>
+		<url-pattern>/docent-wijzigen</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageBedrijfToevoegenServlet</servlet-class>
 	</servlet>
@@ -60,6 +68,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<url-pattern>/stagebedrijf-toevoegen</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>StageBedrijfWijzigenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.StageBedrijfWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StageBedrijfWijzigenServlet</servlet-name>
+		<url-pattern>/stagebedrijf-wijzigen</url-pattern>
+	</servlet-mapping>	
 	<servlet>
 		<servlet-name>StageToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageToevoegenServlet</servlet-class>
@@ -93,7 +109,39 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>LeerlingAanpassenJSP</servlet-name>
    		<url-pattern>/leerling-aanpassen</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+   		<servlet-name>DocentBezichtigenJSP</servlet-name>
+    	<jsp-file>/docent-bezichtigen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>DocentBezichtigenJSP</servlet-name>
+   		<url-pattern>/docent-bezichtigen</url-pattern>
+	</servlet-mapping>
+	<servlet>
+   		<servlet-name>DocentAanpassenJSP</servlet-name>
+    	<jsp-file>/docent-aanpassen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>DocentAanpassenJSP</servlet-name>
+   		<url-pattern>/docent-aanpassen</url-pattern>
+	</servlet-mapping>
+	<servlet>
+   		<servlet-name>StageBedrijfBezichtigenJSP</servlet-name>
+    	<jsp-file>/stagebedrijf-bezichtigen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>StageBedrijfBezichtigenJSP</servlet-name>
+   		<url-pattern>/stagebedrijf-bezichtigen</url-pattern>
+	</servlet-mapping>	
+	<servlet>
+   		<servlet-name>StageBedrijfAanpassenJSP</servlet-name>
+    	<jsp-file>/stagebedrijf-aanpassen.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>StageBedrijfAanpassenJSP</servlet-name>
+   		<url-pattern>/stagebedrijf-aanpassen</url-pattern>
+	</servlet-mapping>
+	
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>

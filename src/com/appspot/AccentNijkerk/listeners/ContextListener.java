@@ -39,6 +39,8 @@ public class ContextListener implements ServletContextListener {
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
 		
+		log.info("Testgebruikers aangemaakt");
+		
 		//Testcompetenties aanmaken
 		Competentie c1 = new Competentie("Sociale vaardigheden");
 		Competentie c2 = new Competentie("Communicatie");
@@ -48,6 +50,8 @@ public class ContextListener implements ServletContextListener {
 		competentieDao.voegCompetentieToe(c1);
 		competentieDao.voegCompetentieToe(c2);
 		competentieDao.voegCompetentieToe(c3);
+		
+		log.info("Testcompetenties aangemaakt");
 		
 		//Testvragen aanmaken
 		Vraag v1 = new Vraag("Wat is dit voor een vraag?", c1.getId());
@@ -61,6 +65,7 @@ public class ContextListener implements ServletContextListener {
 		vraagDao.voegVraagToe(v3);
 		vraagDao.voegVraagToe(v4);
 		vraagDao.voegVraagToe(v5);
+		log.info("Testvragen aangemaakt");
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
