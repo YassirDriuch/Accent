@@ -24,9 +24,8 @@ public class WachtwoordWijzigenServlet extends HttpServlet {
 		if(g.getWachtwoord().equals(wachtwoordOud) && wachtwoordNieuw.equals(wachtwoordBevestig)) {
 			g.setWachtwoord(wachtwoordNieuw);
 			gebruikerDao.updateGebruiker(g);
-			log.info("Wachtwoord van gebruiker " + g.getGebruikersnaam() + "is gewijzigd");
+			log.info("Wachtwoord van gebruiker " + g.getGebruikersnaam() + " is gewijzigd " + "g.getWachtwoord");
 			req.setAttribute("msg", "<div class='succes'>Wachtwoord succesvol gewijzigd!");
-
 		}
 		else {
 			req.setAttribute("msg", "<div class='nosucces'>U heeft een verkeerd huidig wachtwoord ingevuld of de nieuwe wachtwoorden komen niet overeen");

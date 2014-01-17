@@ -24,13 +24,8 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	}
 	
 	@Override
-	public boolean updateGebruiker(Gebruiker g) {
-		if(isBezet(g.getGebruikersnaam()) == true) {
-			return false; //Niet toegevoegd
-		} else {
-			ofy.put(g);
-			return true; //Toegevoegd
-		}
+	public void updateGebruiker(Gebruiker g) {
+		ofy.put(g);
 	}
 	
 	@Override
