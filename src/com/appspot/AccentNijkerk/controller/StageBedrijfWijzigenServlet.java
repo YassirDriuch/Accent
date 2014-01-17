@@ -37,7 +37,7 @@ public class StageBedrijfWijzigenServlet extends HttpServlet {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} 
 		
-		if(!(gebruikerDao.isBezet(gebruikersnaam))){
+		if(!(gebruikerDao.isBezet(gebruikersnaam)) || gebruikersnaam.equals(g.getGebruikersnaam())){
 			g.setGebruikersnaam(gebruikersnaam);
 			((StageBedrijf) g).setNaam(naam);
 			((StageBedrijf)g).setAdres(adres);
@@ -47,15 +47,7 @@ public class StageBedrijfWijzigenServlet extends HttpServlet {
 			log.info("Stagebedrijf " + g.toString() + " gewijzigd");
 			req.setAttribute("msg", "<div class='succes'>Gebruiker is ge&uuml;pdatet");
 		}
-		else if(gebruikersnaam.equals(g.getGebruikersnaam())){
-			((StageBedrijf) g).setNaam(naam);
-			((StageBedrijf)g).setAdres(adres);
-			((StageBedrijf) g).setEmail(email);
-			((StageBedrijf) g).setTelnr(telnr);
-			gebruikerDao.updateGebruiker(g);
-			log.info("Stagebedrijf " + g.toString() + " gewijzigd");
-			req.setAttribute("msg", "<div class='succes'>Gebruiker is ge&uuml;pdatet");
-		}
+		
 		else {
 			req.setAttribute("msg", "<div class='nosucces'>Gebruikersnaam is al in gebruik");
 		}

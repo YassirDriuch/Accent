@@ -4,6 +4,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.LoginServlet</servlet-class>
@@ -12,6 +13,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>LogoutServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.LogoutServlet</servlet-class>
@@ -20,6 +22,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>CompetentieLijstToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.CompetentieLijstToevoegenServlet</servlet-class>
@@ -28,6 +31,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CompetentieLijstToevoegenServlet</servlet-name>
 		<url-pattern>/competentielijst-toevoegen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>LeerlingToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.LeerlingToevoegenServlet</servlet-class>
@@ -36,7 +40,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LeerlingToevoegenServlet</servlet-name>
 		<url-pattern>/leerling-toevoegen</url-pattern>
 	</servlet-mapping>
-		<servlet>
+	
+	<servlet>
 		<servlet-name>LeerlingWijzigenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.LeerlingWijzigenServlet</servlet-class>
 	</servlet>
@@ -44,6 +49,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LeerlingWijzigenServlet</servlet-name>
 		<url-pattern>/leerling-wijzigen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>DocentToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.DocentToevoegenServlet</servlet-class>
@@ -52,6 +58,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>DocentToevoegenServlet</servlet-name>
 		<url-pattern>/docent-toevoegen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>DocentWijzigenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.DocentWijzigenServlet</servlet-class>
@@ -60,6 +67,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>DocentWijzigenServlet</servlet-name>
 		<url-pattern>/docent-wijzigen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageBedrijfToevoegenServlet</servlet-class>
@@ -68,6 +76,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageBedrijfToevoegenServlet</servlet-name>
 		<url-pattern>/stagebedrijf-toevoegen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>StageBedrijfWijzigenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageBedrijfWijzigenServlet</servlet-class>
@@ -76,6 +85,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageBedrijfWijzigenServlet</servlet-name>
 		<url-pattern>/stagebedrijf-wijzigen</url-pattern>
 	</servlet-mapping>	
+	
 	<servlet>
 		<servlet-name>StageToevoegenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.StageToevoegenServlet</servlet-class>
@@ -84,6 +94,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>StageToevoegenServlet</servlet-name>
 		<url-pattern>/stage-toevoegen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>GebruikerVerwijderenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.GebruikerVerwijderenServlet</servlet-class>
@@ -94,6 +105,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+	<servlet-name>WachtwoordWijzigenServlet</servlet-name>
+	<servlet-class>com.appspot.AccentNijkerk.controller.WachtwoordWijzigenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WachtwoordWijzigenServlet</servlet-name>
+		<url-pattern>/wachtwoord-wijzigen</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
    		<servlet-name>LeerlingBezichtigenJSP</servlet-name>
     	<jsp-file>/leerling-bezichtigen.jsp</jsp-file>
 	</servlet>
@@ -101,6 +122,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>LeerlingBezichtigenJSP</servlet-name>
    		<url-pattern>/leerling-bezichtigen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
    		<servlet-name>LeerlingAanpassenJSP</servlet-name>
     	<jsp-file>/leerling-aanpassen.jsp</jsp-file>
@@ -109,6 +131,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>LeerlingAanpassenJSP</servlet-name>
    		<url-pattern>/leerling-aanpassen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
    		<servlet-name>DocentBezichtigenJSP</servlet-name>
     	<jsp-file>/docent-bezichtigen.jsp</jsp-file>
@@ -117,6 +140,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>DocentBezichtigenJSP</servlet-name>
    		<url-pattern>/docent-bezichtigen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
    		<servlet-name>DocentAanpassenJSP</servlet-name>
     	<jsp-file>/docent-aanpassen.jsp</jsp-file>
@@ -125,6 +149,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>DocentAanpassenJSP</servlet-name>
    		<url-pattern>/docent-aanpassen</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
    		<servlet-name>StageBedrijfBezichtigenJSP</servlet-name>
     	<jsp-file>/stagebedrijf-bezichtigen.jsp</jsp-file>
@@ -133,6 +158,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     	<servlet-name>StageBedrijfBezichtigenJSP</servlet-name>
    		<url-pattern>/stagebedrijf-bezichtigen</url-pattern>
 	</servlet-mapping>	
+	
 	<servlet>
    		<servlet-name>StageBedrijfAanpassenJSP</servlet-name>
     	<jsp-file>/stagebedrijf-aanpassen.jsp</jsp-file>
@@ -142,9 +168,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
    		<url-pattern>/stagebedrijf-aanpassen</url-pattern>
 	</servlet-mapping>
 	
+	
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

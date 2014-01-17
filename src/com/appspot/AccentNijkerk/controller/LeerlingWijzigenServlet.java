@@ -36,17 +36,8 @@ public class LeerlingWijzigenServlet extends HttpServlet {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} 
 		
-		if(!(gebruikerDao.isBezet(gebruikersnaam))){
+		if(!(gebruikerDao.isBezet(gebruikersnaam)) || gebruikersnaam.equals(g.getGebruikersnaam())){
 			g.setGebruikersnaam(gebruikersnaam);
-			((Leerling) g).setNaam(naam);
-			((Leerling) g).setEmail(email);
-			((Leerling) g).setLeerlingnr(leerlingnr);
-			gebruikerDao.updateGebruiker(g);
-			log.info("Leerling " + g.toString() + " gewijzigd");
-			req.setAttribute("msg", "<div class='succes'>Gebruiker is ge&uuml;pdatet");
-		}
-		
-		else if(gebruikersnaam.equals(g.getGebruikersnaam())){
 			((Leerling) g).setNaam(naam);
 			((Leerling) g).setEmail(email);
 			((Leerling) g).setLeerlingnr(leerlingnr);
