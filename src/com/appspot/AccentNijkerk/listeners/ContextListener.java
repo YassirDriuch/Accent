@@ -1,7 +1,5 @@
 package com.appspot.AccentNijkerk.listeners;
 
-import java.util.logging.Logger;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -23,7 +21,6 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
 public class ContextListener implements ServletContextListener {
-	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
 	Objectify ofy = ObjectifyService.begin();
 	
 	public void contextInitialized(ServletContextEvent sce) {
