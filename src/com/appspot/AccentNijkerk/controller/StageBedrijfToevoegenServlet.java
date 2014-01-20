@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 
 public class StageBedrijfToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
-	private static final Logger log = Logger.getLogger(LeerlingToevoegenServlet.class.getName());
+	private static final Logger log = Logger.getLogger(StageBedrijfToevoegenServlet.class.getName());
 	GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("stagebedrijf-toevoegen.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/stagebedrijf-toevoegen.jsp");
 		String gebruikersnaam = req.getParameter("gebruikersnaam");
 		String wachtwoord = req.getParameter("wachtwoord");
 		String naam = req.getParameter("naam");
 		String adres = req.getParameter("adres");		
 		String email = req.getParameter("email");
-		String tel = req.getParameter("tel");
+		String tel = req.getParameter("telnr");
 		
 
-		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || adres.equals("") || tel.equals("")) {
+		if( gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || adres.equals("") || tel.equals("")) {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} else {
 			Gebruiker g = (Gebruiker) new StageBedrijf(gebruikersnaam, wachtwoord, naam, adres, email, tel);		

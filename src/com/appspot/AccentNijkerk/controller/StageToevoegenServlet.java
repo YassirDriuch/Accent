@@ -42,7 +42,7 @@ public class StageToevoegenServlet extends HttpServlet {
 			}
 		}
 
-		if(leerlingId == null || bedrijfId == null || datumvan ==null || datumtot == null) {
+		if(leerlingId.equals("") || bedrijfId.equals("") || datumvan.equals("") || datumtot.equals("")) {
 			//Aanmaken mislukt
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 			rd = req.getRequestDispatcher("stage-toevoegen.jsp");

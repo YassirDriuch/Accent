@@ -48,17 +48,19 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
-            <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>        </div>
+            <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>        
+        </div>
         
         <!-- Overzicht -->
+        <div class="block">
         <% for(Stage s : alleStages) { %>
-	        	<div class="row">
-		        	<div class="image"><img src="images/list.png" width="20" height="24" /></div>
-		            <div class="description">Bedrijf  <%=gebruikerDao.getGebruiker(s.getBedrijfId()).getGebruikersnaam() %>voor <%=gebruikerDao.getGebruiker(s.getLeerlingId()).getGebruikersnaam()%>
-		            van <%=sdf.format(s.getDatumVan())%> tot <%=sdf.format(s.getDatumTot()) %>
-		        </div>
-	        </a>
+	    <div class="row">
+		<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+		<div class="description">Bedrijf  <%=gebruikerDao.getGebruiker(s.getBedrijfId()).getGebruikersnaam() %>voor <%=gebruikerDao.getGebruiker(s.getLeerlingId()).getGebruikersnaam()%>
+		            van <%=sdf.format(s.getDatumVan())%> tot <%=sdf.format(s.getDatumTot()) %></div>
+	    </div>
 		<% } %>
+    </div>
     </div>
 </div>
 </body>
