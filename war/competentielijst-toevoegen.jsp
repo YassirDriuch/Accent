@@ -18,6 +18,7 @@ if(!(gebruikerObject instanceof Docent)){
 
 Objectify ofy = ObjectifyService.begin();
 Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
+Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 %>
 
@@ -58,9 +59,15 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 		    	<label class="form_label" for="leerling">Leerling</label>
 	            <select class="form_input rounded-small" name="leerling">
 	                <% for(Gebruiker g : alleLeerlingen) { %>
-	                <option value="<%=g.getId()%>"><%=g.getGebruikersnaam()%></option>
+	                	<option value="<%=((Leerling)g).getId()%>"><%=((Leerling)g).getNaam()%></option>
 					<% } %>
 	            </select>
+                <label class="form_label" for="bedrijf">Bedrijf</label>
+                <select class="form_input rounded-small" name="bedrijf">
+                	<% for(Gebruiker h : alleStageBedrijven) { %>
+                    	<option value="<%=((StageBedrijf)h).getId()%>"><%=((StageBedrijf)h).getNaam()%></option>
+                    <% } %>
+                </select>
 		        <label class="form_label" for="competenties">Competenties</label>
 	            <% for(Competentie c : alleCompetenties) { %>
 	                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>

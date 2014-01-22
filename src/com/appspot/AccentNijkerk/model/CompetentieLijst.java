@@ -9,12 +9,14 @@ import javax.persistence.Id;
 public class CompetentieLijst implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id Long id;
-	private long leerlingId;
+	private Long leerlingId;
+	private Long bedrijfId;
 	private String aanmaakDatum;
 	private boolean verstuurd;
 	@Embedded private ArrayList<Competentie> competenties = new ArrayList<Competentie>();
 	
-	public CompetentieLijst(Long leerlingId, String aanmaakDatum, boolean verstuurd) {
+	public CompetentieLijst(Long bedrijfId, Long leerlingId, String aanmaakDatum, boolean verstuurd) {
+		this.bedrijfId = bedrijfId;
 		this.leerlingId = leerlingId;
 		this.aanmaakDatum = aanmaakDatum;
 		this.verstuurd = verstuurd;
@@ -37,6 +39,10 @@ public class CompetentieLijst implements Serializable {
 		return leerlingId;
 	}
 	
+	public Long getBedrijfId(){
+		return bedrijfId;
+	}
+	
 	public String getAanmaakDatum() {
 		return aanmaakDatum;
 	}
@@ -52,6 +58,10 @@ public class CompetentieLijst implements Serializable {
 	//Setters
 	public void setLeerlingId(Long leerlingId) {
 		this.leerlingId = leerlingId;
+	}
+	
+	public void setBedrijfId(Long bedrijfId) {
+		this.bedrijfId = bedrijfId;
 	}
 	
 	public void setAanmaakDataum(String aanmaakDatum) {

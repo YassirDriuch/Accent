@@ -25,6 +25,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		Long leerlingId = Long.parseLong(req.getParameter("leerling"));
+		Long bedrijfId = Long.parseLong(req.getParameter("bedrijf"));
 		String[] competenties = req.getParameterValues("competenties");
 
 		if(leerlingId == null || competenties == null) {
@@ -38,7 +39,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 			String today = sdf.format(cal.getTime());
 				
 			//Nieuwe competentielijst aanmaken
-			CompetentieLijst cL = new CompetentieLijst(leerlingId, today, false);
+			CompetentieLijst cL = new CompetentieLijst(bedrijfId, leerlingId, today, false);
 			CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
 			
 				
