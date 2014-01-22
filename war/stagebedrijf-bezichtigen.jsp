@@ -1,9 +1,25 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
 <%
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
+GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 
 if(gebruikerObject == null) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+	rd.forward(request, response);
+	return;
+}
+
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
+
+String stringId = request.getParameter("id");
+Long id = Long.parseLong(stringId);
+Gebruiker gevraagd = gebruikerDao.getGebruiker(id);
+if(gevraagd == null){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
 }
@@ -27,12 +43,12 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
+    	<h1>Stagebedrijven &raquo; Bekijken</h1>
     	<div id="submenu">
-        	<a href="wachtwoord-aanpassen.jsp" class="button rounded-small white-gradient">Wachtwoord wijzigen</a>
+            <a href="/stagebedrijf-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a>
         </div>
-    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-    	<h1>Accountgegevens</h1>
-        <div class="block" style="line-height: 140%;"><%=gebruikerObject.toString()%></div>
+        <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
+        <div class="block" style="line-height: 140%;"><%=gevraagd.toString()%></div>
        
     </div>
 </div>

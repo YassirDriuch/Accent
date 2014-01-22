@@ -7,12 +7,24 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+
 if(!(gebruikerObject instanceof Docent)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
 }
+
+GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+String stringId = request.getParameter("id");
+Long id = Long.parseLong(stringId);
+Gebruiker gevraagd = gebruikerDao.getGebruiker(id);
+if(gevraagd == null){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 %>
+
 
 <!DOCTYPE html>
 <head>
@@ -32,33 +44,25 @@ if(!(gebruikerObject instanceof Docent)){
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Stagebedrijven &raquo; Toevoegen</h1>
+    	<h1>Docenten &raquo; Wijzigen</h1>
     	
-    	<!-- Submenu -->
-        <div id="submenu">
-        	<a href="stagebedrijf-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="stagebedrijf-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            <a href="stagebedrijf-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
-        </div>
-        
-        <!-- Toevoegen -->
     	<div class="block">
 	    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-	    	<form method="post" action="/stagebedrijf-toevoegen">
+            <h2 style="color:#F00">LET OP!!</h2>
+            <h3>U wilt de volgende docent wijzigen</h3>
+            <div class="block" style="line-height: 140%;">Gebruikersnaam: <%=gevraagd.getGebruikersnaam()%><br /><%=gevraagd.toString()%></div>
+	    	<form method="post" action="/docent-wijzigen?id=<%=id%>">
 	    	<div style="float: left;"> 
+            	<h3>Vul elk veld in</h3>
 	    		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
 	    		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
-	    		<label class="form_label" for="wachtwoord">Wachtwoord</label>
-	    		<input class="form_input rounded-small" type="password" name="wachtwoord" />
 	    		<label class="form_label" for="naam">Naam</label>
 	    		<input class="form_input rounded-small" type="text" name="naam" />
-	    		<label class="form_label" for="adres">Adres</label>
-	    		<input class="form_input rounded-small" type="text" name="adres" />
+                <label class="form_label" for="adres">Adres</label>
+	    		<input class="form_input rounded-small" type="text" name="adres" /><br />
 	    		<label class="form_label" for="email">E-Mailadres</label>
 	    		<input class="form_input rounded-small" type="email" name="email" />
-	    		<label class="form_label" for="telnr">Telefoonnummer</label>
-	    		<input class="form_input rounded-small" type="text" name="telnr" />
-	    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+	    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Wijzigen" />
 			</div>
 			</form>
 		</div>

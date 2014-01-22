@@ -24,7 +24,7 @@ public class LeerlingToevoegenServlet extends HttpServlet {
 		String email = req.getParameter("email");		
 		String leerlingnr = req.getParameter("leerlingnr");
 		
-		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("")) {
+		if(gebruikersnaam.equals("") || wachtwoord.equals("") || naam.equals("") || email.equals("") || leerlingnr.equals("")) {
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 		} else {
 			Gebruiker g = (Gebruiker) new Leerling(gebruikersnaam, wachtwoord, naam, email, leerlingnr);

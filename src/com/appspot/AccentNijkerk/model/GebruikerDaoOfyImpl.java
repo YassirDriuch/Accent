@@ -52,14 +52,14 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	public Gebruiker getGebruiker(Long id) {
 		Gebruiker result = null;
 		Gebruiker leerling = (Gebruiker) ofy.find(Leerling.class, id);
-		Gebruiker medewerker = (Gebruiker) ofy.find(Medewerker.class, id);
+		Gebruiker docent = (Gebruiker) ofy.find(Docent.class, id);
 		Gebruiker stagebedrijf = (Gebruiker)ofy.find(StageBedrijf.class, id);
 
 		//Gebruiker instantie returnen
 		if(leerling != null) {
 			result = leerling;
-		} else if(medewerker != null) {
-			result = medewerker;
+		} else if(docent != null) {
+			result = docent;
 		} else if(stagebedrijf != null) {
 			result = stagebedrijf;
 		}
@@ -71,14 +71,14 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	public ArrayList<Gebruiker> getAlleGebruikers() {
 		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
 		Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
-		Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
+		Query<Docent> alleDocenten = ofy.query(Docent.class);
 		Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 		
 		for(Gebruiker g : alleLeerlingen) {
 			alleGebruikers.add(g);
 		}
 		
-		for(Gebruiker g : alleMedewerkers) {
+		for(Gebruiker g : alleDocenten) {
 			alleGebruikers.add(g);
 		}
 		
@@ -102,9 +102,9 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	}
 	
 	@Override
-	public ArrayList<Gebruiker> getAlleMedewerkers() {
+	public ArrayList<Gebruiker> getAlleDocenten() {
 		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
-		Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
+		Query<Docent> alleMedewerkers = ofy.query(Docent.class);
 		
 		for(Gebruiker g : alleMedewerkers) {
 			alleGebruikers.add(g);

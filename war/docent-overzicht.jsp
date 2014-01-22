@@ -11,8 +11,13 @@ if(gebruikerObject == null) {
 	return;
 }
 
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 Objectify ofy = ObjectifyService.begin();
-Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
+Query<Docent> alleDocenten = ofy.query(Docent.class);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -34,20 +39,22 @@ Query<Medewerker> alleMedewerkers = ofy.query(Medewerker.class);
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Medewerkers &raquo; Overzicht</h1>
+    	<h1>Docenten &raquo; Overzicht</h1>
 
 		<!-- Submenu -->
         <div id="submenu">
-        	<a href="medewerker-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="medewerker-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            <a href="medewerker-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+        	<a href="docent-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
+            <a href="docent-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            <a href="docent-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
         <!-- Overzicht -->
-        <% for(Medewerker m : alleMedewerkers) { %>
+        <% for(Docent d : alleDocenten) { %>
         	<div class="row">
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><%=m.getGebruikersnaam()%></div>
+	            <div class="description"><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></div>
+                <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=d.getId()%>" onclick="return confirm('Weet u zeker dat u docent &quot;<%= d.getNaam() %>&quot; wilt verwijderen?')"> 
+                <img src="images/delete.png" width="24" height="24" /></a></div>
 	        </div>
 		<% } %>
     </div>

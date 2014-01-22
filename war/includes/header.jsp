@@ -23,9 +23,10 @@ if(gebruikerObject == null) {
 		<% } else if (gebruikerObject instanceof StageBedrijf) { %>
 			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
 			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
-		<% } else if (gebruikerObject instanceof Medewerker) { %>
+		<% } else if (gebruikerObject instanceof Docent) { %>
 			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiares</a>
 			<a href="stagebedrijf-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
+			<a href="docent-overzicht.jsp" class="menu-button white-gradient rounded-small">Docenten</a>
 			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
 			<a href="stage-toevoegen.jsp" class="menu-button white-gradient rounded-small">Stages</a>
 		<% } %>

@@ -10,6 +10,11 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
+if(!(gebruikerObject instanceof Docent)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
 
 Objectify ofy = ObjectifyService.begin();
 Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
@@ -40,7 +45,7 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
         <div id="submenu">
         	<a href="competentielijst-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <a href="competentielijst-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
-            <% if (gebruikerObject instanceof Medewerker) { %>
+            <% if (gebruikerObject instanceof Docent) { %>
             	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
             	<a href="competentie-overzicht.jsp" class="button rounded-small white-gradient">Compenties</a>
             <% } %>

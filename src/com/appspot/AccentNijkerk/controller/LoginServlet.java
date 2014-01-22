@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.appspot.AccentNijkerk.model.Docent;
 import com.appspot.AccentNijkerk.model.Gebruiker;
 import com.appspot.AccentNijkerk.model.Leerling;
-import com.appspot.AccentNijkerk.model.Medewerker;
 import com.appspot.AccentNijkerk.model.StageBedrijf;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
@@ -67,8 +67,8 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		//Medewerkers doorlopen
-		Query<Medewerker> medewerkerQ = ofy.query(Medewerker.class);
-		for(Medewerker m : medewerkerQ) {
+		Query<Docent> docentQ = ofy.query(Docent.class);
+		for(Docent m : docentQ) {
 			if (m.getGebruikersnaam().toLowerCase().equals(gebr) && m.getWachtwoord().equals(ww)) {
 				return (Gebruiker) m;
 			}
