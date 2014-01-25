@@ -5,7 +5,8 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.appspot.AccentNijkerk.controller.GebruikerVerwijderenServlet;
+import com.appspot.AccentNijkerk.model.Antwoord;
+import com.appspot.AccentNijkerk.model.BeoordelingsLijst;
 import com.appspot.AccentNijkerk.model.Competentie;
 import com.appspot.AccentNijkerk.model.CompetentieDao;
 import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
@@ -83,5 +84,7 @@ public class ContextListener implements ServletContextListener {
 		ObjectifyService.register(CompetentieLijst.class);
 		ObjectifyService.register(Vraag.class);
 		ObjectifyService.register(Stage.class);
+		ObjectifyService.register(Antwoord.class);
+		ObjectifyService.register(BeoordelingsLijst.class);
 	}
 }
