@@ -1,8 +1,11 @@
 package com.appspot.AccentNijkerk.listeners;
 
+import java.util.logging.Logger;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.appspot.AccentNijkerk.controller.GebruikerVerwijderenServlet;
 import com.appspot.AccentNijkerk.model.Competentie;
 import com.appspot.AccentNijkerk.model.CompetentieDao;
 import com.appspot.AccentNijkerk.model.CompetentieDaoOfyImpl;
@@ -22,6 +25,7 @@ import com.googlecode.objectify.ObjectifyService;
 
 public class ContextListener implements ServletContextListener {
 	Objectify ofy = ObjectifyService.begin();
+	private static final Logger log = Logger.getLogger(ContextListener.class.getName());
 	
 	public void contextInitialized(ServletContextEvent sce) {
 		initObjectifyClasses();
