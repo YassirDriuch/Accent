@@ -64,7 +64,7 @@ public class CompetentieLijst implements Serializable {
 		this.bedrijfId = bedrijfId;
 	}
 	
-	public void setAanmaakDataum(String aanmaakDatum) {
+	public void setAanmaakDatum(String aanmaakDatum) {
 		this.aanmaakDatum = aanmaakDatum;
 	}
 	

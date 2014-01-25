@@ -47,7 +47,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         </div>
         
         <!-- Overzicht -->
-<<<<<<< HEAD
+
         <% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
         	<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
 	        	<div class="row">
@@ -58,7 +58,6 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		        </div>
 	        </a>
 		<% } %>
-=======
         <% if(gebruikerObject instanceof Docent) { %>
 			<% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
                 <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
@@ -101,7 +100,6 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
                 <% } %>
             <% } %>
         <% } %>
->>>>>>> a278c36f5873fad7eb05db1b0f3ad93379acecea
     </div>
 </div>
 </body>
