@@ -124,4 +124,19 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 
 		return alleGebruikers;
 	}
+
+	@Override
+	public Gebruiker zoekGebruiker(String n) {
+		Gebruiker gl = null;
+		Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
+		CharSequence cs1 = n.toLowerCase();
+		for(Leerling l: alleLeerlingen){
+			if(l.getNaam().toLowerCase().contains(cs1)){
+				Long leerlingid = l.getId();
+				gl = getGebruiker(leerlingid);
+			}
+			
+		}
+		return gl;
+	}
 }
