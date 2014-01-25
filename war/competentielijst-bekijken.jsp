@@ -41,7 +41,17 @@ Query<Vraag> alleVragen = ofy.query(Vraag.class);
 		    <% for(Competentie c : cL.getAlleCompetenties()) {
 		    	for(Vraag v : alleVragen) {
 		    		if(v.getCompetentieId().equals(c.getId())) {
-		    			out.println(v.getVraag() + "<br />");
+		    %>
+		    <div class="row">
+		    	<div class="description"><%=v.getVraag()%></div>
+		    	<div class="description" style="float: right;">
+			    	<input type="radio" name="<%=v.getId()%>" value="1">
+				    <input type="radio" name="<%=v.getId()%>" value="2">
+				    <input type="radio" name="<%=v.getId()%>" value="3">
+				    <input type="radio" name="<%=v.getId()%>" value="4">
+				</div>
+			</div>
+		    <%
 		    		}
 		    	}
 		    } %>

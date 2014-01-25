@@ -1,7 +1,5 @@
 package com.appspot.AccentNijkerk.model;
 
-import java.util.ArrayList;
-
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;
 
@@ -26,11 +24,6 @@ public class AntwoordDaoOfyImpl implements AntwoordDao{
 
 	public Antwoord getAntwoord(Long id){
 		return ofy.find(Antwoord.class, id);
-	}
-	
-	public ArrayList getAntwoordenCP(Long competentieLijstId){
-		ArrayList<Antwoord> alleAntwoordenCP = new ArrayList<Antwoord>();
-		return null;
 	}
 }
 
