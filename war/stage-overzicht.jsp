@@ -21,6 +21,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
 Objectify ofy = ObjectifyService.begin();
 Query<Stage> alleStages = ofy.query(Stage.class);
+Query<StageBedrijf> alleBedrijven = ofy.query(StageBedrijf.class);
+Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 %>
 
@@ -54,12 +56,34 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         <!-- Overzicht -->
         <div class="block">
         <% for(Stage s : alleStages) { %>
-	    <div class="row">
-		<div class="image"><img src="images/list.png" width="20" height="24" /></div>
-		<div class="description">Bedrijf  <%=gebruikerDao.getGebruiker(s.getBedrijfId()).getGebruikersnaam() %>voor <%=gebruikerDao.getGebruiker(s.getLeerlingId()).getGebruikersnaam()%>
-		            van <%=sdf.format(s.getDatumVan())%> tot <%=sdf.format(s.getDatumTot()) %></div>
-	    </div>
-		<% } %>
+        	<% for(StageBedrijf b : alleBedrijven) { %>
+        		<% for(Leerling l : alleLeerlingen) { %>
+        		<% if(s.getBedrijfId().equals(b.getId()) && s.getLeerlingId().equals(l.getId())){%>
+        		<table cellspacing="0" cellpadding="0" class="rounded-small">
+			<thead>
+				<tr>
+					<th width="23%">Bedrijf</th>
+					<th width="23%">Leerling</th>
+					<th width="23%">Datum van</th>
+					<th width="23%"> Datum tot</th>
+					<th width="8%">&nbsp;</th>
+				</tr>
+				<tbody>
+				<tr>
+				<td><a href="/stagebedrijf-bezichtigen?id=<%=b.getId()%>"><%=b.getNaam()%></a></td>
+				<td><a href="/leerling-bezichtigen?id=<%=l.getId()%>"><%=l.getNaam()%></a></td>
+				<td><%=sdf.format(s.getDatumVan())%></td>
+				<td><%=sdf.format(s.getDatumTot()) %></td>
+				<td>
+						<a href="" onclick="return confirm('Weet u zeker dat u de Stage van &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
+                	</td>
+				</tr>
+		<% } 
+		}
+		}
+		}%>
+			</tbody>
+				</table>
     </div>
     </div>
 </div>

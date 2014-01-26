@@ -18,10 +18,9 @@ public class StageDaoOfyImpl implements StageDao {
 	}
 
 	@Override
-	public Stage getStage(Leerling l, Date datumvan, Date datumtot,
-			StageBedrijf sb) {
-		// TODO Auto-generated method stub
-		return null;
+	public Stage getStage(Long id) {
+		Stage result = ofy.get(Stage.class, id);
+		return result;
 	}
 
 	@Override
