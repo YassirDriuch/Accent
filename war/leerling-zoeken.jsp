@@ -35,7 +35,6 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
     <!-- Content !-->
     <div id="content">
     	<h1>Leerlingen &raquo; Zoeken</h1>
-    	
     	<!-- Subemenu -->
         <div id="submenu">
         	<a href="leerling-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
@@ -44,7 +43,13 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
         </div>
         
 		<!-- Zoeken -->
-        <div class="block">Zoeken...</div>
+        <div class="block">
+        <form method="GET" action="/zoekLeerling">
+        <label class="form_label" for="naam">Naam</label><br></br>
+        <input class="form_input rounded-small" type="text" name="naam" />
+        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="zoeken" />
+        </form>
+        </div>
     </div>
 </div>
 </body>
