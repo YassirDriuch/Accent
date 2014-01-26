@@ -49,15 +49,30 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
         </div>
         
         <!-- Overzicht -->
+        <table cellspacing="0" cellpadding="0" class="rounded-small">
+			<thead>
+				<tr>
+					<th width="92%">Docent</th>
+					<th width="8%">&nbsp;</th>
+				</tr>
+			</thead>
         <% for(Docent d : alleDocenten) { %>
-        	<div class="row">
-	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></div>
-                <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=d.getId()%>" onclick="return confirm('Weet u zeker dat u docent &quot;<%= d.getNaam() %>&quot; wilt verwijderen?')"> 
-                <img src="images/delete.png"/></a></div>
-	        </div>
+        <% if(gebruikerObject instanceof Docent) {%>
+        
+			<tbody>
+        
+        <tbody>
+				<tr>
+					<td><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></td>
+					<td>
+						<a href="/deleteUser?id=<%=d.getId()%>" onclick="return confirm('Weet u zeker dat u de Docent &quot;<%= d.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
+                	</td>
+				</tr>
+			<% }else { %>
+        <td><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></td>
 		<% } %>
-    </div>
-</div>
+		<% } %>
+    </tbody>
+    </table>
 </body>
 </html>

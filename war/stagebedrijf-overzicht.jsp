@@ -49,16 +49,30 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
         </div>
         
         <!-- Overzicht -->
-        <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-        <% for(StageBedrijf sB : alleStageBedrijven) { %>
-        	<div class="row">
-	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
-	            <div class="description"><a href="/stagebedrijf-bezichtigen?id=<%=sB.getId()%>"><%=sB.getNaam()%></a></div>
-                <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=sB.getId()%>" onclick="return confirm('Weet u zeker dat u bedrijf &quot;<%= sB.getNaam() %>&quot; wilt verwijderen?')"> 
-                <img src="images/delete.png" /></a></div>
-	        </div>
+         <table cellspacing="0" cellpadding="0" class="rounded-small">
+			<thead>
+				<tr>
+					<th width="92%">Bedrijf</th>
+					<th width="8%">&nbsp;</th>
+				</tr>
+			</thead>
+        <% for(StageBedrijf b : alleStageBedrijven) { %>
+        <% if(gebruikerObject instanceof Docent) {%>
+      
+			<tbody>
+        <tbody>
+				<tr>
+					<td><a href="/stagebedrijf-bezichtigen?id=<%=b.getId()%>"><%=b.getNaam()%></a></td>
+					<td>
+						<a href="/deleteUser?id=<%=b.getId()%>" onclick="return confirm('Weet u zeker dat u het bedrijf &quot;<%= b.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/>
+                	</td>
+				</tr>
+			<% }else { %>
+        <td><a href="/stagebedrijf-bezichtigen?id=<%=b.getId()%>"><%=b.getNaam()%></a></td>
 		<% } %>
-    </div>
+		<% } %>
+    </tbody>
+    </table>
 </div>
 </body>
 </html>
