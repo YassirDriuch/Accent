@@ -55,11 +55,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         
         <!-- Overzicht -->
         <div class="block">
-        <% for(Stage s : alleStages) { %>
-        	<% for(StageBedrijf b : alleBedrijven) { %>
-        		<% for(Leerling l : alleLeerlingen) { %>
-        		<% if(s.getBedrijfId().equals(b.getId()) && s.getLeerlingId().equals(l.getId())){%>
-        		<table cellspacing="0" cellpadding="0" class="rounded-small">
+        <table cellspacing="0" cellpadding="0" class="rounded-small">
 			<thead>
 				<tr>
 					<th width="23%">Bedrijf</th>
@@ -67,6 +63,10 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 					<th width="23%">Datum van</th>
 					<th width="23%"> Datum tot</th>
 					<th width="8%">&nbsp;</th>
+        <% for(Stage s : alleStages) { %>
+        	<% for(StageBedrijf b : alleBedrijven) { %>
+        		<% for(Leerling l : alleLeerlingen) { %>
+        		<% if(s.getBedrijfId().equals(b.getId()) && s.getLeerlingId().equals(l.getId())){%>
 				</tr>
 				<tbody>
 				<tr>
