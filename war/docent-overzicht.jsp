@@ -54,7 +54,7 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
 	            <div class="description"><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></div>
                 <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=d.getId()%>" onclick="return confirm('Weet u zeker dat u docent &quot;<%= d.getNaam() %>&quot; wilt verwijderen?')"> 
-                <img src="images/delete.png" width="24" height="24" /></a></div>
+                <img src="images/delete.png"/></a></div>
 	        </div>
 		<% } %>
     </div>

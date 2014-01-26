@@ -37,25 +37,33 @@ Query<Vraag> alleVragen = ofy.query(Vraag.class);
     <!-- Content !-->
     <div id="content">
     	<h1>Competentielijst voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></h1>
-        <div class="block">
-		    <% for(Competentie c : cL.getAlleCompetenties()) {
-		    	for(Vraag v : alleVragen) {
-		    		if(v.getCompetentieId().equals(c.getId())) {
-		    %>
-		    <div class="row">
-		    	<div class="description"><%=v.getVraag()%></div>
-		    	<div class="description" style="float: right;">
-			    	<input type="radio" name="<%=v.getId()%>" value="1">
-				    <input type="radio" name="<%=v.getId()%>" value="2">
-				    <input type="radio" name="<%=v.getId()%>" value="3">
-				    <input type="radio" name="<%=v.getId()%>" value="4">
-				</div>
-			</div>
-		    <%
-		    		}
-		    	}
-		    } %>
-	    </div>
+		<% for(Competentie c : cL.getAlleCompetenties()) { %>
+		<table cellspacing="0" cellpadding="0" class="rounded-small">
+			<thead>
+				<tr>
+					<th width="76%"><%=c.getCompetentie()%></th>
+					<th width="6%">1</th>
+					<th width="6%">2</th>
+					<th width="6%">3</th>
+					<th width="6%">4</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(Vraag v : alleVragen) {
+		    		if(v.getCompetentieId().equals(c.getId())) { %>
+				<tr>
+					<td><%=v.getVraag()%></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="1"></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="2"></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="3"></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="4"></td>
+				</tr>
+			<% 	} 
+			} %>
+			</tbody>
+		</table>
+		<% } %>
+		<a href="" class="form_submit dark-gradient rounded-small" style="display: block; margin-top: 15px;">Invullen voltooien</a>
     </div>
 </div>
 </body>

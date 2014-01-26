@@ -47,13 +47,24 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         </div>
         
         <!-- Overzicht -->
-        <% for(Competentie c : alleCompetenties) { %>
-        	<a href="" style="display: block;">
-	        	<div class="row">
-		            <div class="description"><%=c.getCompetentie()%></div>
-		        </div>
-	        </a>
-		<% } %>
+        <table cellspacing="0" cellpadding="0" class="rounded-small">
+			<thead>
+				<tr>
+					<th width="92%">Competentie</th>
+					<th width="8%">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(Competentie c : alleCompetenties) { %>
+				<tr>
+					<td><%=c.getCompetentie()%></td>
+					<td>
+						<a href="" onclick="return confirm('Weet u zeker dat u de competentie &quot;<%= c.getCompetentie() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
+                	</td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
     </div>
 </div>
 </body>

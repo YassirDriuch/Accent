@@ -55,7 +55,7 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 	        	<div class="image"><img src="images/user.png" width="20" height="24" /></div>
 	            <div class="description"><a href="/stagebedrijf-bezichtigen?id=<%=sB.getId()%>"><%=sB.getNaam()%></a></div>
                 <div class="image" style="float:right; margin-right:5px;"><a href="/deleteUser?id=<%=sB.getId()%>" onclick="return confirm('Weet u zeker dat u bedrijf &quot;<%= sB.getNaam() %>&quot; wilt verwijderen?')"> 
-                <img src="images/delete.png" width="24" height="24" /></a></div>
+                <img src="images/delete.png" /></a></div>
 	        </div>
 		<% } %>
     </div>
