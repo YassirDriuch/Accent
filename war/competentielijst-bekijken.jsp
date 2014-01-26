@@ -53,18 +53,38 @@ Query<Vraag> alleVragen = ofy.query(Vraag.class);
 		    		if(v.getCompetentieId().equals(c.getId())) { %>
 				<tr>
 					<td><%=v.getVraag()%></td>
-					<td><input type="radio" name="<%=v.getId()%>" value="1"></td>
-					<td><input type="radio" name="<%=v.getId()%>" value="2"></td>
-					<td><input type="radio" name="<%=v.getId()%>" value="3"></td>
-					<td><input type="radio" name="<%=v.getId()%>" value="4"></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="1" /></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="2" /></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="3" /></td>
+					<td><input type="radio" name="<%=v.getId()%>" value="4" /></td>
 				</tr>
 			<% 	} 
 			} %>
 			</tbody>
 		</table>
 		<% } %>
-		<a href="" class="form_submit dark-gradient rounded-small" style="display: block; margin-top: 15px;">Invullen voltooien</a>
+		<a href="" class="submit-button white-gradient rounded-small">Invullen voltooien</a>
     </div>
 </div>
+
+<script type="text/javascript">
+$("a.submit-button").click(function(e) {
+	e.preventDefault();
+	var submitme = true;
+	
+    $(':radio').each(function() {
+        nam = $(this).attr('name');
+        if (submitme && !$(':radio[name="'+nam+'"]:checked').length) {
+            alert('Niet alle vragen zijn beantwoord');
+            submitme = false;
+            $(':radio[name="'+nam+'"]').parents('td').parents('tr').addClass('row-error');
+        }
+    });
+    
+    if(submitme) {
+    	alert("Goed");
+    } 
+});
+</script>
 </body>
 </html>
