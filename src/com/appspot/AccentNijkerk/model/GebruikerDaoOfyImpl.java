@@ -30,6 +30,20 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 	
 	@Override
 	public void verwijderGebruiker(Gebruiker g) {
+		Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
+		Query<Stage> alleStages = ofy.query(Stage.class);
+		for(CompetentieLijst cL : alleCompetentieLijsten){
+			if(g instanceof Leerling && cL.getLeerlingId() == g.getId() || g instanceof StageBedrijf && cL.getBedrijfId() == g.getId()){
+					System.out.println(cL);
+					ofy.delete(cL);
+			}
+		}
+		for(Stage s : alleStages){
+			if(g instanceof Leerling && s.getLeerlingId() == g.getId() || g instanceof StageBedrijf && s.getBedrijfId() == g.getId()){
+				System.out.println(s);
+				ofy.delete(s);
+			}
+		}
 		ofy.delete(g);
 	}
 	
