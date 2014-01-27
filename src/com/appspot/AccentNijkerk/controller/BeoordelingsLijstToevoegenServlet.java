@@ -14,6 +14,14 @@ import com.appspot.AccentNijkerk.model.Antwoord;
 import com.appspot.AccentNijkerk.model.BeoordelingsLijst;
 import com.appspot.AccentNijkerk.model.BeoordelingsLijstDao;
 import com.appspot.AccentNijkerk.model.BeoordelingsLijstDaoOfyImpl;
+import com.appspot.AccentNijkerk.model.CompetentieLijst;
+import com.appspot.AccentNijkerk.model.CompetentieLijstDao;
+import com.appspot.AccentNijkerk.model.CompetentieLijstDaoOfyImpl;
+import com.appspot.AccentNijkerk.model.Gebruiker;
+import com.appspot.AccentNijkerk.model.GebruikerDao;
+import com.appspot.AccentNijkerk.model.GebruikerDaoOfyImpl;
+import com.appspot.AccentNijkerk.model.Leerling;
+import com.appspot.AccentNijkerk.model.StageBedrijf;
 import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
@@ -28,14 +36,17 @@ public class BeoordelingsLijstToevoegenServlet extends HttpServlet {
 		Long competentieLijstId = Long.parseLong(req.getParameter("competentieLijstId"));
 		
 		try {
+			//Parsen naar JSON
 			JSONArray jsonArray = new JSONArray(alleAntwoorden);
 			
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 			String today = sdf.format(cal.getTime());
 			
-			BeoordelingsLijst bL = new BeoordelingsLijst(gebruikerId, competentieLijstId, today);
+			//Beoordelingslijst aanmaken
+			BeoordelingsLijst bL = new BeoordelingsLijst(competentieLijstId, gebruikerId, today);
 			
+			//Antwoorden doorlopen
 			for(int i=0; i<jsonArray.length(); i++) {
 				JSONObject item = jsonArray.getJSONObject(i);
 				
@@ -46,8 +57,25 @@ public class BeoordelingsLijstToevoegenServlet extends HttpServlet {
 			    bL.voegAntwoordToe(a);
 			}
 			
+			//Antwoorden toevoegenn
 			BeoordelingsLijstDao beoordelingsLijstDao = new BeoordelingsLijstDaoOfyImpl();
 			beoordelingsLijstDao.voegBeoordelingsLijstToe(bL);
+			
+			//CompetentieLijst en gebruiker ophalen
+			CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
+			GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+			
+			CompetentieLijst cL = competentieLijstDao.getCompetentieLijst(competentieLijstId);
+			Gebruiker g = gebruikerDao.getGebruiker(gebruikerId);
+			
+			if(g instanceof Leerling) {
+				cL.setLeerlingIngevuld(true);
+			} else if(g instanceof StageBedrijf) {
+				cL.setBedrijfIngevuld(true);
+			}
+			
+			//Competentielijst updaten
+			competentieLijstDao.updateCompetentieLijst(cL);
 			
 			log.info("Beoordelingslijst toegevoegd door: " + gebruikerId);
 		} catch (JSONException e) {

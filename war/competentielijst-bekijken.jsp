@@ -101,7 +101,7 @@ function submitList() {
 	    type: "POST",
 	    data: { "gebruikerId": <% out.print(gebruikerObject.getId()); %>, "competentieLijstId": <% out.print(cL.getId()); %>, "alleAntwoorden": JSON.stringify(answers) },
 	    success: function() {
-	    	$(".show-notice").hide().html("<div class='succes'>Competentielijst succesvol aangemaakt</div>").fadeIn();
+	    	$(".show-notice").hide().html("<div class='succes'>De competentielijst is succesvol ingevuld en verwerkt</div>").fadeIn();
 	    }
 	});
 }

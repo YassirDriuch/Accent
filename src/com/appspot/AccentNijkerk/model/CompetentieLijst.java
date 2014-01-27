@@ -12,14 +12,15 @@ public class CompetentieLijst implements Serializable {
 	private Long leerlingId;
 	private Long bedrijfId;
 	private String aanmaakDatum;
-	private boolean verstuurd;
+	private boolean bedrijfIngevuld, leerlingIngevuld;
 	@Embedded private ArrayList<Competentie> competenties = new ArrayList<Competentie>();
 	
-	public CompetentieLijst(Long bedrijfId, Long leerlingId, String aanmaakDatum, boolean verstuurd) {
+	public CompetentieLijst(Long bedrijfId, Long leerlingId, String aanmaakDatum, boolean bedrijfIngevuld, boolean leerlingIngevuld) {
 		this.bedrijfId = bedrijfId;
 		this.leerlingId = leerlingId;
 		this.aanmaakDatum = aanmaakDatum;
-		this.verstuurd = verstuurd;
+		this.bedrijfIngevuld = bedrijfIngevuld;
+		this.leerlingIngevuld = leerlingIngevuld;
 	}
 	
 	public CompetentieLijst() {
@@ -47,8 +48,12 @@ public class CompetentieLijst implements Serializable {
 		return aanmaakDatum;
 	}
 	
-	public boolean isVerstuurd() {
-		return verstuurd;
+	public boolean isBedrijfIngevuld() {
+		return bedrijfIngevuld;
+	}
+	
+	public boolean isLeerlingIngevuld() {
+		return leerlingIngevuld;
 	}
 	
 	public ArrayList<Competentie> getAlleCompetenties(){
@@ -68,7 +73,11 @@ public class CompetentieLijst implements Serializable {
 		this.aanmaakDatum = aanmaakDatum;
 	}
 	
-	public void setVerstuurd(boolean verstuurd) {
-		this.verstuurd = verstuurd;
+	public void setBedrijfIngevuld(boolean bedrijfIngevuld) {
+		this.bedrijfIngevuld = bedrijfIngevuld;
+	}
+	
+	public void setLeerlingIngevuld(boolean leerlingIngevuld) {
+		this.leerlingIngevuld = leerlingIngevuld;
 	}
 }

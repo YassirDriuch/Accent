@@ -72,7 +72,6 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 	            <% for(Competentie c : alleCompetenties) { %>
 	                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>
 				<% } %>
-		        <a href="" class="button rounded-small dark-gradient">Invullen voltooien</a>
 		        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
 			</form>
 		</div>

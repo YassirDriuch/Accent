@@ -39,7 +39,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 			String today = sdf.format(cal.getTime());
 				
 			//Nieuwe competentielijst aanmaken
-			CompetentieLijst cL = new CompetentieLijst(bedrijfId, leerlingId, today, false);
+			CompetentieLijst cL = new CompetentieLijst(bedrijfId, leerlingId, today, false, false);
 			CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
 			
 			//Competenties toevoegen aan lijst
