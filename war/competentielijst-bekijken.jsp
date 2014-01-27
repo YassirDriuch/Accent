@@ -37,6 +37,7 @@ Query<Vraag> alleVragen = ofy.query(Vraag.class);
     <!-- Content !-->
     <div id="content">
     	<h1>Competentielijst voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></h1>
+    	<div class="show-notice"></div>
 		<% for(Competentie c : cL.getAlleCompetenties()) { %>
 		<table cellspacing="0" cellpadding="0" class="rounded-small">
 			<thead>
@@ -73,18 +74,37 @@ $("a.submit-button").click(function(e) {
 	var submitme = true;
 	
     $(':radio').each(function() {
-        nam = $(this).attr('name');
-        if (submitme && !$(':radio[name="'+nam+'"]:checked').length) {
-            alert('Niet alle vragen zijn beantwoord');
-            submitme = false;
-            $(':radio[name="'+nam+'"]').parents('td').parents('tr').addClass('row-error');
+        name = $(this).attr('name');
+        if (submitme && !$(':radio[name="'+name+'"]:checked').length) {
+        	submitme = false;
+        	$(".show-notice").hide().html("<div class='nosucces'>Niet alle vragen zijn ingevuld</div>").fadeIn();
+            $(':radio[name="'+name+'"]').parents('td').parents('tr').addClass('row-error');
         }
     });
     
-    if(submitme) {
-    	alert("Goed");
-    } 
+    if(submitme) submitList();
 });
+
+function submitList() {
+	var answers = [];
+
+	$(':radio:checked').each(function() {
+        name = $(this).attr('name');
+        val = $(this).val();
+
+	    var answer = { "vraagId": name, "antwoord": val };
+	    answers.push(answer);
+	});
+	
+	$.ajax({
+		url: "beoordelingslijst-toevoegen",
+	    type: "POST",
+	    data: { "gebruikerId": <% out.print(gebruikerObject.getId()); %>, "competentieLijstId": <% out.print(cL.getId()); %>, "alleAntwoorden": JSON.stringify(answers) },
+	    success: function() {
+	    	$(".show-notice").hide().html("<div class='succes'>Competentielijst succesvol aangemaakt</div>").fadeIn();
+	    }
+	});
+}
 </script>
 </body>
 </html>

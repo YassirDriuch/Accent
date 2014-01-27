@@ -27,11 +27,12 @@ if(gebruikerObject == null) {
     
     <!-- Content !-->
     <div id="content">
-    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
     	<h1>Accountgegevens</h1>
+    	<div id="submenu">
+        	<a href="wachtwoord-aanpassen.jsp" class="button rounded-small white-gradient">Wachtwoord wijzigen</a>
+        </div>
         <div class="block" style="line-height: 140%;">
         	<%=gebruikerObject.toString()%>
-        	<a href="wachtwoord-aanpassen.jsp" class="form_submit dark-gradient rounded-small" style="display: block;">Wachtwoord wijzigen</a>
         </div>
     </div>
 </div>

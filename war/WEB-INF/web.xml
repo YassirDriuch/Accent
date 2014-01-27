@@ -96,6 +96,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>CompetentieVerwijderenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.CompetentieVerwijderenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CompetentieVerwijderenServlet</servlet-name>
+		<url-pattern>/competentie-verwijderen</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>GebruikerVerwijderenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.GebruikerVerwijderenServlet</servlet-class>
 	</servlet>
@@ -105,8 +114,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-	<servlet-name>WachtwoordWijzigenServlet</servlet-name>
-	<servlet-class>com.appspot.AccentNijkerk.controller.WachtwoordWijzigenServlet</servlet-class>
+		<servlet-name>WachtwoordWijzigenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.WachtwoordWijzigenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>WachtwoordWijzigenServlet</servlet-name>
@@ -114,14 +123,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-	<servlet-name>LeerlingZoekenServlet</servlet-name>
-	<servlet-class>com.appspot.AccentNijkerk.controller.LeerlingZoekenServlet</servlet-class>
+		<servlet-name>BeoordelingsLijstToevoegenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.BeoordelingsLijstToevoegenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BeoordelingsLijstToevoegenServlet</servlet-name>
+		<url-pattern>/beoordelingslijst-toevoegen</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LeerlingZoekenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.LeerlingZoekenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LeerlingZoekenServlet</servlet-name>
 		<url-pattern>/zoekLeerling</url-pattern>
 	</servlet-mapping>
-	
 	
 	<servlet>
    		<servlet-name>LeerlingBezichtigenJSP</servlet-name>
@@ -177,11 +194,9 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
    		<url-pattern>/stagebedrijf-aanpassen</url-pattern>
 	</servlet-mapping>
 	
-	
 	<listener> 
 		<listener-class>com.appspot.AccentNijkerk.listeners.ContextListener</listener-class>
 	</listener>
-	
 	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

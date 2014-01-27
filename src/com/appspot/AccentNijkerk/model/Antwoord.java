@@ -6,7 +6,6 @@ import javax.persistence.Id;
 
 public class Antwoord implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id Long id;
 	private Long vraagId;
 	private int antwoord;
 	
@@ -20,9 +19,6 @@ public class Antwoord implements Serializable {
 	}
 
 	//Getters
-	public Long getId() {
-		return id;
-	}
 	
 	public Long getVraagId() {
 		return vraagId;

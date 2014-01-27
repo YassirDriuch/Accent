@@ -19,18 +19,19 @@ public class CompetentieVerwijderenServlet extends HttpServlet {
 	CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("competentie-overzicht.jsp");
 		String stringId = req.getParameter("id");
 		Long id = Long.parseLong(stringId);
 		Competentie teVerwijderen = competentieDao.getCompetentie(id);
+		
 		if(teVerwijderen != null){
 			competentieDao.verwijderCompetentie(teVerwijderen);
-			req.setAttribute("msg", "<div class='succes'>Competentie \"" + teVerwijderen + "\" is verwijderd. Herlaad de pagina als competentie nog in de lijst staat.</div>");
+			req.setAttribute("msg", "<div class='succes'>Competentie \"" + teVerwijderen.getCompetentie() + "\" is verwijderd. Herlaad de pagina als competentie nog in de lijst staat.</div>");
 			log.info("DELETED: " + teVerwijderen + " is verwijderd!");
-		}
-		else {
+		} else {
 			req.setAttribute("msg", "<div class='nosucces'>De competentie kon niet worden verwijderd</div>");
 		}
+		
 		rd.forward(req, resp);
 	}
 }

@@ -23,7 +23,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 	private static final Logger log = Logger.getLogger(CompetentieLijstToevoegenServlet.class.getName());
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("competentielijst-toevoegen.jsp");
 		Long leerlingId = Long.parseLong(req.getParameter("leerling"));
 		Long bedrijfId = Long.parseLong(req.getParameter("bedrijf"));
 		String[] competenties = req.getParameterValues("competenties");
@@ -42,7 +42,6 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 			CompetentieLijst cL = new CompetentieLijst(bedrijfId, leerlingId, today, false);
 			CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
 			
-				
 			//Competenties toevoegen aan lijst
 			for(String s : competenties) {
 				Competentie c = competentieDao.getCompetentie(Long.parseLong(s));
@@ -52,7 +51,8 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 			//CompetentieLijst toevoegen
 			CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 			competentieLijstDao.voegCompetentieLijstToe(cL);
-				
+			
+			req.setAttribute("msg", "<div class='succes'>Competentielijst succesvol aangemaakt</div>");
 			log.info("CompetentieLijst voor " + leerlingId + " succesvol aangemaakt");
 		}
 

@@ -84,7 +84,6 @@ public class ContextListener implements ServletContextListener {
 		ObjectifyService.register(CompetentieLijst.class);
 		ObjectifyService.register(Vraag.class);
 		ObjectifyService.register(Stage.class);
-		ObjectifyService.register(Antwoord.class);
 		ObjectifyService.register(BeoordelingsLijst.class);
 	}
 }
