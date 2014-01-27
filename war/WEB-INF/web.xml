@@ -114,6 +114,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>GebruikerVerwijderenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.GebruikerVerwijderenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GebruikerVerwijderenServlet</servlet-name>
+		<url-pattern>/deleteUser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>StageVerwijderenServlet</servlet-name>
+		<servlet-class>com.appspot.AccentNijkerk.controller.StageVerwijderenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StageVerwijderenServlet</servlet-name>
+		<url-pattern>/deleteStage</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>WachtwoordWijzigenServlet</servlet-name>
 		<servlet-class>com.appspot.AccentNijkerk.controller.WachtwoordWijzigenServlet</servlet-class>
 	</servlet>

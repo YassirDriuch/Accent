@@ -75,7 +75,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 				<td><%=sdf.format(s.getDatumVan())%></td>
 				<td><%=sdf.format(s.getDatumTot()) %></td>
 				<td>
-						<a href="" onclick="return confirm('Weet u zeker dat u de Stage van &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
+						<a href="/deleteStage?id=<%=s.getId()%>" onclick="return confirm('Weet u zeker dat u de Stage van &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
                 	</td>
 				</tr>
 		<% } 
