@@ -2,8 +2,6 @@ package com.appspot.AccentNijkerk.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Id;
-
 public class Antwoord implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long vraagId;

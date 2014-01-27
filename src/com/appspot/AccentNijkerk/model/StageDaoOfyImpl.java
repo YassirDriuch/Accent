@@ -1,7 +1,6 @@
 package com.appspot.AccentNijkerk.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyService;

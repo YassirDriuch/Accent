@@ -1,7 +1,6 @@
 package com.appspot.AccentNijkerk.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public interface StageDao {
 	public ArrayList<Stage> getStages();

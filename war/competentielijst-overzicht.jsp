@@ -14,6 +14,7 @@ if(gebruikerObject == null) {
 Objectify ofy = ObjectifyService.begin();
 Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 %>
 
 <!DOCTYPE html>
@@ -49,44 +50,53 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         <!-- Overzicht -->
         <% if(gebruikerObject instanceof Docent) { %>
 			<% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
-                <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-                    <div class="row">
-                        <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                        <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
-                        <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
-                        <div class="date"><%=cL.getAanmaakDatum()%></div>
-                    </div>
-                </a>
+           		<% if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)){ competentieLijstDao.verwijderCompetentieLijst(cL);} %>
+                <% else { %>
+					<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
+						<div class="row">
+							<div class="image"><img src="images/list.png" width="20" height="24" /></div>
+							<div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
+							<% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
+							<div class="date"><%=cL.getAanmaakDatum()%></div>
+						</div>
+					</a>
+                <% } %>
             <% } %>
         <% } %>
         
         <% if(gebruikerObject instanceof Leerling) { %>
 			<% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
-                <% if(cL.getLeerlingId().equals(gebruikerObject.getId())) { %>
-                <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-                    <div class="row">
-                        <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                        <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
-                        <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
-                        <div class="date"><%=cL.getAanmaakDatum()%></div>
-                    </div>
-                </a>
-                <% } %>
+            <% if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)){ competentieLijstDao.verwijderCompetentieLijst(cL);} %>
+                <% else { %>
+					<% if(cL.getLeerlingId().equals(gebruikerObject.getId())) { %>
+                    <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
+                        <div class="row">
+                            <div class="image"><img src="images/list.png" width="20" height="24" /></div>
+                            <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
+                            <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
+                            <div class="date"><%=cL.getAanmaakDatum()%></div>
+                        </div>
+                    </a>
+                    <% } %>
+            	<% } %>
             <% } %>
         <% } %>
         
          <% if(gebruikerObject instanceof StageBedrijf) { %>
 			<% for(CompetentieLijst cL : alleCompetentieLijsten) { %>
-                <% if(cL.getBedrijfId().equals(gebruikerObject.getId())) { %>
-                <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-                    <div class="row">
-                        <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                        <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
-                        <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
-                        <div class="date"><%=cL.getAanmaakDatum()%></div>
-                    </div>
-                </a>
-                <% } %>
+            <% if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)){ competentieLijstDao.verwijderCompetentieLijst(cL);} %>
+                <% else { %>
+					<% if(cL.getBedrijfId().equals(gebruikerObject.getId())) { %>
+                    <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
+                        <div class="row">
+                            <div class="image"><img src="images/list.png" width="20" height="24" /></div>
+                            <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%> 
+                            <% if(!cL.isVerstuurd()) out.print("<span class='red'>Nog niet verstuurd</span>"); else out.print("<span class='green'>Verstuurd</span>"); %></div>
+                            <div class="date"><%=cL.getAanmaakDatum()%></div>
+                        </div>
+                    </a>
+                    <% } %>
+            	<% } %>
             <% } %>
         <% } %>
     </div>
