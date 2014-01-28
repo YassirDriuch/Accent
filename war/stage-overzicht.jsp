@@ -12,7 +12,7 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
-if(!(gebruikerObject instanceof Docent)){
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
@@ -49,7 +49,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
+            <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
             <input id="leerling_input" class="form_input_submenu rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
         </div>
         
