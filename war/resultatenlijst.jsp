@@ -1,10 +1,12 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="com.googlecode.objectify.Query" %>
 <%
 Objectify ofy = ObjectifyService.begin();
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
+GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 
 //Check op ingelogde gebruiker en competentielijstId
 if(gebruikerObject == null || request.getParameter("id") == null) {
@@ -21,6 +23,24 @@ if(!(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld())) {
 	rd.forward(request, response);
 	return;
 }
+
+//Bijbehorende beoordelinglijst zoeken
+Query<BeoordelingsLijst> query = ofy.query(BeoordelingsLijst.class).filter("competentieLijstId", cL.getId());
+BeoordelingsLijst bLeerling = null;
+BeoordelingsLijst bStageBedrijf = null;
+
+if(query != null) {
+	for (BeoordelingsLijst bL : query) {
+	    if(gebruikerDao.getGebruiker(bL.getGebruikerId()) instanceof Leerling) {
+	    	bLeerling = bL;
+	    } else if(gebruikerDao.getGebruiker(bL.getGebruikerId()) instanceof StageBedrijf) {
+	    	bStageBedrijf = bL;
+	    }
+	}
+}
+
+ArrayList<Antwoord> leerlingAntwoorden = bLeerling.getAlleAntwoorden();
+ArrayList<Antwoord> stageBedrijfAntwoorden = bStageBedrijf.getAlleAntwoorden();
 %>
 
 <!DOCTYPE html>
@@ -47,6 +67,8 @@ if(!(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld())) {
 	    	Stagebedrijf: <%= cL.getBedrijfId() %><br />
 	    	Aanmaakdatum: <%= cL.getAanmaakDatum() %><br /><br />
 	    	Resultaten van beoordelinglijsten hier...
+	    	<%= bLeerling.toString() %>
+	    	<%= bStageBedrijf.toString() %>
     	</div>
     </div>
 </div>

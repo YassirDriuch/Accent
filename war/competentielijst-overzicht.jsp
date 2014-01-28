@@ -64,9 +64,9 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 						</div>
 					</a>
         <% 
+        			}
+        		}
         	}
-        }
-        }
         }
         %>
         
@@ -85,10 +85,10 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
                     </a>
 		<% 
                      
+            		}
             	}
-            }
-        } 
-      }
+			} 
+		}
         %>
         
         <%
@@ -104,11 +104,12 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
                             <div class="date"><%=cL.getAanmaakDatum()%></div>
                         </div>
                     </a>
-        <%
+		<% 
+                     
+            		}
             	}
-            }
-        }
-      }
+			} 
+		}
         %>
     </div>
 </div>

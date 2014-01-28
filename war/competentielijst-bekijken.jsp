@@ -73,10 +73,10 @@ if(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld()) {
 			    	%>
 					<tr>
 						<td><%=v.getVraag()%></td>
-						<td><input type="radio" name="<%=v.getId()%>" value="1" /></td>
-						<td><input type="radio" name="<%=v.getId()%>" value="2" /></td>
-						<td><input type="radio" name="<%=v.getId()%>" value="3" /></td>
-						<td><input type="radio" name="<%=v.getId()%>" value="4" /></td>
+						<td><input class="radio-big" type="radio" name="<%=v.getId()%>" value="1" /></td>
+						<td><input class="radio-big" type="radio" name="<%=v.getId()%>" value="2" /></td>
+						<td><input class="radio-big" type="radio" name="<%=v.getId()%>" value="3" /></td>
+						<td><input class="radio-big" type="radio" name="<%=v.getId()%>" value="4" /></td>
 					</tr>
 					<%  
 							} 
