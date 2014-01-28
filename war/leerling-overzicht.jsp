@@ -46,12 +46,12 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
         <div id="submenu">
         	<a href="leerling-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <% if(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
-            <a href="leerling-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+            <input id="leerling_input" class="form_input_submenu rounded-small" type="text" placeholder="Leerling zoeken..." value = ""/>      
         </div>
         
 		<!-- Overzicht -->
         <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
-         <table cellspacing="0" cellpadding="0" class="rounded-small">
+         <table cellspacing="0" cellpadding="0" class="rounded-small" id ="my-table">
 			<thead>
 				<tr>
 					<th width="92%">Leerling</th>
@@ -66,14 +66,43 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
 					<td>
 						<a href="/deleteUser?id=<%=l.getId()%>" onclick="return confirm('Weet u zeker dat u de leerling &quot;<%= l.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
                 	</td>
-				</tr>
+				
 			<% }else { %>
-        <tr><td><a href="/leerling-bezichtigen?id=<%=l.getId()%>"><%=l.getNaam()%></a></td></tr>
+        <td><a href="/leerling-bezichtigen?id=<%=l.getId()%>"><%=l.getNaam()%></a></td>
+        <td>&nbsp;</td>
 		<% } %>
+		</tr>
 		<% } %>
     </tbody>
     </table>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// per keyInput
+	$("#leerling_input").keyup(function(){
+		// Wanneer de value van de keyInput niet leeg is
+		if( $(this).val() != "")
+		{
+			// laat alleen de table row zien die de inhoud bevat
+			$("#my-table tbody>tr").hide();
+			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+		}
+		else
+		{
+			// wanneer de search leeg wordt gezet laat dan alles weer zien
+			$("#my-table tbody>tr").show();
+		}
+	});
+});
+// Onderstaand script is voor lowercase zoeken
+$.extend($.expr[":"], 
+{
+    "contains-ci": function(elem, i, match, array) 
+	{
+		return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	}
+});
+		</script>
 </body>
 </html>
