@@ -356,6 +356,17 @@ table tr:hover td {
 	text-decoration: none;
 }
 
+#submenu input {
+	float: left;
+	clear: none;
+	padding: 10px 12px;
+	border: 1px solid #DDD;
+	margin: 5px 5px 10px 0px;
+	color: #333;
+	display: block;
+	text-decoration: none;
+}
+
 #submenu a.button:hover {
 	color: #FFF;
 	border: 1px solid #007EA8;

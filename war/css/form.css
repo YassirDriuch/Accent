@@ -29,6 +29,21 @@ form {
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#fafafa));
 	background: -moz-linear-gradient(top,  #FFF,  #fafafa);
 }
+.form_input_submenu {
+	width: 100px;
+	float: left;
+	clear: left;
+	outline: none;
+	padding: 13px 12px;
+	margin-bottom: 12px;
+	border: 1px solid #DDD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #444;
+	background: #FFF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#fafafa));
+	background: -moz-linear-gradient(top,  #FFF,  #fafafa);
+}
 
 .form_submit {
 	float: left;

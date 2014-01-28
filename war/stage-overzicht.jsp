@@ -50,7 +50,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
-            <input id="leerling_input" class="form_input rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
+            <input id="leerling_input" class="form_input_submenu rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
         </div>
         
         <!-- Overzicht -->
@@ -89,23 +89,23 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-	// Write on keyup event of keyword input element
+	// per keyInput
 	$("#leerling_input").keyup(function(){
-		// When value of the input is not blank
+		// Wanneer de value van de keyInput niet leeg is
 		if( $(this).val() != "")
 		{
-			// Show only matching TR, hide rest of them
+			// laat alleen de table row zien die de inhoud bevat
 			$("#my-table tbody>tr").hide();
 			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
 		}
 		else
 		{
-			// When there is no input or clean again, show everything back
+			// wanneer de search leeg wordt gezet laat dan alles weer zien
 			$("#my-table tbody>tr").show();
 		}
 	});
 });
-// jQuery expression for case-insensitive filter
+// Onderstaand script is voor lowercase zoeken
 $.extend($.expr[":"], 
 {
     "contains-ci": function(elem, i, match, array) 
