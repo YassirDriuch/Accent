@@ -70,7 +70,7 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 	                <input id="bedrijf_input" class="form_input rounded-small" type="text" placeholder="Bedrijf zoeken..." />
 	                <select id="bedrijf_select" class="form_input rounded-small" style="width: 245px;" name="bedrijf" multiple="multiple">
 	                	<% for(Gebruiker sb : alleStageBedrijven) { %>
-	                    	<option value="<%=l.getId()%>"><%=((StageBedrijf)sb).getNaam()%></option>
+	                    	<option value="<%=sb.getId()%>"><%=((StageBedrijf)sb).getNaam()%></option>
 	                    <% } %>
 	                </select>
                 </div>
@@ -118,7 +118,6 @@ $(document).ready(function() {
 		}); 
 	});
 });
-
 </script>
 </body>
 </html>

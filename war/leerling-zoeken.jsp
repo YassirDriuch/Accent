@@ -44,13 +44,41 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
         
 		<!-- Zoeken -->
         <div class="block">
-        <form method="GET" action="/zoekLeerling">
-        <label class="form_label" for="naam">Naam</label><br></br>
-        <input class="form_input rounded-small" type="text" name="naam" />
-        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="zoeken" />
-        </form>
+        	<label class="form_label" for="leerling">Leerling</label>
+        	<input id="leerling_input" class="form_input rounded-small" type="text" placeholder="Leerling zoeken..." />
+		    <select id="leerling_select" class="form_input rounded-small" style="width: 245px;" name="leerling" multiple="multiple">
+			    <% for(Gebruiker l : alleLeerlingen) { %>
+			    <option value="<%=l.getId()%>"><%=((Leerling)l).getNaam()%></option>
+				<% } %>
+		    </select>
+		    <a id="leerling_href" href="" class="submit-button white-gradient rounded-small">Leerling bekijken</a>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+	//Leerling live search
+	$('#leerling_select').on('change', function (e) {
+		var optionSelected = $("option:selected", this);
+		if(optionSelected != null) {
+			$("#leerling_href").attr("href", "leerling-bezichtigen.jsp?id=" + optionSelected.val());
+		}
+	});
+	
+	var opts = $('#leerling_select option').map(function(){
+		return [[this.value, $(this).text()]];
+	});
+
+	$('#leerling_input').keyup(function(){
+		var rxp = new RegExp($('#leerling_input').val(), 'i');
+		var optlist = $('#leerling_select').empty();
+		opts.each(function(){
+			if (rxp.test(this[1])) {
+				optlist.append($('<option/>').attr('value', this[0]).text(this[1]));
+			}
+		}); 
+	});
+});
+</script>
 </body>
 </html>
