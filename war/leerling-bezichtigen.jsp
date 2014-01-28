@@ -9,6 +9,12 @@ if(gebruikerObject == null) {
 	return;
 }
 
+if(!(gebruikerObject instanceof StageBedrijf || gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
+
 String stringId = request.getParameter("id");
 Long id = Long.parseLong(stringId);
 Gebruiker gevraagd = gebruikerDao.getGebruiker(id);
@@ -39,7 +45,7 @@ if(gevraagd == null){
     <div id="content">
     	<h1>Leerlingen &raquo; Bekijken</h1>
     	<div id="submenu">
-            <% if(gebruikerObject instanceof Docent){ %><a href="/leerling-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a><% } %>
+            <% if(gebruikerObject instanceof Admin){ %><a href="/leerling-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a><% } %>
         </div>
         <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
         <div class="block" style="line-height: 140%;"><%=gevraagd.toString()%></div>

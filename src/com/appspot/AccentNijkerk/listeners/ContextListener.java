@@ -15,13 +15,15 @@ public class ContextListener implements ServletContextListener {
 	
 	public void contextInitialized(ServletContextEvent sce) {
 		initObjectifyClasses();
+		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+
+		Gebruiker admin = new Admin("admin", "y3pr&dUw", "Administrator");
+		gebruikerDao.voegGebruikerToe(admin);
 	
 		//Testgebruikers aanmaken
 		Gebruiker g1 = (Gebruiker) new Leerling("Leerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
 		Gebruiker g2 = (Gebruiker) new StageBedrijf("StageBedrijf", "test", "Company BV", "Industrielaan 32", "info@company.com", "030-88905663");
 		Gebruiker g3 = (Gebruiker) new Docent("StageBegeleider", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
-		
-		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
@@ -61,6 +63,7 @@ public class ContextListener implements ServletContextListener {
 	
 	private void initObjectifyClasses() {
 		//Objectify classes initialiseren
+		ObjectifyService.register(Admin.class);
 		ObjectifyService.register(StageBedrijf.class);
 		ObjectifyService.register(Docent.class);
 		ObjectifyService.register(Leerling.class);

@@ -8,7 +8,7 @@ if(gebruikerObject == null) {
 	return;
 }
 
-if(!(gebruikerObject instanceof Docent)){
+if(!(gebruikerObject instanceof Admin)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;

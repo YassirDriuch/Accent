@@ -11,7 +11,7 @@ if(gebruikerObject == null) {
 	return;
 }
 
-if(!(gebruikerObject instanceof Docent)){
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
@@ -44,7 +44,7 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 		<!-- Submenu -->
         <div id="submenu">
         	<a href="docent-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="docent-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
+            <% if(gebruikerObject instanceof Admin){%><a href="docent-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><%}%>
             <a href="docent-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
@@ -57,7 +57,7 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 				</tr>
 			</thead>
         <% for(Docent d : alleDocenten) { %>
-        <% if(gebruikerObject instanceof Docent) {%>
+        <% if(gebruikerObject instanceof Admin) {%>
         
 			<tbody>
         
@@ -74,5 +74,7 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 		<% } %>
     </tbody>
     </table>
+    </div>
+</div>
 </body>
 </html>

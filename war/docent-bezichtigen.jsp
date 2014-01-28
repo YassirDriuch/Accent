@@ -9,7 +9,7 @@ if(gebruikerObject == null) {
 	return;
 }
 
-if(!(gebruikerObject instanceof Docent)){
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
@@ -44,9 +44,9 @@ if(gevraagd == null){
     <!-- Content !-->
     <div id="content">
     	<h1>Docenten &raquo; Bekijken</h1>
-    	<div id="submenu">
+    	<% if(gebruikerObject instanceof Admin){%><div id="submenu">
             <a href="/docent-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a>
-        </div>
+        </div><%}%>
         <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
         <div class="block" style="line-height: 140%;"><%=gevraagd.toString()%></div>
        

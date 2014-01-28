@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.appspot.AccentNijkerk.model.Admin;
 import com.appspot.AccentNijkerk.model.Docent;
 import com.appspot.AccentNijkerk.model.Gebruiker;
 import com.appspot.AccentNijkerk.model.Leerling;
@@ -71,6 +72,14 @@ public class LoginServlet extends HttpServlet {
 		for(Docent m : docentQ) {
 			if (m.getGebruikersnaam().toLowerCase().equals(gebr) && m.getWachtwoord().equals(ww)) {
 				return (Gebruiker) m;
+			}
+		}
+		
+		//Administratoren doorlopen
+		Query<Admin> adminQ = ofy.query(Admin.class);
+		for(Admin a : adminQ) {
+			if (a.getGebruikersnaam().toLowerCase().equals(gebr) && a.getWachtwoord().equals(ww)) {
+				return (Gebruiker) a;
 			}
 		}
 		

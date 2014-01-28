@@ -10,7 +10,7 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
-if(!(gebruikerObject instanceof Docent)){
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
 	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
 	rd.forward(request, response);
 	return;
@@ -57,14 +57,14 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 				</tr>
 			</thead>
         <% for(StageBedrijf b : alleStageBedrijven) { %>
-        <% if(gebruikerObject instanceof Docent) {%>
+        <% if(gebruikerObject instanceof Admin) {%>
       
 			<tbody>
         <tbody>
 				<tr>
 					<td><a href="/stagebedrijf-bezichtigen?id=<%=b.getId()%>"><%=b.getNaam()%></a></td>
 					<td>
-						<a href="/deleteUser?id=<%=b.getId()%>" onclick="return confirm('Weet u zeker dat u het bedrijf &quot;<%= b.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/>
+						<a href="/deleteUser?id=<%=b.getId()%>" onclick="return confirm('Weet u zeker dat u het bedrijf &quot;<%= b.getNaam() %>&quot; wilt verwijderen?')"><img src="images/delete.png"/></a>
                 	</td>
 				</tr>
 			<% }else { %>
@@ -73,6 +73,7 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 		<% } %>
     </tbody>
     </table>
+</div>
 </div>
 </body>
 </html>

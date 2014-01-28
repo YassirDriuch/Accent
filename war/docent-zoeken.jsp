@@ -11,6 +11,12 @@ if(gebruikerObject == null) {
 	return;
 }
 
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
+
 Objectify ofy = ObjectifyService.begin();
 Query<Docent> alleDocenten = ofy.query(Docent.class);
 %>
@@ -38,7 +44,7 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
     	<!-- Subemenu -->
         <div id="submenu">
         	<a href="docent-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-			<% if(gebruikerObject instanceof Docent){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
+			<% if(gebruikerObject instanceof Admin){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
             <a href="docent-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         

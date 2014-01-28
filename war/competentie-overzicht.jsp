@@ -11,6 +11,12 @@ if(gebruikerObject == null) {
 	return;
 }
 
+if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
+	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
+	rd.forward(request, response);
+	return;
+}
+
 Objectify ofy = ObjectifyService.begin();
 Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();

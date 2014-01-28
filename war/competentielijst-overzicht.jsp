@@ -41,7 +41,7 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <div id="submenu">
         	<a href="competentielijst-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <a href="competentielijst-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
-            <% if (gebruikerObject instanceof Docent) { %>
+            <% if (gebruikerObject instanceof Docent || gebruikerObject instanceof Admin) { %>
             	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
             	<a href="competentie-overzicht.jsp" class="button rounded-small white-gradient">Compenties</a>
             <% } %>
@@ -49,11 +49,8 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         
         <!-- Overzicht -->
         <% 
-        if(gebruikerObject instanceof Docent) { 
+        if(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin) { 
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-           		if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)) {
-           			competentieLijstDao.verwijderCompetentieLijst(cL);
-           		} else { 
         %>
 					<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
 						<div class="row">
@@ -63,7 +60,6 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 						</div>
 					</a>
         <% 
-                }
         	}
         } 
         %>
@@ -71,9 +67,6 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <% 
         if(gebruikerObject instanceof Leerling) {
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-            	if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)) { 
-            		competentieLijstDao.verwijderCompetentieLijst(cL);
-            	} else { 
 	        		if(cL.getLeerlingId().equals(gebruikerObject.getId())) { 
 	    %>
                     <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
@@ -84,7 +77,7 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
                         </div>
                     </a>
 		<% 
-                    } 
+                     
             	}
             }
         } 
@@ -93,9 +86,6 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <%
         if(gebruikerObject instanceof StageBedrijf) {
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-            	if(cL.getLeerlingId().equals(null) || cL.getBedrijfId().equals(null)) { 
-            		competentieLijstDao.verwijderCompetentieLijst(cL);
-            	} else {
 					if(cL.getBedrijfId().equals(gebruikerObject.getId())) { 
 		%>
                     <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
@@ -105,8 +95,7 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
                             <div class="date"><%=cL.getAanmaakDatum()%></div>
                         </div>
                     </a>
-        <% 
-					}
+        <%
             	}
             }
         } 
