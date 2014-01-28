@@ -58,7 +58,7 @@ $(function() {
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-        	<a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
+        	<a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
             <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
@@ -81,7 +81,7 @@ $(function() {
 	                <select id="bedrijf_select" class="form_input rounded-small" style="width: 245px;" name="bedrijf" multiple="multiple">
 	                	<% for(Gebruiker sb : alleStageBedrijven) { %>
 	                    	<option value="<%=sb.getId()%>"><%=((StageBedrijf)sb).getNaam()%></option>
-	                    <% } %>
+	                    <%} %>
 	                </select>
                 </div>
 	            <label class="form_label" for="naam">Van</label>

@@ -53,7 +53,9 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 			<thead>
 				<tr>
 					<th width="92%">Docent</th>
+					        <% if(gebruikerObject instanceof Admin) {%>
 					<th width="8%">&nbsp;</th>
+					<%} %>
 				</thead>
         <% for(Docent d : alleDocenten) { %>
         <% if(gebruikerObject instanceof Admin) {%>
@@ -67,7 +69,6 @@ Query<Docent> alleDocenten = ofy.query(Docent.class);
 				
 			<% }else { %>
         <td><a href="/docent-bezichtigen?id=<%=d.getId()%>"><%=d.getNaam()%></a></td>
-        <td>&nbsp;</td>
 		<% } %>
 		</tr>
 		<% } %>

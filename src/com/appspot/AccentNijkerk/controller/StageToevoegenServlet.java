@@ -28,7 +28,7 @@ public class StageToevoegenServlet extends HttpServlet {
 		Objectify ofy = ObjectifyService.begin();
 		Query<Stage> alleStages = ofy.query(Stage.class);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("stage-toevoegen.jsp");
 		Long leerlingId = Long.parseLong(req.getParameter("leerling"));
 		Long bedrijfId = Long.parseLong(req.getParameter("bedrijf"));
 		
@@ -51,15 +51,14 @@ public class StageToevoegenServlet extends HttpServlet {
 		if(leerlingId.equals("") || bedrijfId.equals("") || datumvan.equals("") || datumtot.equals("")) {
 			//Aanmaken mislukt
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
-			rd = req.getRequestDispatcher("stage-toevoegen.jsp");
 		} else {	
 			//Nieuwe Stage aanmaken
 			Stage s = new Stage(leerlingId, datumvan, datumtot, bedrijfId);
 			StageDao StageDao = new StageDaoOfyImpl();
 			StageDao.voegStageToe(s);
 			for(Stage ss: alleStages){
-				if(ss.getId().equals(s)){
-					req.setAttribute("msg", "<div class='succes'>Stage:<br />" + s + "<br />is toegevoegd</div>");
+				if(ss.getId().equals(s.getId())){
+					req.setAttribute("msg", "<div class='succes'>Stage<br />is toegevoegd</div>");
 				}
 			}
 			

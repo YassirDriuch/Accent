@@ -53,7 +53,9 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 			<thead>
 				<tr>
 					<th width="92%">Bedrijf</th>
+					        <% if(gebruikerObject instanceof Admin) {%>
 					<th width="8%">&nbsp;</th>
+					<%} %>
 				</thead>
         <% for(StageBedrijf b : alleStageBedrijven) { %>
         <% if(gebruikerObject instanceof Admin) {%>
@@ -67,7 +69,6 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
 				
 			<% }else { %>
         <td><a href="/stagebedrijf-bezichtigen?id=<%=b.getId()%>"><%=b.getNaam()%></a></td>
-        <td>&nbsp;</td>
 		<% } %>
 		</tr>
 		<% } %>
