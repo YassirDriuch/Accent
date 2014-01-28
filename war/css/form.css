@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+form {
+	margin-top: 10px;
+}
+
 .form_label {
 	float: left;
 	clear: left;
@@ -21,14 +25,16 @@
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	color: #444;
-	background-color: #FFF;
+	background: #FFF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#fafafa));
+	background: -moz-linear-gradient(top,  #FFF,  #fafafa);
 }
 
 .form_submit {
 	float: left;
 	clear: left;
 	border: none;
-	padding: 13px 18px;
+	padding: 12px 15px;
 	text-decoration: none;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;

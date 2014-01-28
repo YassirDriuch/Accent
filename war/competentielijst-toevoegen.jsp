@@ -56,26 +56,69 @@ Query<Competentie> alleCompetenties = ofy.query(Competentie.class);
         <div class="block">
     		<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
 	    	<form method="post" action="/competentielijst-toevoegen">
-		    	<label class="form_label" for="leerling">Leerling</label>
-	            <select class="form_input rounded-small" name="leerling">
-	                <% for(Gebruiker g : alleLeerlingen) { %>
-	                	<option value="<%=((Leerling)g).getId()%>"><%=((Leerling)g).getNaam()%></option>
+	    		<div style="float: left; margin-right: 20px;">
+			    	<label class="form_label" for="leerling">Leerling</label>
+			    	<input id="leerling_input" class="form_input rounded-small" type="text" placeholder="Leerling zoeken..." />
+		            <select id="leerling_select" class="form_input rounded-small" style="width: 245px;" name="leerling" multiple="multiple">
+		                <% for(Gebruiker l : alleLeerlingen) { %>
+		                	<option value="<%=l.getId()%>"><%=((Leerling)l).getNaam()%></option>
+						<% } %>
+		            </select>
+		        </div>
+		        <div style="float: left; margin-right: 20px;">
+	                <label class="form_label" for="bedrijf">Bedrijf</label>
+	                <input id="bedrijf_input" class="form_input rounded-small" type="text" placeholder="Bedrijf zoeken..." />
+	                <select id="bedrijf_select" class="form_input rounded-small" style="width: 245px;" name="bedrijf" multiple="multiple">
+	                	<% for(Gebruiker sb : alleStageBedrijven) { %>
+	                    	<option value="<%=l.getId()%>"><%=((StageBedrijf)sb).getNaam()%></option>
+	                    <% } %>
+	                </select>
+                </div>
+                <div style="float: left;">
+			        <label class="form_label" for="competenties">Competenties</label>
+		            <% for(Competentie c : alleCompetenties) { %>
+		                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>
 					<% } %>
-	            </select>
-                <label class="form_label" for="bedrijf">Bedrijf</label>
-                <select class="form_input rounded-small" name="bedrijf">
-                	<% for(Gebruiker h : alleStageBedrijven) { %>
-                    	<option value="<%=((StageBedrijf)h).getId()%>"><%=((StageBedrijf)h).getNaam()%></option>
-                    <% } %>
-                </select>
-		        <label class="form_label" for="competenties">Competenties</label>
-	            <% for(Competentie c : alleCompetenties) { %>
-	                <label class="form_checkbox_label"><input type="checkbox" name="competenties" value="<%=c.getId()%>"><%=c.getCompetentie()%></label>
-				<% } %>
-		        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+				</div>
+		        <input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Toevoegen" />
 			</form>
 		</div>
     </div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//Leerling live search
+	var opts = $('#leerling_select option').map(function(){
+		return [[this.value, $(this).text()]];
+	});
+
+	$('#leerling_input').keyup(function(){
+		var rxp = new RegExp($('#leerling_input').val(), 'i');
+		var optlist = $('#leerling_select').empty();
+		opts.each(function(){
+			if (rxp.test(this[1])) {
+				optlist.append($('<option/>').attr('value', this[0]).text(this[1]));
+			}
+		}); 
+	});
+	
+	//Bedrijf live search
+	var optsb = $('#bedrijf_select option').map(function(){
+		return [[this.value, $(this).text()]];
+	});
+
+	$('#bedrijf_input').keyup(function(){
+		var rxpb = new RegExp($('#bedrijf_input').val(), 'i');
+		var optlistb = $('#bedrijf_select').empty();
+		optsb.each(function(){
+			if (rxpb.test(this[1])) {
+				optlistb.append($('<option/>').attr('value', this[0]).text(this[1]));
+			}
+		}); 
+	});
+});
+
+</script>
 </body>
 </html>

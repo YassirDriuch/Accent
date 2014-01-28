@@ -24,15 +24,18 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
 		RequestDispatcher rd = req.getRequestDispatcher("competentielijst-toevoegen.jsp");
-		Long leerlingId = Long.parseLong(req.getParameter("leerling"));
-		Long bedrijfId = Long.parseLong(req.getParameter("bedrijf"));
+		String lId = req.getParameter("leerling");
+		String bId = req.getParameter("bedrijf");
 		String[] competenties = req.getParameterValues("competenties");
 
-		if(leerlingId == null || competenties == null) {
+		if(lId == null || bId == null || competenties == null) {
 			//Aanmaken mislukt
 			req.setAttribute("msg", "<div class='nosucces'>Niet alle velden zijn ingevuld</div>");
 			rd = req.getRequestDispatcher("competentielijst-toevoegen.jsp");
 		} else {
+			Long leerlingId = Long.parseLong(lId);
+			Long bedrijfId = Long.parseLong(bId);
+			
 			//Datum van vandaag setten
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");

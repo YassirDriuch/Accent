@@ -281,7 +281,7 @@ table a:hover {
 }
 
 table th {
-	padding: 14px;
+	padding: 13px;
 	border-top: 1px solid #fafafa;
 	border-bottom: 1px solid #e0e0e0;
 	text-shadow: 1px 1px 0px #fff;
@@ -294,12 +294,12 @@ table th {
 
 table th:first-child {
 	text-align: left;
-	padding-left: 14px;
+	padding-left: 13px;
 }
 
 table tr {
 	text-align: center;
-	padding-left: 14px;
+	padding-left: 13px;
 }
 
 table tr.row-error > td {
@@ -307,7 +307,7 @@ table tr.row-error > td {
 }
 
 table td {
-	padding: 12px;
+	padding: 11px;
 	border-top: 1px solid #ffffff;
 	border-bottom:1px solid #e0e0e0;
 	border-left: 1px solid #e0e0e0;
@@ -319,7 +319,7 @@ table td {
 
 table td:first-child {
 	text-align: left;
-	padding-left: 14px;
+	padding-left: 13px;
 	border-left: 0;
 }
 
