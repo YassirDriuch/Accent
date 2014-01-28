@@ -3,6 +3,7 @@ package com.appspot.AccentNijkerk.controller;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.TimeZone;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +40,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 			//Datum van vandaag setten
 			Calendar cal = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+			sdf.setTimeZone(TimeZone.getTimeZone("GMT+1"));
 			String today = sdf.format(cal.getTime());
 				
 			//Nieuwe competentielijst aanmaken

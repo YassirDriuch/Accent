@@ -13,6 +13,7 @@ if(gebruikerObject == null) {
 
 Objectify ofy = ObjectifyService.begin();
 Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
+Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 %>
@@ -51,28 +52,34 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <% 
         if(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin) { 
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
+				for(Leerling l: alleLeerlingen){
+					if(cL.getLeerlingId().equals(l.getId())){
+				
         %>
 					<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
 						<div class="row">
 							<div class="image"><img src="images/list.png" width="20" height="24" /></div>
-							<div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></div>
+							<div class="description">voor <%=l.getNaam()%></div>
 							<div class="date"><%=cL.getAanmaakDatum()%></div>
 						</div>
 					</a>
         <% 
         	}
-        } 
+        }
+        }
+        }
         %>
         
         <% 
         if(gebruikerObject instanceof Leerling) {
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-	        		if(cL.getLeerlingId().equals(gebruikerObject.getId())) { 
+				for(Leerling l: alleLeerlingen){
+	        		if(cL.getLeerlingId().equals(l.getId())) { 
 	    %>
                     <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
                         <div class="row">
                             <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                            <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></div>
+                            <div class="description">voor <%=l.getNaam()%></div>
                             <div class="date"><%=cL.getAanmaakDatum()%></div>
                         </div>
                     </a>
@@ -81,24 +88,27 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
             	}
             }
         } 
+      }
         %>
         
         <%
         if(gebruikerObject instanceof StageBedrijf) {
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
+				for(Leerling l: alleLeerlingen){
 					if(cL.getBedrijfId().equals(gebruikerObject.getId())) { 
 		%>
                     <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
                         <div class="row">
                             <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                            <div class="description">voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></div>
+                            <div class="description">voor <%=l.getNaam()%></div>
                             <div class="date"><%=cL.getAanmaakDatum()%></div>
                         </div>
                     </a>
         <%
             	}
             }
-        } 
+        }
+      }
         %>
     </div>
 </div>
