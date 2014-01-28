@@ -10,14 +10,9 @@ if(gebruikerObject == null) {
 	rd.forward(request, response);
 	return;
 }
-if(!(gebruikerObject instanceof Docent)){
-	RequestDispatcher rd = request.getRequestDispatcher("panel.jsp");
-	rd.forward(request, response);
-	return;
-}
 
 Objectify ofy = ObjectifyService.begin();
-Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
+Query<Docent> alleDocenten = ofy.query(Docent.class);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -39,47 +34,44 @@ Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Stagebedrijven &raquo; Overzicht</h1>
-    	
-    	<!-- Submenu -->
+    	<h1>Docenten &raquo; Zoeken</h1>
+    	<!-- Subemenu -->
         <div id="submenu">
-        	<a href="stagebedrijf-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="stagebedrijf-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
-            <a href="stagebedrijf-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
+        	<a href="docent-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
+			<% if(gebruikerObject instanceof Docent){ %><a href="leerling-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a><% } %>
+            <a href="docent-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
         </div>
         
-        <!-- Zoeken -->
-	   <div class="block">
-        	<label class="form_label" for="bedrijf">Bedrijf</label>
-        	<input id="bedrijf_input" class="form_input rounded-small" type="text" placeholder="Bedrijf zoeken..." />
-		    <select id="bedrijf_select" class="form_input rounded-small" style="width: 245px;" name="bedrijf" multiple="multiple">
-			    <% for(Gebruiker sb : alleStageBedrijven) { %>
-			    <option value="<%=sb.getId()%>"><%=((StageBedrijf)sb).getNaam()%></option>
+		<!-- Zoeken -->
+        <div class="block">
+        	<label class="form_label" for="docent">Docent</label>
+        	<input id="docent_input" class="form_input rounded-small" type="text" placeholder="Leerling zoeken..." />
+		    <select id="docent_select" class="form_input rounded-small" style="width: 245px;" name="docent" multiple="multiple">
+			    <% for(Gebruiker d : alleDocenten) { %>
+			    <option value="<%=d.getId()%>"><%=((Docent)d).getNaam()%></option>
 				<% } %>
 		    </select>
-		    <a id="bedrijf_href" href="" class="submit-button white-gradient rounded-small">Bedrijf bekijken</a>
+		    <a id="docent_href" href="" class="submit-button white-gradient rounded-small">Docent bekijken</a>
         </div>
-    </div>
-</div>
     </div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
 	//Leerling live search
-	$('#bedrijf_select').on('change', function (e) {
+	$('#docent_select').on('change', function (e) {
 		var optionSelected = $("option:selected", this);
 		if(optionSelected != null) {
-			$("#bedrijf_href").attr("href", "stagebedrijf-bezichtigen.jsp?id=" + optionSelected.val());
+			$("#docent_href").attr("href", "docent-bezichtigen.jsp?id=" + optionSelected.val());
 		}
 	});
 	
-	var opts = $('#bedrijf_select option').map(function(){
+	var opts = $('#docent_select option').map(function(){
 		return [[this.value, $(this).text()]];
 	});
 
-	$('#bedrijf_input').keyup(function(){
-		var rxp = new RegExp($('#bedrijf_input').val(), 'i');
-		var optlist = $('#bedrijf_select').empty();
+	$('#docent_input').keyup(function(){
+		var rxp = new RegExp($('#docent_input').val(), 'i');
+		var optlist = $('#docent_select').empty();
 		opts.each(function(){
 			if (rxp.test(this[1])) {
 				optlist.append($('<option/>').attr('value', this[0]).text(this[1]));
