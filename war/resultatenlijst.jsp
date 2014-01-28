@@ -16,7 +16,7 @@ if(gebruikerObject == null || request.getParameter("id") == null) {
 CompetentieLijst cL = ofy.find(CompetentieLijst.class, Long.parseLong(request.getParameter("id")));
 
 //Check of de lijst door beide partijen zijn ingevuld
-if(!((cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld() && (gebruikerObject.getId() == cL.getBedrijfId() || gebruikerObject.getId()== cL.getLeerlingId()))|| gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)) {
+if(!(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld())) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 	rd.forward(request, response);
 	return;

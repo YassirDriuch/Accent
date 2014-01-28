@@ -26,7 +26,6 @@ if(gebruikerObject == null) {
 		<% } else if (gebruikerObject instanceof Docent) { %>
 			<a href="leerling-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagiaires</a>
 			<a href="stagebedrijf-overzicht.jsp" class="menu-button white-gradient rounded-small">Stagebedrijven</a>
-			<a href="docent-overzicht.jsp" class="menu-button white-gradient rounded-small">Docenten</a>
 			<a href="competentielijst-overzicht.jsp" class="menu-button white-gradient rounded-small">Competentielijsten</a>
 			<a href="stage-overzicht.jsp" class="menu-button white-gradient rounded-small">Stages</a>
         <% } else if (gebruikerObject instanceof Admin) { %>

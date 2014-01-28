@@ -67,7 +67,7 @@ if(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld()) {
 				</thead>
 				<tbody>
 					<%
-					if (!(gebruikerObject instanceof Docent)) {
+					if (gebruikerObject instanceof StageBedrijf || gebruikerObject instanceof Leerling) {
 						for(Vraag v : alleVragen) {
 			    			if(v.getCompetentieId().equals(c.getId())) { 
 			    	%>
@@ -87,7 +87,7 @@ if(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld()) {
 			</table>
 			<% } %>
 			
-			<% if (!(gebruikerObject instanceof Docent)) { %>
+			<% if (gebruikerObject instanceof StageBedrijf || gebruikerObject instanceof Leerling) { %>
 			<a href="" class="submit-button white-gradient rounded-small">Invullen voltooien</a>
 			<% } %>
 		<% } %>
