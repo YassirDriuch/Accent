@@ -49,8 +49,13 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
+<<<<<<< HEAD
             <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
             <input id="leerling_input" class="form_input_submenu rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
+=======
+            <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
+            <input id="stage_input" class="form_input_submenu rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
+>>>>>>> c14b5d32c85226a50afc1b8dac33cf738ce6ceb1
         </div>
         
         <!-- Overzicht -->
@@ -90,7 +95,7 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 <script type="text/javascript">
 $(document).ready(function(){
 	// per keyInput
-	$("#leerling_input").keyup(function(){
+	$("#stage_input").keyup(function(){
 		// Wanneer de value van de keyInput niet leeg is
 		if( $(this).val() != "")
 		{
