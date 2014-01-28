@@ -15,12 +15,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.appspot.AccentNijkerk.model.Stage;
 import com.appspot.AccentNijkerk.model.StageDao;
 import com.appspot.AccentNijkerk.model.StageDaoOfyImpl;
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.Query;
 
 public class StageToevoegenServlet extends HttpServlet {
 	private static final long serialVersionUID = -5060943264223383201L;
 	private static final Logger log = Logger.getLogger(StageToevoegenServlet.class.getName());
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)	throws ServletException, IOException {
+		
+		Objectify ofy = ObjectifyService.begin();
+		Query<Stage> alleStages = ofy.query(Stage.class);
 		
 		RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
 		Long leerlingId = Long.parseLong(req.getParameter("leerling"));
@@ -51,6 +57,11 @@ public class StageToevoegenServlet extends HttpServlet {
 			Stage s = new Stage(leerlingId, datumvan, datumtot, bedrijfId);
 			StageDao StageDao = new StageDaoOfyImpl();
 			StageDao.voegStageToe(s);
+			for(Stage ss: alleStages){
+				if(ss.getId().equals(s)){
+					req.setAttribute("msg", "<div class='succes'>Stage:<br />" + s + "<br />is toegevoegd</div>");
+				}
+			}
 			
 			log.info("Stage voor " + leerlingId + " succesvol aangemaakt");
 		}

@@ -50,12 +50,12 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
         <div id="submenu">
         	<a href="stage-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
             <% if (gebruikerObject instanceof Docent) { %> <a href="stage-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a> <% } %>
-            <a href="stage-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>        
+            <input id="leerling_input" class="form_input rounded-small" type="text" placeholder="Stage zoeken..." value = ""/>      
         </div>
         
         <!-- Overzicht -->
         <div class="block">
-        <table cellspacing="0" cellpadding="0" class="rounded-small">
+        <table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
 			<thead>
 				<tr>
 					<th width="23%">Bedrijf</th>
@@ -87,5 +87,32 @@ GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
     </div>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// Write on keyup event of keyword input element
+	$("#leerling_input").keyup(function(){
+		// When value of the input is not blank
+		if( $(this).val() != "")
+		{
+			// Show only matching TR, hide rest of them
+			$("#my-table tbody>tr").hide();
+			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+		}
+		else
+		{
+			// When there is no input or clean again, show everything back
+			$("#my-table tbody>tr").show();
+		}
+	});
+});
+// jQuery expression for case-insensitive filter
+$.extend($.expr[":"], 
+{
+    "contains-ci": function(elem, i, match, array) 
+	{
+		return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	}
+});
+		</script>
 </body>
 </html>
