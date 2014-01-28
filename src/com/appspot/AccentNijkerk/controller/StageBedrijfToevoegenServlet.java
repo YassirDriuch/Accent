@@ -66,11 +66,15 @@ public class StageBedrijfToevoegenServlet extends HttpServlet {
 		
 		//Onderwerp en bodypart
 		String subject = "Er is een account aangemaakt.";
-		String htmlBody = "Welkom bij de Accent Nijkerk app! <br></br> "
-				+ "Uw inloggegevens zijn: <br></br> Gebruikersnaam: " + " " + gebruikersnaam 
+		String htmlBody = "<table>"
+				+ "<a href='http://www.accentnijkerk.nl/'><img src='http://hu-marcel.appspot.com/images/logo.jpg' /></a><br></br>"
+				+ "<table cellpadding='0' cellspacing='0' width='100%' bgcolor='e4e4e4'><tr><td align = 'left'><img src='http://hu-marcel.appspot.com/images/tablet.png'</td>"
+				+ "<td align = 'center'><h3>Welkom bij de Accent Nijkerk app! </h3><br></br> "
+				+ "<p>Uw inloggegevens zijn: <br></br> Gebruikersnaam: " + " " + gebruikersnaam 
 				+ " <br> </br> Wachtwoord: " + " " + wachtwoord 
-				+ "<br></br> U kunt nu inloggen door: <a href='hu-marcel.appspot.com/index.jsp'>hier</a> te klikken." 
-				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: Helpdesk@AccentNijkerk.nl";
+				+ "<br></br> U kunt nu inloggen door: <a href='hu-marcel.appspot.com/index.jsp'>hier</a> te klikken.</p>"
+				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: Helpdesk@AccentNijkerk.nl"
+				+ "</td></tr></table></td>";
 		
 		try {
 			//Nieuwe message creëren
