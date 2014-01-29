@@ -44,22 +44,37 @@ if(!(gebruikerObject instanceof Admin)){
         
         <!-- Toevoegen -->
     	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
+    	<div class="block">
     	<form method="post" action="/docent-toevoegen">
     	<div style="float: left;"> 
     		<label class="form_label" for="gebruikersnaam">Gebruikersnaam</label>
     		<input class="form_input rounded-small" type="text" name="gebruikersnaam" />
-    		<label class="form_label" for="wachtwoord">Wachtwoord</label>
-    		<input class="form_input rounded-small" type="password" name="wachtwoord" />
+    		<input class="form_input rounded-small" type="hidden" name="wachtwoord" />
     		<label class="form_label" for="naam">Naam</label>
     		<input class="form_input rounded-small" type="text" name="naam" />
     		<label class="form_label" for="adres">Adres</label>
     		<input class="form_input rounded-small" type="text" name="adres" />
     		<label class="form_label" for="email">E-Mailadres</label>
     		<input class="form_input rounded-small" type="email" name="email" />
-    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" />
+    		<input class="form_submit dark-gradient rounded-small" type="submit" name="submit" value="Aanmaken" onClick="generatepass()" />
 		</div>
 		</form>
+		</div>
 	</div>
-</div>
+	</div>
+	<script>
+	var keylist="abcdefghijklmnopqrstuvwxyz123456789"
+	var temp=''
+	
+	function generatepass(){
+	temp=''
+	for (i=0;i<8;i++) {
+	temp+=keylist.charAt(Math.floor(Math.random()*keylist.length))
+	}
+	$("input[name='wachtwoord']").val(temp);
+	return true;
+	}
+
+	</script>
 </body>
 </html>

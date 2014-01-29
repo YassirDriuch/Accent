@@ -1,13 +1,31 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%@ page import="com.googlecode.objectify.Objectify" %>
+<%@ page import="com.googlecode.objectify.ObjectifyService" %>
+<%@ page import="com.googlecode.objectify.Query" %>
 <%
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
+
+GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 
 if(gebruikerObject == null) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 	rd.forward(request, response);
 	return;
-}
-%>
+}%>
+<%!
+public int ingevuldCompetentieLijsten(){
+	Objectify ofy = ObjectifyService.begin();	
+	Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
+	int i = 0;
+	for(CompetentieLijst cL : alleCompetentieLijsten){
+		if(cL.isLeerlingIngevuld() && cL.isBedrijfIngevuld()){
+			i++;
+		}
+	}
+	return i;
+}%>
+	
 
 <!DOCTYPE html>
 <head>
@@ -31,8 +49,19 @@ if(gebruikerObject == null) {
     	<div id="submenu">
         	<a href="wachtwoord-aanpassen.jsp" class="button rounded-small white-gradient">Wachtwoord wijzigen</a>
         </div>
-        <div class="block" style="line-height: 140%;">
+        <div class="block">
+        <% if(gebruikerObject instanceof Admin){ %>
+        Totaal aantal gebruikers: <%= gebruikerDao.getAlleGebruikers().size() %><br />
+        Waarvan Leerlingen: <%= gebruikerDao.getAlleLeerlingen().size() %><br />
+        Waarvan Bedrijven: <%= gebruikerDao.getAlleStageBedrijven().size() %><br />
+        Waarvan Docenten: <%= gebruikerDao.getAlleDocenten().size() %><br /><br />
+        Totaal Competentielijsten: <%= competentieLijstDao.getAlleCompetentieLijsten().size() %><br />
+        Aantal ingevulde competentielijsten: <%= ingevuldCompetentieLijsten() %>
+        
+        
+        <% } else { %>
         	<%=gebruikerObject.toString()%>
+        <% } %>
         </div>
     </div>
 </div>

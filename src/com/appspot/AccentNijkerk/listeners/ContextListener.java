@@ -16,9 +16,10 @@ public class ContextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		initObjectifyClasses();
 		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
-
+		
 		Gebruiker admin = new Admin("admin", "y3pr&dUw", "Administrator");
-		gebruikerDao.voegGebruikerToe(admin);
+		if(!gebruikerDao.isBezet("admin")){
+		gebruikerDao.voegGebruikerToe(admin);}
 	
 		//Testgebruikers aanmaken
 		Gebruiker g1 = (Gebruiker) new Leerling("Leerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");

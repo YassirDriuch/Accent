@@ -61,6 +61,8 @@ public class DocentToevoegenServlet extends HttpServlet {
 		String wachtwoord = req.getParameter("wachtwoord");
 		String naam = req.getParameter("naam");
 		String email = req.getParameter("email");
+		String verstuurMail = "jason.koolman86@gmail.com";
+		String emailSupport = "info@accentnijkerk.nl";
 		String foto = "http://hu-jason.appspot.com/images/logo.jpg";
 		String foto2 = "http://hu-jason.appspot.com/images/tablet.png";
 		String link = "http://hu-jason.appspot.com/index.jsp";
@@ -75,7 +77,7 @@ public class DocentToevoegenServlet extends HttpServlet {
 				+ "<p>Uw inloggegevens zijn: <br></br> Gebruikersnaam: " + " " + gebruikersnaam 
 				+ " <br> </br> Wachtwoord: " + " " + wachtwoord 
 				+ "<br></br> U kunt nu inloggen door: <a href='" + link + "'>hier</a> te klikken.</p>"
-				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: "+ email
+				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: "+ emailSupport
 				+ "</td></tr></table></td>";
 		try {
 			//Nieuwe message creëren
@@ -87,7 +89,7 @@ public class DocentToevoegenServlet extends HttpServlet {
 		    mp.addBodyPart(htmlPart);
 			
 			//Van, voor en onderwerp setten
-		    msg.setFrom(new InternetAddress("mranimerater@live.nl", "Accent Nijkerk app"));
+		    msg.setFrom(new InternetAddress(verstuurMail, "Accent Nijkerk Competentiesysteem"));
 		    msg.addRecipient(Message.RecipientType.TO,
 		    new InternetAddress(email, naam));
 		    msg.setSubject(subject);
