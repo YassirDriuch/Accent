@@ -104,7 +104,7 @@ public class CompetentieLijstToevoegenServlet extends HttpServlet {
 		String[] to = {bEmail,lEmail};
 		
 		//Onderwerp en bodypart
-		String subject = "Er is een account aangemaakt.";
+		String subject = "Er is een competentielijst aangemaakt.";
 		String htmlBody = "<table>"
 				+ "<a href='http://www.accentnijkerk.nl/'><img src='" + foto + "' /></a><br></br>"
 				+ "<table cellpadding='0' cellspacing='0' width='100%' bgcolor='e4e4e4'><tr></td>"
