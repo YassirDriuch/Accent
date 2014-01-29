@@ -7,6 +7,7 @@
 Objectify ofy = ObjectifyService.begin();
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
+VraagDao vraagDao = new VraagDaoOfyImpl();
 
 //Check op ingelogde gebruiker en competentielijstId
 if(gebruikerObject == null || request.getParameter("id") == null) {
@@ -39,8 +40,14 @@ if(query != null) {
 	}
 }
 
-ArrayList<Antwoord> leerlingAntwoorden = bLeerling.getAlleAntwoorden();
-ArrayList<Antwoord> stageBedrijfAntwoorden = bStageBedrijf.getAlleAntwoorden();
+//Variabelen setten
+String leerlingNaam = ((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam();
+String stageBedrijfNaam = ((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getNaam();
+int aantalVragen = 0;
+int gsl = 0;
+int gss = 0;
+double gemiddeldeScoreLeerling = 0;
+double gemiddeldeScoreStageBedrijf = 0;
 %>
 
 <!DOCTYPE html>
@@ -63,12 +70,54 @@ ArrayList<Antwoord> stageBedrijfAntwoorden = bStageBedrijf.getAlleAntwoorden();
     <div id="content">
     	<h1>Resultatenlijst</h1>
     	<div class="block" style="line-height: 140%;">
-	    	Stagiaire: <%= cL.getLeerlingId() %><br />
-	    	Stagebedrijf: <%= cL.getBedrijfId() %><br />
+	    	Stagiaire: <%= leerlingNaam %><br />
+	    	Stagebedrijf: <%= stageBedrijfNaam %><br />
 	    	Aanmaakdatum: <%= cL.getAanmaakDatum() %><br /><br />
-	    	Resultaten van beoordelinglijsten hier...
-	    	<%= bLeerling.toString() %>
-	    	<%= bStageBedrijf.toString() %>
+	    	
+	    	<table cellspacing="0" cellpadding="0" class="rounded-small">
+				<thead>
+					<tr>
+						<th width="50%">Competentie</th>
+						<th width="20%">Aantal vragen</th>
+						<th width="15%">Gem. score leerling</th>
+						<th width="15%">Gem. score stagebedrijf</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% 
+				for(Competentie c : cL.getAlleCompetenties()) {					
+					aantalVragen = 0;
+					gsl = 0;
+					gss = 0;
+					
+					for(Vraag v : vraagDao.getAlleVragen()) {
+						if(v.getCompetentieId().equals(c.getId())) {
+							aantalVragen += 1;
+							
+							Antwoord aB = bStageBedrijf.zoekAntwoord(v.getId());
+							if(aB != null) {
+								gsl += aB.getAntwoord();
+							}
+							
+							Antwoord aL = bLeerling.zoekAntwoord(v.getId());
+							if(aL != null) {
+								gss += aL.getAntwoord();
+							}
+						}
+					}
+
+					gemiddeldeScoreLeerling = (gsl/aantalVragen);
+					gemiddeldeScoreStageBedrijf = (gss/aantalVragen);
+				%>
+					<tr>
+						<td><%=c.getCompetentie()%></td>
+						<td><%=aantalVragen%></td>
+						<td><%=gemiddeldeScoreLeerling%></td>
+						<td><%=gemiddeldeScoreStageBedrijf%></td>
+					</tr>
+				<% } %>
+				</tbody>
+			</table>
     	</div>
     </div>
 </div>

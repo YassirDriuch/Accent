@@ -49,6 +49,15 @@ public class BeoordelingsLijst implements Serializable {
 		return antwoorden;
 	}
 	
+	public Antwoord zoekAntwoord(Long vraagId) {
+		for(Antwoord a : getAlleAntwoorden()) {
+			if(a.getVraagId().equals(vraagId)) {
+				return a;
+			}
+		}
+		return null;
+	}
+	
 	//Setters
 	public void setGebruikerId(Long gebruikerId) {
 		this.gebruikerId = gebruikerId;

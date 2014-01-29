@@ -43,7 +43,7 @@ if(cL.isBedrijfIngevuld() && cL.isLeerlingIngevuld()) {
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Competentielijst voor <%=gebruikerDao.getGebruiker(cL.getLeerlingId()).getGebruikersnaam()%></h1>
+    	<h1>Competentielijst voor <%=((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam()%></h1>
     	<div class="show-notice"></div>
 		<% 
 		if(cL.isBedrijfIngevuld() && gebruikerObject instanceof StageBedrijf) {
