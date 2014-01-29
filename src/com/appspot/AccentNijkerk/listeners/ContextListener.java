@@ -22,13 +22,62 @@ public class ContextListener implements ServletContextListener {
 		gebruikerDao.voegGebruikerToe(admin);}
 	
 		//Testgebruikers aanmaken
-		Gebruiker g1 = (Gebruiker) new Leerling("Leerling", "test", "Jason Koolman", "jason.koolman@hotmail.com", "5390531");
-		Gebruiker g2 = (Gebruiker) new StageBedrijf("StageBedrijf", "test", "Company BV", "Industrielaan 32", "info@company.com", "030-88905663");
-		Gebruiker g3 = (Gebruiker) new Docent("StageBegeleider", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
+		Gebruiker g1 = (Gebruiker) new Leerling("suzanne", "test", "Suzanne Smit", "suzanne@accent.nl", "5390531");
+		Gebruiker g2 = (Gebruiker) new Leerling("jaap", "test", "Jaap Spiekenburg", "jaap@accent.nl", "5898856");
+		Gebruiker g3 = (Gebruiker) new Leerling("joey", "test", "Joey Kulk", "joey@accent.nl", "5569885");
+		Gebruiker g4 = (Gebruiker) new Leerling("kelly", "test", "Kelly Plat", "kelly@accent.nl", "5355985");
+		Gebruiker g5 = (Gebruiker) new Leerling("anne", "test", "Anne Metz", "anne@accent.nl", "5895556");
+		Gebruiker g6 = (Gebruiker) new Leerling("nick", "test", "Nick Bollee", "nick@accent.nl", "5785546");
+		Gebruiker g7 = (Gebruiker) new Leerling("sanne", "test", "Sanne Hruk", "sanne@student.nl", "5455862");
+		Gebruiker g8 = (Gebruiker) new Leerling("sam", "test", "Sam Schnell", "sam@accent.nl", "5265556");
+		Gebruiker g9 = (Gebruiker) new Leerling("piet", "test", "Piet Mondi", "piet@accent.nl", "5985545");
+		Gebruiker g10 = (Gebruiker) new Leerling("josh", "test", "Josh Mok", "josh@accent.nl", "5059525");
+		Gebruiker g11 = (Gebruiker) new Leerling("leo", "test", "Leo West", "leo@accent.nl", "5688955");
+		Gebruiker g12 = (Gebruiker) new Leerling("chris", "test", "Chris Verdi", "chris@accent.nl", "5982256");
+		Gebruiker g13 = (Gebruiker) new Leerling("alexander", "test", "Alexander Boullier", "alexander@accent.nl", "5458212");
+		Gebruiker g14 = (Gebruiker) new Leerling("vicki", "test", "Vicki Sax", "vickie@accent.nl", "5945214");
+		Gebruiker g15 = (Gebruiker) new Leerling("remy", "test", "Jason Koolman", "remy@accent.nl", "5326556");
+		Gebruiker g16 = (Gebruiker) new Leerling("ariane", "test", "Ariane Hubers", "ariane@accent.nl", "5145151");
+		Gebruiker g17 = (Gebruiker) new Leerling("jacky", "test", "Jacky van Oosterveen", "jacky@accent.nl", "53025654");
+
+		Gebruiker g20 = (Gebruiker) new StageBedrijf("Vroom", "test", "Restaurant Vroom", "javalaan 32", "info@company.com", "030-88905663");
+		Gebruiker g21 = (Gebruiker) new StageBedrijf("Jansen", "test", "Schildersbedrijf Jansen", "kajakstraat 6", "sjansen@hotmail.com", "030-2586732");
+		Gebruiker g22 = (Gebruiker) new StageBedrijf("Langerak", "test", "Timmersbedrijf langerak", "viavastraat 86", "langeraktimmer@hotmail.com", "036-8656663");
+		Gebruiker g23 = (Gebruiker) new StageBedrijf("Boonzaaijer", "test", "Bakkerij Boonzaaijer", "goedestraat 163", "boonzaaijer@hotmail.com", "036-6252421");
+		Gebruiker g24 = (Gebruiker) new StageBedrijf("Kuerker", "test", "Bloemist Kuerker", "instellerstraat 45", "kuerk@hotmail.com", "041-3981547");
+
+		
+		Gebruiker g30 = (Gebruiker) new Docent("frits", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
+		Gebruiker g31 = (Gebruiker) new Docent("michiel", "test", "Michiel Langeveld", "Kiwistraat 45", "info@stagebegeleider.com");
+		Gebruiker g32 = (Gebruiker) new Docent("gerard", "test", "Gerard van Houten", "Gansstraat 32", "info@stagebegeleider.com");
+		Gebruiker g33 = (Gebruiker) new Docent("paula", "test", "Paula Slingers", "Voorstraat 134", "info@stagebegeleider.com");
+
 		gebruikerDao.voegGebruikerToe(g1);
 		gebruikerDao.voegGebruikerToe(g2);
 		gebruikerDao.voegGebruikerToe(g3);
-		
+		gebruikerDao.voegGebruikerToe(g4);
+		gebruikerDao.voegGebruikerToe(g5);
+		gebruikerDao.voegGebruikerToe(g6);
+		gebruikerDao.voegGebruikerToe(g7);
+		gebruikerDao.voegGebruikerToe(g8);
+		gebruikerDao.voegGebruikerToe(g9);
+		gebruikerDao.voegGebruikerToe(g10);
+		gebruikerDao.voegGebruikerToe(g11);
+		gebruikerDao.voegGebruikerToe(g12);
+		gebruikerDao.voegGebruikerToe(g13);
+		gebruikerDao.voegGebruikerToe(g14);
+		gebruikerDao.voegGebruikerToe(g15);
+		gebruikerDao.voegGebruikerToe(g16);
+		gebruikerDao.voegGebruikerToe(g17);
+		gebruikerDao.voegGebruikerToe(g20);
+		gebruikerDao.voegGebruikerToe(g21);
+		gebruikerDao.voegGebruikerToe(g22);
+		gebruikerDao.voegGebruikerToe(g23);
+		gebruikerDao.voegGebruikerToe(g24);
+		gebruikerDao.voegGebruikerToe(g30);
+		gebruikerDao.voegGebruikerToe(g31);
+		gebruikerDao.voegGebruikerToe(g32);
+		gebruikerDao.voegGebruikerToe(g33);
 		log.info("Testgebruikers aangemaakt");
 		
 		//Testcompetenties aanmaken
