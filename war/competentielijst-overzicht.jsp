@@ -41,77 +41,140 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
     	<!-- Submenu -->
         <div id="submenu">
         	<a href="competentielijst-overzicht.jsp" class="button rounded-small white-gradient">Overzicht</a>
-            <a href="competentielijst-zoeken.jsp" class="button rounded-small white-gradient">Zoeken</a>
             <% if (gebruikerObject instanceof Docent || gebruikerObject instanceof Admin) { %>
             	<a href="competentielijst-toevoegen.jsp" class="button rounded-small white-gradient">Toevoegen</a>
             	<a href="competentie-overzicht.jsp" class="button rounded-small white-gradient">Compenties</a>
             <% } %>
+             <input id="cL_input" class="form_input_submenu rounded-small" type="text" placeholder="CompetentieLijst zoeken..." value = ""/>      
         </div>
         
+
         <!-- Overzicht -->
+        			
+        
         <% 
         if(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin) { 
+        	%>
+        		
+			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+				<thead>
+					<tr>
+						<th width="8%">&nbsp;</th>
+						<th width="38.5%">Voor Leerling</th>
+						<th width="38.5%">Van StageBedrijf</th>
+						<th width="15%">Aanmaakdatum</th>
+					</tr>
+				</thead>
+        	<% 
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-				for(Leerling l: alleLeerlingen){
-					if(cL.getLeerlingId().equals(l.getId())){
-				
-        %>
-					<a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-						<div class="row">
-							<div class="image"><img src="images/list.png" width="20" height="24" /></div>
-							<div class="description">voor <%=l.getNaam()%></div>
-							<div class="date"><%=cL.getAanmaakDatum()%></div>
-						</div>
-					</a>
+				if(cL.getLeerlingId().equals((((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getId()))){
+				%>
+				<tbody>
+					<tr>
+						<td><a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>"><img src="images/list.png" width="20" height="24" border = "0"/></a></td>
+						<td><a href="leerling-bezichtigen.jsp?id=<%=cL.getLeerlingId()%>"><%=((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam()%></a></td>
+						<td><a href="stagebedrijf-bezichtigen.jsp?id=<%=cL.getBedrijfId()%>"><%=((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getNaam()%></a></td>
+						<td><%=cL.getAanmaakDatum()%></td>
+					</tr>
+				</tbody>
         <% 
-        			}
+        			
         		}
-        	}
-        }
+        	}%>
+        	</table>
+        <%}
         %>
         
         <% 
         if(gebruikerObject instanceof Leerling) {
+        	%>
+						<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+						<thead>
+						<tr>
+						<th width="8%">&nbsp;</th>
+						<th width="38.5%">Voor Leerling</th>
+						<th width="38.5%">Van StageBedrijf</th>
+						<th width="15%">Aanmaakdatum</th>
+					</tr>
+				</thead>
+        	<%
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-				for(Leerling l: alleLeerlingen){
-	        		if(cL.getLeerlingId().equals(l.getId())) { 
+	        		if(cL.getLeerlingId().equals((((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getId()))){ 
 	    %>
-                    <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-                        <div class="row">
-                            <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                            <div class="description">voor <%=l.getNaam()%></div>
-                            <div class="date"><%=cL.getAanmaakDatum()%></div>
-                        </div>
-                    </a>
-		<% 
-                     
-            		}
-            	}
-			} 
-		}
+				<tbody>
+					<tr>			
+					<td><a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>"><img src="images/list.png" width="20" height="24" border = "0"/></a></td>
+							<td><a href="leerling-bezichtigen.jsp?id=<%=cL.getLeerlingId()%>"><%=((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam()%></a></td>
+							<td><a href="stagebedrijf-bezichtigen.jsp?id=<%=cL.getBedrijfId()%>"><%=((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getNaam()%></a></td>
+							<td><%=cL.getAanmaakDatum()%></td>
+						</tr>
+						</tbody>
+						
+		 <% 
+        			
+        		}
+        	}%>
+        	</table>
+        <%}
         %>
         
         <%
         if(gebruikerObject instanceof StageBedrijf) {
+        	%>
+						<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+						<thead>
+						<tr>
+						<th width="8%">&nbsp;</th>
+						<th width="38.5%">Voor Leerling</th>
+						<th width="38.5%">Van StageBedrijf</th>
+						<th width="15%">Aanmaakdatum</th>
+					</tr>
+				</thead>
+        	<%
 			for(CompetentieLijst cL : alleCompetentieLijsten) {
-				for(Leerling l: alleLeerlingen){
-					if(cL.getBedrijfId().equals(gebruikerObject.getId())) { 
+					if(cL.getBedrijfId().equals((((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getId()))) { 
 		%>
-                    <a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>" style="display: block;">
-                        <div class="row">
-                            <div class="image"><img src="images/list.png" width="20" height="24" /></div>
-                            <div class="description">voor <%=l.getNaam()%></div>
-                            <div class="date"><%=cL.getAanmaakDatum()%></div>
-                        </div>
-                    </a>
-		<% 
-                     
-            		}
-            	}
-			} 
-		}
+				<tbody>
+					<tr>				
+					<td><a href="competentielijst-bekijken.jsp?id=<%=cL.getId()%>"><img src="images/list.png" width="20" height="24" border = "0"/></a></td>
+							<td><a href="leerling-bezichtigen.jsp?id=<%=cL.getLeerlingId()%>"><%=((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam()%></a></td>
+							<td><a href="stagebedrijf-bezichtigen.jsp?id=<%=cL.getBedrijfId()%>"><%=((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getNaam()%></a></td>
+							<td><%=cL.getAanmaakDatum()%></td>
+						</tr>
+						</tbody>
+	 <% 
+        			
+        		}
+        	}%>
+        	</table>
+        <%}
         %>
-    </div>
-</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	// per keyInput
+	$("#cL_input").keyup(function(){
+		// Wanneer de value van de keyInput niet leeg is
+		if( $(this).val() != "")
+		{
+			// laat alleen de table row zien die de inhoud bevat
+			$("#my-table tbody>tr").hide();
+			$("#my-table td:contains-ci('" + $(this).val() + "')").parent("tr").show();
+		}
+		else
+		{
+			// wanneer de search leeg wordt gezet laat dan alles weer zien
+			$("#my-table tbody>tr").show();
+		}
+	});
+});
+// Onderstaand script is voor lowercase zoeken
+$.extend($.expr[":"], 
+{
+    "contains-ci": function(elem, i, match, array) 
+	{
+		return (elem.textContent || elem.innerText || $(elem).text() || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+	}
+});
+</script>
 </body>
 </html>
