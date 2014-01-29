@@ -61,18 +61,21 @@ public class DocentToevoegenServlet extends HttpServlet {
 		String wachtwoord = req.getParameter("wachtwoord");
 		String naam = req.getParameter("naam");
 		String email = req.getParameter("email");
+		String foto = "http://hu-jason.appspot.com/images/logo.jpg";
+		String foto2 = "http://hu-jason.appspot.com/images/tablet.png";
+		String link = "http://hu-jason.appspot.com/index.jsp";
 		Session session = (Session)req.getAttribute("session");
 		
 		//Onderwerp en bodypart
 		String subject = "Er is een account aangemaakt.";
 		String htmlBody = "<table>"
-				+ "<a href='http://www.accentnijkerk.nl/'><img src='http://hu-marcel.appspot.com/images/logo.jpg' /></a><br></br>"
-				+ "<table cellpadding='0' cellspacing='0' width='100%' bgcolor='e4e4e4'><tr><td align = 'left'><img src='http://hu-marcel.appspot.com/images/tablet.png'</td>"
+				+ "<a href='http://www.accentnijkerk.nl/'><img src='" + foto + "' /></a><br></br>"
+				+ "<table cellpadding='0' cellspacing='0' width='100%' bgcolor='e4e4e4'><tr><td align = 'left'><img src='" + foto2 + "'</td>"
 				+ "<td align = 'center'><h3>Welkom bij de Accent Nijkerk app! </h3><br></br> "
 				+ "<p>Uw inloggegevens zijn: <br></br> Gebruikersnaam: " + " " + gebruikersnaam 
 				+ " <br> </br> Wachtwoord: " + " " + wachtwoord 
-				+ "<br></br> U kunt nu inloggen door: <a href='hu-marcel.appspot.com/index.jsp'>hier</a> te klikken.</p>"
-				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: Helpdesk@AccentNijkerk.nl"
+				+ "<br></br> U kunt nu inloggen door: <a href='" + link + "'>hier</a> te klikken.</p>"
+				+ "<br></br> Dit is een automatisch verzonden email. Voor vragen neem contact op met: "+ email
 				+ "</td></tr></table></td>";
 		try {
 			//Nieuwe message creëren
