@@ -45,7 +45,9 @@ if(gevraagd == null){
     <div id="content">
     	<h1>Stagebedrijven &raquo; Bekijken</h1>
     	<div id="submenu">
-            <a href="/stagebedrijf-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a>
+        	<% if(gebruikerObject instanceof Admin){ %>
+            	<a href="/stagebedrijf-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a>
+        	<% } %>
         </div>
         <% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>
         <div class="block" style="line-height: 140%;"><%=gevraagd.toString()%></div>
