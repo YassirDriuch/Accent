@@ -1,5 +1,6 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.math.*" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="com.googlecode.objectify.Query" %>
@@ -44,10 +45,17 @@ if(query != null) {
 String leerlingNaam = ((Leerling)gebruikerDao.getGebruiker(cL.getLeerlingId())).getNaam();
 String stageBedrijfNaam = ((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijfId())).getNaam();
 int aantalVragen = 0;
-int gsl = 0;
-int gss = 0;
+double gsl = 0;
+double gss = 0;
 double gemiddeldeScoreLeerling = 0;
 double gemiddeldeScoreStageBedrijf = 0;
+%>
+<%!
+public static double round(double value) {
+    BigDecimal bd = new BigDecimal(value);
+    bd = bd.setScale(1, RoundingMode.HALF_UP);
+    return bd.doubleValue();
+}
 %>
 
 <!DOCTYPE html>
@@ -96,12 +104,12 @@ double gemiddeldeScoreStageBedrijf = 0;
 							
 							Antwoord aB = bStageBedrijf.zoekAntwoord(v.getId());
 							if(aB != null) {
-								gsl += aB.getAntwoord();
+								gss += (double)aB.getAntwoord();
 							}
 							
 							Antwoord aL = bLeerling.zoekAntwoord(v.getId());
 							if(aL != null) {
-								gss += aL.getAntwoord();
+								gsl += (double)aL.getAntwoord();
 							}
 						}
 					}
@@ -112,8 +120,8 @@ double gemiddeldeScoreStageBedrijf = 0;
 					<tr>
 						<td><%=c.getCompetentie()%></td>
 						<td><%=aantalVragen%></td>
-						<td><%=gemiddeldeScoreLeerling%></td>
-						<td><%=gemiddeldeScoreStageBedrijf%></td>
+						<td><%=round(gemiddeldeScoreLeerling)%></td>
+						<td><%=round(gemiddeldeScoreStageBedrijf)%></td>
 					</tr>
 				<% } %>
 				</tbody>
