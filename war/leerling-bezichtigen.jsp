@@ -43,7 +43,7 @@ if(gevraagd == null){
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Leerlingen &raquo; Bekijken</h1>
+    	<h1>Stagiair &raquo; Bekijken</h1>
     	<div id="submenu">
             <% if(gebruikerObject instanceof Admin){ %><a href="/leerling-aanpassen?id=<%=id%>" class="button rounded-small white-gradient">Wijzigen</a><% } %>
         </div>

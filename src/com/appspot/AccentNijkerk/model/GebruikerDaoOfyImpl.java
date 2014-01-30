@@ -87,6 +87,7 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
 		Query<Docent> alleDocenten = ofy.query(Docent.class);
 		Query<StageBedrijf> alleStageBedrijven = ofy.query(StageBedrijf.class);
+		Query<Admin> alleAdmins = ofy.query(Admin.class);
 		
 		for(Gebruiker g : alleLeerlingen) {
 			alleGebruikers.add(g);
@@ -97,6 +98,10 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		}
 		
 		for(Gebruiker g : alleStageBedrijven) {
+			alleGebruikers.add(g);
+		}
+		
+		for(Gebruiker g : alleAdmins) {
 			alleGebruikers.add(g);
 		}
 

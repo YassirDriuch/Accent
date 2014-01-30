@@ -96,6 +96,12 @@ h1 {
 	text-shadow: 1px 1px 0px #fff;
 }
 
+#chart-div {
+	border: 1px solid #D4D4D4;
+	overflow: hidden;
+	background: #FFF;
+}
+
 /* Background */
 #bg { position: fixed; top: 0; left: 0; }
 .bgwidth { width: 100%; }
@@ -267,7 +273,8 @@ table {
 	clear: left;
 	background: #eaebec;
 	border: #ccc 1px solid;
-	margin-top: 10px;
+	margin-top: 15px;
+	overflow: hidden;
 }
 
 table a {

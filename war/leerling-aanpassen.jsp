@@ -44,7 +44,7 @@ if(gevraagd == null){
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Leerlingen &raquo; Wijzigen</h1>
+    	<h1>Stagiair &raquo; Wijzigen</h1>
     	
     	<div class="block">
 	    	<% Object msg = request.getAttribute("msg"); if (msg != null) { out.println(msg); } %>

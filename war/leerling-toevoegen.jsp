@@ -34,7 +34,7 @@ if(!(gebruikerObject instanceof Docent || gebruikerObject instanceof Admin)){
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Leerlingen &raquo; Overzicht</h1>
+    	<h1>Stagiaires &raquo; Toevoegen</h1>
     	
     	<!-- Submenu -->
         <div id="submenu">

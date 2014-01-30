@@ -60,9 +60,9 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
 				<thead>
 					<tr>
 						<th width="8%">&nbsp;</th>
-						<th width="38.5%">Voor Leerling</th>
-						<th width="38.5%">Van StageBedrijf</th>
-						<th width="15%">Aanmaakdatum</th>
+						<th width="36%">Stagiaire</th>
+						<th width="36%">StageBedrijf</th>
+						<th width="20%">Aanmaakdatum</th>
 					</tr>
 				</thead>
         	<% 
@@ -88,13 +88,13 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <% 
         if(gebruikerObject instanceof Leerling) {
         	%>
-						<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
-						<thead>
-						<tr>
+			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+				<thead>
+					<tr>
 						<th width="8%">&nbsp;</th>
-						<th width="38.5%">Voor Leerling</th>
-						<th width="38.5%">Van StageBedrijf</th>
-						<th width="15%">Aanmaakdatum</th>
+						<th width="36%">Stagiaire</th>
+						<th width="36%">StageBedrijf</th>
+						<th width="20%">Aanmaakdatum</th>
 					</tr>
 				</thead>
         	<%
@@ -121,13 +121,13 @@ CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
         <%
         if(gebruikerObject instanceof StageBedrijf) {
         	%>
-						<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
-						<thead>
-						<tr>
+			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+				<thead>
+					<tr>
 						<th width="8%">&nbsp;</th>
-						<th width="38.5%">Voor Leerling</th>
-						<th width="38.5%">Van StageBedrijf</th>
-						<th width="15%">Aanmaakdatum</th>
+						<th width="36%">Stagiaire</th>
+						<th width="36%">StageBedrijf</th>
+						<th width="20%">Aanmaakdatum</th>
 					</tr>
 				</thead>
         	<%

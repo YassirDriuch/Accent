@@ -17,7 +17,7 @@ public class ContextListener implements ServletContextListener {
 		initObjectifyClasses();
 		GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 		
-		Gebruiker admin = new Admin("admin", "y3pr&dUw", "Administrator");
+		Gebruiker admin = new Admin("admin", "test", "Administrator");
 		if(!gebruikerDao.isBezet("admin")){
 		gebruikerDao.voegGebruikerToe(admin);}
 	
@@ -36,18 +36,18 @@ public class ContextListener implements ServletContextListener {
 		Gebruiker g12 = (Gebruiker) new Leerling("chris", "test", "Chris Verdi", "chris@accent.nl", "5982256");
 		Gebruiker g13 = (Gebruiker) new Leerling("alexander", "test", "Alexander Boullier", "alexander@accent.nl", "5458212");
 		Gebruiker g14 = (Gebruiker) new Leerling("vicki", "test", "Vicki Sax", "vickie@accent.nl", "5945214");
-		Gebruiker g15 = (Gebruiker) new Leerling("remy", "test", "Jason Koolman", "remy@accent.nl", "5326556");
+		Gebruiker g15 = (Gebruiker) new Leerling("remy", "test", "Remy oosterveen", "remy@accent.nl", "5326556");
 		Gebruiker g16 = (Gebruiker) new Leerling("ariane", "test", "Ariane Hubers", "ariane@accent.nl", "5145151");
-		Gebruiker g17 = (Gebruiker) new Leerling("jacky", "test", "Jacky van Oosterveen", "jacky@accent.nl", "53025654");
+		Gebruiker g17 = (Gebruiker) new Leerling("leerling", "test", "Jason koolman", "jason.koolman@hotmail.com", "53025654");
 
-		Gebruiker g20 = (Gebruiker) new StageBedrijf("Vroom", "test", "Restaurant Vroom", "javalaan 32", "info@company.com", "030-88905663");
+		Gebruiker g20 = (Gebruiker) new StageBedrijf("stagebedrijf", "test", "Restaurant Vroom", "javalaan 32", "info@company.com", "030-88905663");
 		Gebruiker g21 = (Gebruiker) new StageBedrijf("Jansen", "test", "Schildersbedrijf Jansen", "kajakstraat 6", "sjansen@hotmail.com", "030-2586732");
 		Gebruiker g22 = (Gebruiker) new StageBedrijf("Langerak", "test", "Timmersbedrijf langerak", "viavastraat 86", "langeraktimmer@hotmail.com", "036-8656663");
 		Gebruiker g23 = (Gebruiker) new StageBedrijf("Boonzaaijer", "test", "Bakkerij Boonzaaijer", "goedestraat 163", "boonzaaijer@hotmail.com", "036-6252421");
 		Gebruiker g24 = (Gebruiker) new StageBedrijf("Kuerker", "test", "Bloemist Kuerker", "instellerstraat 45", "kuerk@hotmail.com", "041-3981547");
 
 		
-		Gebruiker g30 = (Gebruiker) new Docent("frits", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
+		Gebruiker g30 = (Gebruiker) new Docent("stagebegeleider", "test", "Frits Bakker", "Slingstraat 24", "info@stagebegeleider.com");
 		Gebruiker g31 = (Gebruiker) new Docent("michiel", "test", "Michiel Langeveld", "Kiwistraat 45", "info@stagebegeleider.com");
 		Gebruiker g32 = (Gebruiker) new Docent("gerard", "test", "Gerard van Houten", "Gansstraat 32", "info@stagebegeleider.com");
 		Gebruiker g33 = (Gebruiker) new Docent("paula", "test", "Paula Slingers", "Voorstraat 134", "info@stagebegeleider.com");

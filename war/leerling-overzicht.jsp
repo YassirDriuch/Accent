@@ -40,7 +40,7 @@ Query<Leerling> alleLeerlingen = ofy.query(Leerling.class);
     
     <!-- Content !-->
     <div id="content">
-    	<h1>Leerlingen &raquo; Overzicht</h1>
+    	<h1>Stagiaires &raquo; Overzicht</h1>
     	
     	<!-- Subemenu -->
         <div id="submenu">

@@ -1,5 +1,5 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.*" %>
 <%@ page import="java.math.*" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
@@ -47,8 +47,46 @@ String stageBedrijfNaam = ((StageBedrijf)gebruikerDao.getGebruiker(cL.getBedrijf
 int aantalVragen = 0;
 double gsl = 0;
 double gss = 0;
-double gemiddeldeScoreLeerling = 0;
-double gemiddeldeScoreStageBedrijf = 0;
+
+//Google char variabelen
+int countLeerling = 0;
+int countStageBedrijf = 0;
+int vragenlijstCount = 0;
+int totaalAantalVragen = bLeerling.getAlleAntwoorden().size();
+String vragenLijst[] = new String[totaalAantalVragen];
+int antwoordenLeerling[] = new int[totaalAantalVragen];
+int antwoordenStageBedrijf[] = new int[totaalAantalVragen];
+String chartData = "";
+
+List<Integer> myList = new ArrayList<Integer>();
+
+for(Competentie c : cL.getAlleCompetenties()) {
+	for(Vraag v : vraagDao.getAlleVragen()) {
+		if(v.getCompetentieId().equals(c.getId())) {
+			vragenLijst[vragenlijstCount] = v.getVraag();
+			vragenlijstCount++;
+		}
+	}
+}
+
+for(Antwoord a : bLeerling.getAlleAntwoorden()) {
+	antwoordenLeerling[countLeerling] = a.getAntwoord();
+	countLeerling++;
+}
+
+for(Antwoord a : bStageBedrijf.getAlleAntwoorden()) {
+	antwoordenStageBedrijf[countStageBedrijf] = a.getAntwoord();
+	countStageBedrijf++;
+}
+
+for(int i = 0; i < totaalAantalVragen; i++) {
+	if(i == 0) {
+		chartData += "['" + vragenLijst[i] + "', " + antwoordenLeerling[i] + ", " + antwoordenStageBedrijf[i] + "]";
+	} else {
+		chartData += ", ['" + vragenLijst[i] + "', " + antwoordenLeerling[i] + ", " + antwoordenStageBedrijf[i] + "]";
+	}
+}
+
 %>
 <%!
 public static double round(double value) {
@@ -66,6 +104,32 @@ public static double round(double value) {
 <title>Accent Nijkerk</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.resizebg.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+
+function drawChart() {
+	var data = new google.visualization.DataTable();
+	
+	data.addColumn('string', 'Vraag');
+	data.addColumn('number', 'Stagiaire');
+	data.addColumn('number', 'Stagebedrijf');
+
+	//Data van JSP toevoegen
+	data.addRows([<%=chartData%>]);
+	
+	var options = {
+		title: 'Score per vraag',
+		pointSize: 4,
+		vAxis: {title: 'Score', titleTextStyle: {italic: false}},
+        hAxis: {title: 'Vragen', titleTextStyle: {italic: false}, textPosition: 'none'}
+	};
+	
+    var chart = new google.visualization.LineChart(document.getElementById('chart-div'));
+	chart.draw(data, options);
+}
+</script>
 </head>
 
 <body>
@@ -81,6 +145,8 @@ public static double round(double value) {
 	    	Stagiaire: <%= leerlingNaam %><br />
 	    	Stagebedrijf: <%= stageBedrijfNaam %><br />
 	    	Aanmaakdatum: <%= cL.getAanmaakDatum() %><br /><br />
+	    	
+	    	<div id="chart-div" class="rounded-small" style="width: 100%; height: 350px; padding-bottom: 10px;"></div>
 	    	
 	    	<table cellspacing="0" cellpadding="0" class="rounded-small">
 				<thead>
@@ -114,14 +180,14 @@ public static double round(double value) {
 						}
 					}
 
-					gemiddeldeScoreLeerling = (gsl/aantalVragen);
-					gemiddeldeScoreStageBedrijf = (gss/aantalVragen);
+					gsl = (gsl/aantalVragen);
+					gss = (gss/aantalVragen);
 				%>
 					<tr>
 						<td><%=c.getCompetentie()%></td>
 						<td><%=aantalVragen%></td>
-						<td><%=round(gemiddeldeScoreLeerling)%></td>
-						<td><%=round(gemiddeldeScoreStageBedrijf)%></td>
+						<td><%=round(gsl)%></td>
+						<td><%=round(gss)%></td>
 					</tr>
 				<% } %>
 				</tbody>
