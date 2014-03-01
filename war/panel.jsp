@@ -3,10 +3,12 @@
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="com.googlecode.objectify.Query" %>
 <%
+Objectify ofy = ObjectifyService.begin();	
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
-
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
+CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
+Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
 
 if(gebruikerObject == null) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
@@ -55,10 +57,40 @@ public int ingevuldCompetentieLijsten(){
         Waarvan Leerlingen: <%= gebruikerDao.getAlleLeerlingen().size() %><br />
         Waarvan Bedrijven: <%= gebruikerDao.getAlleStageBedrijven().size() %><br />
         Waarvan Docenten: <%= gebruikerDao.getAlleDocenten().size() %><br /><br />
-        Totaal Competentielijsten: <%= competentieLijstDao.getAlleCompetentieLijsten().size() %><br />
-        Aantal ingevulde competentielijsten: <%= ingevuldCompetentieLijsten() %>
         
+        <b>KPI 1</b><br />
+        Totaal Competentielijsten deze maand: <%= competentieLijstDao.getAlleCompetentieLijsten().size() %><br />
+        Aantal ingevulde competentielijsten deze maand: <%= ingevuldCompetentieLijsten() %><br /><br />
         
+        <b>KPI 2</b><br />    		
+			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
+				<thead>
+					<tr>
+						<th width="50%">Competentie</th>
+						<th width="50%">Keren gebruikt</th>
+					</tr>
+				</thead>
+				<tbody>
+        	<% 
+			for(Competentie c : competentieDao.getAlleCompetenties()) {
+				int i = 0;
+				for(CompetentieLijst cL : alleCompetentieLijsten) {
+					for(Competentie c2 : cL.getAlleCompetenties()) {
+						if(c.getCompetentie().equals(c2.getCompetentie())) {
+							i++;
+						}
+					}
+				}
+			%>
+				
+					<tr>
+						<td><%=c.getCompetentie()%></td>
+						<td><%=i%></td>
+					</tr>
+				
+        	<% } %>
+        		</tbody>
+        	</table>
         <% } else { %>
         	<%=gebruikerObject.toString()%>
         <% } %>
