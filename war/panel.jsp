@@ -7,7 +7,9 @@ Objectify ofy = ObjectifyService.begin();
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
 GebruikerDao gebruikerDao = new GebruikerDaoOfyImpl();
 CompetentieLijstDao competentieLijstDao = new CompetentieLijstDaoOfyImpl();
+BeoordelingsLijstDao beoordelingsLijstDao = new BeoordelingsLijstDaoOfyImpl();
 CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
+VraagDao vraagDao = new VraagDaoOfyImpl();
 Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
 
 if(gebruikerObject == null) {
@@ -62,22 +64,36 @@ public int ingevuldCompetentieLijsten(){
         Totaal Competentielijsten deze maand: <%= competentieLijstDao.getAlleCompetentieLijsten().size() %><br />
         Aantal ingevulde competentielijsten deze maand: <%= ingevuldCompetentieLijsten() %><br /><br />
         
-        <b>KPI 2</b><br />    		
+        <b>KPI 2 + 3</b><br />    		
 			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
 				<thead>
 					<tr>
-						<th width="50%">Competentie</th>
-						<th width="50%">Keren gebruikt</th>
+						<th width="33%">Competentie</th>
+						<th width="33%">Keren gebruikt</th>
+						<th width="34%">Gemiddelde score</th>
 					</tr>
 				</thead>
 				<tbody>
         	<% 
 			for(Competentie c : competentieDao.getAlleCompetenties()) {
-				int i = 0;
+				int kerenGebruikt = 0;
 				for(CompetentieLijst cL : alleCompetentieLijsten) {
 					for(Competentie c2 : cL.getAlleCompetenties()) {
 						if(c.getCompetentie().equals(c2.getCompetentie())) {
-							i++;
+							kerenGebruikt++;
+						}
+					}
+				}
+				
+				int gemScore = 0;
+				Query<Antwoord> alleAntwoorden = ofy.query(Antwoord.class);
+				
+				for(Vraag v : vraagDao.getAlleVragen()) {
+					if(v.getCompetentieId().equals(c.getId())) {
+						for(Antwoord a : alleAntwoorden) {
+							if(a.getVraagId().equals(v.getId())) {
+								gemScore += a.getAntwoord();
+							}
 						}
 					}
 				}
@@ -85,7 +101,8 @@ public int ingevuldCompetentieLijsten(){
 				
 					<tr>
 						<td><%=c.getCompetentie()%></td>
-						<td><%=i%></td>
+						<td><%=kerenGebruikt%></td>
+						<td><%=gemScore%></td>
 					</tr>
 				
         	<% } %>
