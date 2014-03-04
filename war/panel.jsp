@@ -39,6 +39,27 @@ public int ingevuldCompetentieLijsten(){
 <title>Accent Nijkerk</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.resizebg.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Competentielijsten', 'Aantal'],
+          ['Niet Ingevuld',     <%= competentieLijstDao.getAlleCompetentieLijsten().size() - ingevuldCompetentieLijsten() %>],
+          ['Ingevuld',      <%= ingevuldCompetentieLijsten() %>]
+        ]);
+
+        var options = {
+          title: 'Competentielijsten',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+</script>
+
 </head>
 
 <body>
@@ -61,9 +82,7 @@ public int ingevuldCompetentieLijsten(){
         Waarvan Docenten: <%= gebruikerDao.getAlleDocenten().size() %><br /><br />
         
         <b>KPI 1</b><br />
-        Totaal Competentielijsten deze maand: <%= competentieLijstDao.getAlleCompetentieLijsten().size() %><br />
-        Aantal ingevulde competentielijsten deze maand: <%= ingevuldCompetentieLijsten() %><br /><br />
-        
+		<div id="piechart_3d" style="width: 800px; height: 400px;"> </div>      
         <b>KPI 2 + 3</b><br />    		
 			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
 				<thead>
