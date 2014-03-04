@@ -52,6 +52,7 @@ public int ingevuldCompetentieLijsten(){
 
         var options = {
           title: 'Competentielijsten',
+		  backgroundColor: '#F5F5F5',
           is3D: true,
         };
 
