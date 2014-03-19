@@ -13,4 +13,5 @@ public interface GebruikerDao {
 	public ArrayList<Gebruiker> getAlleLeerlingen();
 	public ArrayList<Gebruiker> getAlleDocenten();
 	public ArrayList<Gebruiker> getAlleStageBedrijven();
+	public ArrayList<Gebruiker> getAlleAdmins();
 }

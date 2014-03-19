@@ -144,6 +144,16 @@ public class GebruikerDaoOfyImpl implements GebruikerDao {
 		return alleGebruikers;
 	}
 
+	public ArrayList<Gebruiker> getAlleAdmins() {
+		ArrayList<Gebruiker> alleGebruikers = new ArrayList<Gebruiker>();
+		Query<Admin> alleAdmins = ofy.query(Admin.class);
+		
+		for(Gebruiker g : alleAdmins) {
+			alleGebruikers.add(g);
+		}
+
+		return alleGebruikers;
+	}
 	@Override
 	public Gebruiker zoekGebruiker(String n) {
 		Gebruiker gl = null;

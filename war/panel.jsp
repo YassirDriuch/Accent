@@ -60,6 +60,28 @@ public int ingevuldCompetentieLijsten(){
         chart.draw(data, options);
       }
 </script>
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Gebruikers', 'Aantal'],
+          ['Leerlingen',     <%= gebruikerDao.getAlleLeerlingen().size() %>],
+          ['Docenten',      <%= gebruikerDao.getAlleDocenten().size() %>],
+		  ['Bedrijven',      <%= gebruikerDao.getAlleStageBedrijven().size() %>],
+		  ['Administratoren',      <%= gebruikerDao.getAlleAdmins().size() %>]
+        ]);
+
+        var options = {
+          title: 'Gebruikers',
+		  backgroundColor: '#F5F5F5',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_01'));
+        chart.draw(data, options);
+      }
+</script>
 
 </head>
 
@@ -78,19 +100,18 @@ public int ingevuldCompetentieLijsten(){
         <div class="block">
         <% if(gebruikerObject instanceof Admin){ %>
         Totaal aantal gebruikers: <%= gebruikerDao.getAlleGebruikers().size() %><br />
-        Waarvan Leerlingen: <%= gebruikerDao.getAlleLeerlingen().size() %><br />
-        Waarvan Bedrijven: <%= gebruikerDao.getAlleStageBedrijven().size() %><br />
-        Waarvan Docenten: <%= gebruikerDao.getAlleDocenten().size() %><br /><br />
-        
         <b>KPI 1</b><br />
+        <div id="piechart_3d_01" style="width: 800px; height: 400px;"> </div>    
+        
+        
+        <b>KPI 2</b><br />
 		<div id="piechart_3d" style="width: 800px; height: 400px;"> </div>      
-        <b>KPI 2 + 3</b><br />    		
+        <b>KPI 3</b><br />    		
 			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
 				<thead>
 					<tr>
 						<th width="33%">Competentie</th>
 						<th width="33%">Keren gebruikt</th>
-						<th width="34%">Gemiddelde score</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -122,7 +143,6 @@ public int ingevuldCompetentieLijsten(){
 					<tr>
 						<td><%=c.getCompetentie()%></td>
 						<td><%=kerenGebruikt%></td>
-						<td><%=gemScore%></td>
 					</tr>
 				
         	<% } %>
