@@ -17,7 +17,7 @@ int i = competentieLijstDao.getAlleCompetentieLijsten().size() - ingevuldCompete
 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 Calendar vandaag = Calendar.getInstance();
 Calendar deadline = Calendar.getInstance();
-deadline.set(2014,2,25);
+deadline.set(2014,2,22);
 
 if(gebruikerObject == null) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
@@ -67,29 +67,6 @@ public int ingevuldCompetentieLijsten(){
         chart.draw(data, options);
       }
 </script>
-<script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Gebruikers', 'Aantal'],
-          ['Leerlingen',     <%= gebruikerDao.getAlleLeerlingen().size() %>],
-          ['Docenten',      <%= gebruikerDao.getAlleDocenten().size() %>],
-		  ['Bedrijven',      <%= gebruikerDao.getAlleStageBedrijven().size() %>],
-		  ['Administratoren',      <%= gebruikerDao.getAlleAdmins().size() %>]
-        ]);
-
-        var options = {
-          title: 'Gebruikers',
-		  backgroundColor: '#F5F5F5',
-          is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d_01'));
-        chart.draw(data, options);
-      }
-</script>
-
 </head>
 
 <body>
@@ -107,57 +84,11 @@ public int ingevuldCompetentieLijsten(){
         <div class="block">
         <% if(gebruikerObject instanceof Admin){ %>
         <% if(i != 0 && (vandaag.equals(deadline) || vandaag.after(deadline))) { %>
-        <div class="nosucces"> WAARSCHUWING!! De deadline van <%= sdf.format(deadline.getTime()) %> is niet gehaald. Niet alle competentielijsten zijn ingevuld </div>
+        <div class="nosucces"> WAARSCHUWING!!! De deadline van <%= sdf.format(deadline.getTime()) %> is niet gehaald. Niet alle competentielijsten zijn ingevuld! </div>
         <% } %>
         Totaal aantal gebruikers: <%= gebruikerDao.getAlleGebruikers().size() %><br />
-        <b>KPI 1</b><br />
-        <div id="piechart_3d_01" style="width: 800px; height: 400px;"> </div>    
-        
-        
-        <b>KPI 2</b><br />
-		<div id="piechart_3d" style="width: 800px; height: 400px;"> </div>      
-        <b>KPI 3</b><br />    		
-			<table cellspacing="0" cellpadding="0" class="rounded-small" id="my-table">
-				<thead>
-					<tr>
-						<th width="33%">Competentie</th>
-						<th width="33%">Keren gebruikt</th>
-					</tr>
-				</thead>
-				<tbody>
-        	<% 
-			for(Competentie c : competentieDao.getAlleCompetenties()) {
-				int kerenGebruikt = 0;
-				for(CompetentieLijst cL : alleCompetentieLijsten) {
-					for(Competentie c2 : cL.getAlleCompetenties()) {
-						if(c.getCompetentie().equals(c2.getCompetentie())) {
-							kerenGebruikt++;
-						}
-					}
-				}
-				
-				int gemScore = 0;
-				Query<Antwoord> alleAntwoorden = ofy.query(Antwoord.class);
-				
-				for(Vraag v : vraagDao.getAlleVragen()) {
-					if(v.getCompetentieId().equals(c.getId())) {
-						for(Antwoord a : alleAntwoorden) {
-							if(a.getVraagId().equals(v.getId())) {
-								gemScore += a.getAntwoord();
-							}
-						}
-					}
-				}
-			%>
-				
-					<tr>
-						<td><%=c.getCompetentie()%></td>
-						<td><%=kerenGebruikt%></td>
-					</tr>
-				
-        	<% } %>
-        		</tbody>
-        	</table>
+        <b>KPI</b><br />
+		<div id="piechart_3d" style="width: 850px; height: 400px;"> </div>      
         <% } else { %>
         	<%=gebruikerObject.toString()%>
         <% } %>
