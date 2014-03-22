@@ -1,7 +1,9 @@
 <%@ page import="com.appspot.AccentNijkerk.model.*" %>
+<%@ page import="java.util.Calendar" %>
 <%@ page import="com.googlecode.objectify.Objectify" %>
 <%@ page import="com.googlecode.objectify.ObjectifyService" %>
 <%@ page import="com.googlecode.objectify.Query" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%
 Objectify ofy = ObjectifyService.begin();	
 Gebruiker gebruikerObject = (Gebruiker) session.getAttribute("gebruikerObject");
@@ -11,6 +13,11 @@ BeoordelingsLijstDao beoordelingsLijstDao = new BeoordelingsLijstDaoOfyImpl();
 CompetentieDao competentieDao = new CompetentieDaoOfyImpl();
 VraagDao vraagDao = new VraagDaoOfyImpl();
 Query<CompetentieLijst> alleCompetentieLijsten = ofy.query(CompetentieLijst.class);
+int i = competentieLijstDao.getAlleCompetentieLijsten().size() - ingevuldCompetentieLijsten();
+SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+Calendar vandaag = Calendar.getInstance();
+Calendar deadline = Calendar.getInstance();
+deadline.set(2014,2,25);
 
 if(gebruikerObject == null) {
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
@@ -46,7 +53,7 @@ public int ingevuldCompetentieLijsten(){
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Competentielijsten', 'Aantal'],
-          ['Niet Ingevuld',     <%= competentieLijstDao.getAlleCompetentieLijsten().size() - ingevuldCompetentieLijsten() %>],
+          ['Niet Ingevuld',     <%=i%>],
           ['Ingevuld',      <%= ingevuldCompetentieLijsten() %>]
         ]);
 
@@ -99,6 +106,9 @@ public int ingevuldCompetentieLijsten(){
         </div>
         <div class="block">
         <% if(gebruikerObject instanceof Admin){ %>
+        <% if(i != 0 && (vandaag.equals(deadline) || vandaag.after(deadline))) { %>
+        <div class="nosucces"> WAARSCHUWING!! De deadline van <%= sdf.format(deadline.getTime()) %> is niet gehaald. Niet alle competentielijsten zijn ingevuld </div>
+        <% } %>
         Totaal aantal gebruikers: <%= gebruikerDao.getAlleGebruikers().size() %><br />
         <b>KPI 1</b><br />
         <div id="piechart_3d_01" style="width: 800px; height: 400px;"> </div>    
